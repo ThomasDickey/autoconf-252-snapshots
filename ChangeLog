@@ -1,3 +1,46 @@
+2003-02-08  Thomas Dickey <dickey@invisible-island.net>
+
+	Repair AC_PROG_GCC_TRADITIONAL, which is broken by the combination of a
+	syntactically incorrect test statement with the inclusion of
+	<stdlib.h>.  In particular, the test fails on Mac OS X (report by
+	Gerben Wierda <Sherlock@rna.nl>).
+
+2001-12-27  Thomas Dickey <dickey@invisible-island.net>
+
+	Restore behavior of autoconf 2.13 to handle trailing blanks (and
+	inline comments) in config.hin
+
+2001-12-01  Thomas Dickey <dickey@invisible-island.net>
+
+	Modify version number (e.g., to the 8-character yyyymmdd 20011201) to
+	avoid confusion.  (This version of autoconf fixes bugs and some design
+	defects which make it unsuitable for my use, but is compatible with
+	autoconf 2.50).
+
+	Improvements:
+
+	+ modify the AC_OUTPUT macro by allowing it to generate the contents
+	  of the config.h file rather than simply substituting in a template.
+	  (This requires adding AC_SETUP_DEFS() as well).
+
+	+ add utility macro AC_DIVERT_HELP to add text to the
+	  enable/with options list.
+
+	Fixes:
+
+	+ Correct error in top-level Makefile.in which prevented "make
+	  distclean" when the file was not writable (a bug in automake
+	  causes it to regenerate some of the makefile templates). 
+	  Make sure the file is writable, as a workaround.
+
+	+ Remove the --include-deps option from automake in the top-level
+	  Makefile.in, which also prevented builds from pristine source.
+
+	+ Tidy up the alignment in the boilerplate for --help, correct some
+	  spelling errors.
+
+-------------------------------------------------------------------------------
+
 2001-07-18  Akim Demaille  <akim@epita.fr>
 
 	Version 2.52.

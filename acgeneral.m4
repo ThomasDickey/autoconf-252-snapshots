@@ -79,10 +79,10 @@
 #   Handling `configure --help'.
 # - HELP_CANON
 #   Help msg for AC_CANONICAL_*
-# - HELP_ENABLE
-#   Help msg from AC_ARG_ENABLE.
-# - HELP_WITH
-#   Help msg from AC_ARG_WITH.
+# - HELP_INTRO
+#   Overview help msg from AC_ARG_ENABLE, AC_ARG_WITH.
+# - HELP_DETAIL
+#   Detailed help msg from AC_ARG_ENABLE, AC_ARG_WITH.
 # - HELP_VAR
 #   Help msg from AC_ARG_VAR.
 # - HELP_VAR_END
@@ -121,8 +121,8 @@ m4_define([_m4_divert(PARSE_ARGS)],      4)
 
 m4_define([_m4_divert(HELP_BEGIN)],     10)
 m4_define([_m4_divert(HELP_CANON)],     11)
-m4_define([_m4_divert(HELP_ENABLE)],    12)
-m4_define([_m4_divert(HELP_WITH)],      13)
+m4_define([_m4_divert(HELP_INTRO)],     12)
+m4_define([_m4_divert(HELP_DETAIL)],    13)
 m4_define([_m4_divert(HELP_VAR)],       14)
 m4_define([_m4_divert(HELP_VAR_END)],   15)
 m4_define([_m4_divert(HELP_END)],       16)
@@ -1112,18 +1112,18 @@ for instance \`--prefix=\$HOME'.
 For better control, use the options below.
 
 Fine tuning of the installation directories:
-  --bindir=DIR           user executables [EPREFIX/bin]
-  --sbindir=DIR          system admin executables [EPREFIX/sbin]
-  --libexecdir=DIR       program executables [EPREFIX/libexec]
-  --datadir=DIR          read-only architecture-independent data [PREFIX/share]
-  --sysconfdir=DIR       read-only single-machine data [PREFIX/etc]
-  --sharedstatedir=DIR   modifiable architecture-independent data [PREFIX/com]
-  --localstatedir=DIR    modifiable single-machine data [PREFIX/var]
-  --libdir=DIR           object code libraries [EPREFIX/lib]
-  --includedir=DIR       C header files [PREFIX/include]
-  --oldincludedir=DIR    C header files for non-gcc [/usr/include]
-  --infodir=DIR          info documentation [PREFIX/info]
-  --mandir=DIR           man documentation [PREFIX/man]
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --datadir=DIR           read-only architecture-independent data [PREFIX/share]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --infodir=DIR           info documentation [PREFIX/info]
+  --mandir=DIR            man documentation [PREFIX/man]
 EOF
 
   cat <<\EOF]
@@ -1137,11 +1137,11 @@ dnl - HELP_CANON
 dnl   Support for cross compilation (--build, --host and --target).
 dnl   Display only in long --help.
 dnl
-dnl - HELP_ENABLE
+dnl - HELP_INTRO
 dnl   which starts with the trailer of the HELP_BEGIN, HELP_CANON section,
 dnl   then implements the header of the non generic options.
 dnl
-dnl - HELP_WITH
+dnl - HELP_DETAIL
 dnl
 dnl - HELP_VAR
 dnl
@@ -1150,7 +1150,7 @@ dnl
 dnl - HELP_END
 dnl   initialized below, in which we dump the trailer (handling of the
 dnl   recursion for instance).
-m4_divert_push([HELP_ENABLE])dnl
+m4_divert_push([HELP_INTRO])dnl
 EOF
 fi
 
@@ -1160,7 +1160,7 @@ m4_ifset([AC_PACKAGE_STRING],
      short | recursive ) echo "Configuration of AC_PACKAGE_STRING:";;
    esac])
   cat <<\EOF
-m4_divert_pop([HELP_ENABLE])dnl
+m4_divert_pop([HELP_INTRO])dnl
 m4_divert_push([HELP_END])dnl
 m4_ifset([AC_PACKAGE_BUGREPORT], [
 Report bugs to <AC_PACKAGE_BUGREPORT>.])
@@ -1427,6 +1427,24 @@ m4_ifval([$2], , [m4_ifval([$1], [AC_CONFIG_SRCDIR([$1])])])dnl
 
 
 
+# _AC_HELP_INTRO
+# --------------
+# Put the generic descriptions of AC_ARG_ENABLE and AC_ARG_WITH into a separate
+# paragraph to make it more readable.  The help-text for those macros falls
+# into the same list, making it simple to organize.
+m4_define([_AC_HELP_INTRO],
+[m4_divert_once([HELP_INTRO], [$1])
+m4_divert_once([HELP_DETAIL], [[
+Options recognized by this package (as ordered in configure.in)]])dnl
+])
+
+
+# Utility macro to add text to the enable/with options list.
+m4_define([AC_DIVERT_HELP],
+[m4_divert_once([HELP_DETAIL], [[$1]])
+])
+
+
 ## ----------------------------- ##
 ## Selecting optional features.  ##
 ## ----------------------------- ##
@@ -1435,11 +1453,12 @@ m4_ifval([$2], , [m4_ifval([$1], [AC_CONFIG_SRCDIR([$1])])])dnl
 # AC_ARG_ENABLE(FEATURE, HELP-STRING, [ACTION-IF-TRUE], [ACTION-IF-FALSE])
 # ------------------------------------------------------------------------
 AC_DEFUN([AC_ARG_ENABLE],
-[m4_divert_once([HELP_ENABLE], [[
+[m4_divert_once([HELP_INTRO], [[
 Optional Features:
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
-  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]]])dnl
-m4_divert_once([HELP_ENABLE], [$2])dnl
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]]]
+)
+m4_divert_once([HELP_DETAIL], [$2])dnl
 # Check whether --enable-$1 or --disable-$1 was given.
 if test "[${enable_]m4_patsubst([$1], -, _)+set}" = set; then
   enableval="[$enable_]m4_patsubst([$1], -, _)"
@@ -1463,11 +1482,12 @@ AU_DEFUN([AC_ENABLE],
 # AC_ARG_WITH(PACKAGE, HELP-STRING, ACTION-IF-TRUE, [ACTION-IF-FALSE])
 # --------------------------------------------------------------------
 AC_DEFUN([AC_ARG_WITH],
-[m4_divert_once([HELP_WITH], [[
+[m4_divert_once([HELP_INTRO], [[
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)]])
-m4_divert_once([HELP_WITH], [$2])dnl
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)]]
+)
+m4_divert_once([HELP_DETAIL], [$2])dnl
 # Check whether --with-$1 or --without-$1 was given.
 if test "[${with_]m4_patsubst([$1], -, _)+set}" = set; then
   withval="[$with_]m4_patsubst([$1], -, _)"
@@ -1720,7 +1740,7 @@ AC_DEFUN_ONCE([AC_CANONICAL_BUILD],
 m4_divert_text([HELP_CANON],
 [[
 System types:
-  --build=BUILD     configure for building on BUILD [guessed]]])dnl
+  --build=BUILD           configure for building on BUILD [guessed]]])dnl
 # Make sure we can run config.sub.
 $ac_config_sub sun4 >/dev/null 2>&1 ||
   AC_MSG_ERROR([cannot run $ac_config_sub])
@@ -3263,6 +3283,17 @@ AC_DEFUN([AC_CONFIG_COMMANDS_POST],
 m4_define([AC_OUTPUT_COMMANDS_POST])
 
 
+# AC_SETUP_DEFS([SAVE-DEFS])
+AC_DEFUN([AC_SETUP_DEFS],
+[
+m4_ifset([AC_LIST_HEADERS],
+[m4_if($1,,,[define(AC_SAVE_DEFS,$1)])dnl
+DEFS=-DHAVE_CONFIG_H],
+[m4_if($1,,,AC_MSG_WARN(ignored save-defs parameter))
+AC_OUTPUT_MAKE_DEFS()])
+])dnl
+
+
 # AC_CONFIG_HEADERS(HEADERS..., [COMMANDS], [INIT-CMDS])
 # ------------------------------------------------------
 # Specify that the HEADERS are to be created by instantiation of the
@@ -3372,7 +3403,7 @@ AU_DEFUN([_AC_LINK_FILES_CNT], 0)
 
 
 # AC_CONFIG_FILES(FILE..., [COMMANDS], [INIT-CMDS])
-# -------------------------------------------------
+# ---------------------------------------------------------------
 # Specify output files, as with AC_OUTPUT, i.e., files that are
 # configured with AC_SUBST.  Associate the COMMANDS to each FILE,
 # i.e., when config.status creates FILE, run COMMANDS afterwards.
@@ -3430,8 +3461,8 @@ AC_SUBST(subdirs, "$subdirs $1")dnl
 m4_define([_AC_LIST_SUBDIRS])
 
 
-# autoupdate::AC_OUTPUT([CONFIG_FILES...], [EXTRA-CMDS], [INIT-CMDS])
-# -------------------------------------------------------------------
+# autoupdate::AC_OUTPUT([CONFIG_FILES...], [EXTRA-CMDS], [INIT-CMDS] [, SAVE-DEFS])
+# ---------------------------------------------------------------------------------
 #
 # If there are arguments given to AC_OUTPUT, dispatch them to the
 # proper modern macros.
@@ -3440,11 +3471,13 @@ AU_DEFUN([AC_OUTPUT],
            [AC_CONFIG_FILES([$1])])dnl
 m4_ifvaln([$2$3],
           [AC_CONFIG_COMMANDS(default, [[$2]], [[$3]])])dnl
+m4_ifvaln([$4],
+           [AC_SETUP_DEFS([$4])])dnl
 [AC_OUTPUT]])
 
 
-# AC_OUTPUT([CONFIG_FILES...], [EXTRA-CMDS], [INIT-CMDS])
-# -------------------------------------------------------
+# AC_OUTPUT([CONFIG_FILES...], [EXTRA-CMDS], [INIT-CMDS] [, SAVE-DEFS])
+# ---------------------------------------------------------------------
 # The big finish.
 # Produce config.status, config.h, and links; and configure subdirs.
 # The CONFIG_HEADERS are defined in the m4 variable AC_LIST_HEADERS.
@@ -3454,8 +3487,8 @@ m4_define([AC_OUTPUT],
 [dnl Dispatch the extra arguments to their native macros.
 m4_ifval([$1],
          [AC_CONFIG_FILES([$1])])dnl
-m4_ifval([$2$3],
-         [AC_CONFIG_COMMANDS(default, [$2], [$3])])dnl
+m4_ifval([$2$3$4],
+         [AC_CONFIG_COMMANDS(default, [$2], [$3], [$4])])dnl
 m4_ifval([$1$2$3],
          [AC_DIAGNOSE([obsolete],
                       [$0 should be used without arguments.
@@ -3481,7 +3514,7 @@ s/^[^=]*=[ 	]*$//;
 }']
 fi
 
-m4_ifset([AC_LIST_HEADERS], [DEFS=-DHAVE_CONFIG_H], [AC_OUTPUT_MAKE_DEFS()])
+AC_SETUP_DEFS([$4])
 
 dnl Commands to run before creating config.status.
 AC_OUTPUT_COMMANDS_PRE()dnl
@@ -4077,6 +4110,11 @@ dnl Double quote for the `[ ]' and `define'.
 ac_dB='[ 	].*$,\1#\2'
 ac_dC=' '
 ac_dD=',;t'
+# ac_i turns "#undef NAME" with trailing blanks into "#define NAME VALUE".
+ac_iA='s,^\([ 	]*\)#\([ 	]*\)undef\([ 	][ 	]*\)'
+ac_iB='\([ 	]\),\1#\2define\3'
+ac_iC=' '
+ac_iD='\4,;t'
 # ac_u turns "#undef NAME" without trailing blanks into "#define NAME VALUE".
 ac_uA='s,^\([ 	]*\)#\([ 	]*\)undef\([ 	][ 	]*\)'
 ac_uB='$,\1#\2define\3'
@@ -4125,6 +4163,42 @@ for ac_file in : $CONFIG_HEADERS; do test "x$ac_file" = x: && continue
 
 EOF
 
+ifdef([AC_SAVE_DEFS],
+[
+# Transform confdefs.h into a list of #define's.  We won't use it as a sed
+# script, but as data to insert where we see @DEFS@.  We expect AC_SAVE_DEFS to
+# be either 'cat' or 'sort'.
+AC_SAVE_DEFS confdefs.h | uniq >conftest.vals
+
+# Break up conftest.vals because some shells have a limit on
+# the size of here documents, and old seds have small limits too.
+
+rm -f conftest.tail
+echo '  rm -f conftest.frag' >> $CONFIG_STATUS
+while grep . conftest.vals >/dev/null
+do
+  # Write chunks of a limited-size here document to conftest.frag.
+  echo '  cat >> conftest.frag <<CEOF' >> $CONFIG_STATUS
+  sed ${ac_max_here_lines}q conftest.vals >> $CONFIG_STATUS
+  echo 'CEOF' >> $CONFIG_STATUS
+  sed 1,${ac_max_here_lines}d conftest.vals > conftest.tail
+  rm -f conftest.vals
+  mv conftest.tail conftest.vals
+done
+rm -f conftest.vals
+
+# Run sed to substitute the contents of conftest.frag into $tmp/in at the
+# marker @DEFS@.
+echo '  cat >> conftest.edit <<CEOF
+/@DEFS@/r conftest.frag
+/@DEFS@/d
+CEOF
+sed -f conftest.edit $tmp/in > $tmp/out
+rm -f $tmp/in
+mv $tmp/out $tmp/in
+rm -f conftest.edit conftest.frag
+' >> $CONFIG_STATUS
+],[
 # Transform confdefs.h into two sed scripts, `conftest.defines' and
 # `conftest.undefs', that substitutes the proper values into
 # config.h.in to produce config.h.  The first handles `#define'
@@ -4155,6 +4229,7 @@ EOF
 # sort them, since we want the *last* AC-DEFINE to be honored.
 uniq confdefs.h | sed -n -f confdef2sed.sed >conftest.defines
 sed 's/ac_d/ac_u/g' conftest.defines >conftest.undefs
+sed 's/ac_d/ac_i/g' conftest.defines >>conftest.undefs
 rm -f confdef2sed.sed
 
 # This sed command replaces #undef with comments.  This is necessary, for
@@ -4218,6 +4293,7 @@ do
   mv conftest.tail conftest.undefs
 done
 rm -f conftest.undefs
+])
 
 dnl Now back to your regularly scheduled config.status.
 cat >>$CONFIG_STATUS <<\EOF

@@ -10243,7 +10243,7 @@ services to the user.
 @code{AC_TYPE_OFF_T}
 @end defmac
 
-@defmac AC_OUTPUT (@ovar{file}@dots{}, @ovar{extra-cmds}, @ovar{init-cmds})
+@defmac AC_OUTPUT (@ovar{file}@dots{}, @ovar{extra-cmds}, @ovar{init-cmds}, @ovar{save-defs})
 @maindex OUTPUT
 The use of @code{AC_OUTPUT} with argument is deprecated, this obsoleted
 interface is equivalent to:
@@ -10253,9 +10253,25 @@ interface is equivalent to:
 AC_CONFIG_FILES(@var{file}@dots{})
 AC_CONFIG_COMMANDS([default],
                    @var{extra-cmds}, @var{init-cmds})
+AC_SETUP_DEFS(@var{save-defs})
 AC_OUTPUT
 @end group
 @end example
+
+If you specify @var{save-defs}, autoconf will save the @samp{#define}s in a
+different form, for use in the files specified in @code{AC_CONFIG_HEADERS}.
+In this case, autoconf substitutes the C-style @samp{#define}s where it finds
+@samp{@@DEFS@@}.
+This runs faster, and is simpler to maintain
+than building a file of @samp{#undef}s,
+since autoconf will automatically generate a @samp{#define} for each
+@code{AC_DEFINE} that you execute in the @code{configure} script.
+The value for @var{save-defs} should be
+either @code{cat}, or @code{sort};
+this value is used to filter the list of @samp{#define}s before editing.
+Sorted lists are easier to read,
+but you may wish to see the definitions in the order that they were
+processed.
 @end defmac
 
 @defmac AC_OUTPUT_COMMANDS (@var{extra-cmds}, @ovar{init-cmds})
