@@ -5,7 +5,7 @@ McGrath, Noah Friedman, david d zuhn, and many others.
 Ben Elliston next took over the maintenance, facing a huge Autoconf
 backlog that had been piling up since the departure of David.
 
-Today, there are no less than five maintainers: Akim Demaille, Paul
+Today, there are no fewer than five maintainers: Akim Demaille, Paul
 Eggert, Jim Meyering, Alexandre Oliva, and Tom Tromey, especially
 helped by Lars J. Aas, Mo DeJong, Steven G. Johnson, Matthew
 D. Langston, Pavel Roskin, and many others listed in the THANKS file.

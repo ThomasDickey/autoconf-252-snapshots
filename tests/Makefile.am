@@ -79,7 +79,14 @@ CLEANFILES = debug-*.sh macro configure configure.in configure.ac \
              config.hin state-* at-* \
              stderr stdout empty \
 	     config.guess config.sub expr libtool ltconfig ltmain.sh install-sh
-DISTCLEANFILES = atconfig testsuite
+DISTCLEANFILES = atconfig testsuite \
+	     acfunctions.at \
+	     acgeneral.at \
+	     acheaders.at \
+	     aclang.at \
+	     acspecific.at \
+	     actypes.at \
+	     testsuite.log
 
 
 ## ------------------ ##

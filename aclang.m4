@@ -1014,12 +1014,12 @@ AC_DEFUN([AC_PROG_GCC_TRADITIONAL],
       ac_cv_prog_gcc_traditional,
 [  ac_pattern="Autoconf.*'x'"
   AC_EGREP_CPP($ac_pattern, [#include <sgtty.h>
-Autoconf TIOCGETP],
+int Autoconf = TIOCGETP;],
   ac_cv_prog_gcc_traditional=yes, ac_cv_prog_gcc_traditional=no)
 
   if test $ac_cv_prog_gcc_traditional = no; then
     AC_EGREP_CPP($ac_pattern, [#include <termio.h>
-Autoconf TCGETA],
+int Autoconf = TCGETA;],
     ac_cv_prog_gcc_traditional=yes)
   fi])
   if test $ac_cv_prog_gcc_traditional = yes; then
