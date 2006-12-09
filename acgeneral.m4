@@ -4179,7 +4179,7 @@ while grep . conftest.vals >/dev/null
 do
   # Write chunks of a limited-size here document to conftest.frag.
   echo '  cat >> conftest.frag <<CEOF' >> $CONFIG_STATUS
-  sed ${ac_max_here_lines}q conftest.vals >> $CONFIG_STATUS
+  sed ${ac_max_here_lines}q conftest.vals | sed -e 's/#ifdef.*/#if 0/' >> $CONFIG_STATUS
   echo 'CEOF' >> $CONFIG_STATUS
   sed 1,${ac_max_here_lines}d conftest.vals > conftest.tail
   rm -f conftest.vals
