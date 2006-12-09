@@ -1,3 +1,10 @@
+2006-12-09  Thomas Dickey <dickey@invisible-island.net>
+
+	Disable the workaround for mis-prototyped 'exit()' in GNU libc
+	which made its way into autoconf's configure definitions (and thence
+	into the auto-generated config.h).  Its include of <stdlib.h> caused
+	redefinition warnings on Solaris.
+
 2003-02-08  Thomas Dickey <dickey@invisible-island.net>
 
 	Repair AC_PROG_GCC_TRADITIONAL, which is broken by the combination of a
