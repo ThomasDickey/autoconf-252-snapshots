@@ -266,7 +266,7 @@ main ()
                  gidset);
   /* Exit non-zero if getgroups seems to require an array of ints.  This
      happens when gid_t is short but getgroups modifies an array of ints.  */
-  exit ((n > 0 && gidset[n] != val.gval) ? 1 : 0);
+  $ac_main_return ((n > 0 && gidset[n] != val.gval) ? 1 : 0);
 }]])],
                [ac_cv_type_getgroups=gid_t],
                [ac_cv_type_getgroups=int],

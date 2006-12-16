@@ -274,8 +274,8 @@ main ()
   for (i = 0; i < 256; i++)
     if (XOR (islower (i), ISLOWER (i))
         || toupper (i) != TOUPPER (i))
-      exit(2);
-  exit (0);
+      $ac_main_return(2);
+  $ac_main_return (0);
 }], , ac_cv_header_stdc=no, :)
 fi])
 if test $ac_cv_header_stdc = yes; then

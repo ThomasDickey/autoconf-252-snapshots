@@ -51,8 +51,8 @@ File: autoconf.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 
    This file documents the GNU Autoconf package for creating scripts to
 configure source code packages using templates and the GNU M4 macro
-package.  This is edition 2.52.20061209, for Autoconf version
-2.52.20061209.
+package.  This is edition 2.52.20061216, for Autoconf version
+2.52.20061216.
 
 * Menu:
 
@@ -1349,7 +1349,7 @@ Using them is optional.
      than VERSION, print an error message to the standard error output
      and do not create `configure'.  For example:
 
-          AC_PREREQ(2.52.20061209)
+          AC_PREREQ(2.52.20061216)
 
      This macro is the only macro that may be used before `AC_INIT', but
      for consistency, you are invited not to do so.
