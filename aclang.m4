@@ -204,6 +204,7 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&AS_MESSAGE_LOG_FD'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&AS_MESSAGE_LOG_FD'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ac_main_return=return
 ])
 
 
@@ -231,6 +232,7 @@ ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&AS_MESSAGE_LOG_FD'
 ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&AS_MESSAGE_LOG_FD'
 ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+ac_main_return=return
 ])
 
 
@@ -429,7 +431,7 @@ m4_define([AC_LANG_INT_SAVE(C)],
 [AC_LANG_PROGRAM([m4_default([$1], [@%:@include <stdio.h>])],
 [FILE *f = fopen ("conftest.val", "w");
 if (!f)
-  exit (1);
+  $ac_main_return (1);
 fprintf (f, "%d", ($2));
 fclose (f);])])
 
@@ -1518,7 +1520,7 @@ main ()
      support it.  */
   long double foo = 0.0;
   /* On Ultrix 4.3 cc, long double is 4 and double is 8.  */
-  exit (sizeof (long double) < sizeof (double));
+  $ac_main_return (sizeof (long double) < sizeof (double));
 }],
 ac_cv_c_long_double=yes, ac_cv_c_long_double=no)
 fi])
@@ -1562,7 +1564,7 @@ main ()
     char c[sizeof (long)];
   } u;
   u.l = 1;
-  exit (u.c[sizeof (long) - 1] == 1);
+  $ac_main_return (u.c[sizeof (long) - 1] == 1);
 }], ac_cv_c_bigendian=no, ac_cv_c_bigendian=yes)
 fi])
 if test $ac_cv_c_bigendian = yes; then

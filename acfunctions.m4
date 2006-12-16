@@ -179,7 +179,7 @@ find_stack_direction ()
 int
 main ()
 {
-  exit (find_stack_direction () < 0);
+  $ac_main_return (find_stack_direction () < 0);
 }])],
                [ac_cv_c_stack_direction=1],
                [ac_cv_c_stack_direction=-1],
@@ -264,14 +264,14 @@ AC_CACHE_CHECK([for working chown], ac_cv_func_chown_works,
   struct stat before, after;
 
   if (creat (f, 0600) < 0)
-    exit (1);
+    $ac_main_return (1);
   if (stat (f, &before) < 0)
-    exit (1);
+    $ac_main_return (1);
   if (chown (f, (uid_t) -1, (gid_t) -1) == -1)
-    exit (1);
+    $ac_main_return (1);
   if (stat (f, &after) < 0)
-    exit (1);
-  exit ((before.st_uid == after.st_uid
+    $ac_main_return (1);
+  $ac_main_return ((before.st_uid == after.st_uid
          && before.st_gid == after.st_gid) ? 0 : 1);
 ]])],
                [ac_cv_func_chown_works=yes],
@@ -300,7 +300,7 @@ AC_CACHE_CHECK([whether closedir returns void],
 int closedir ();
 #endif
 ],
-                                [[exit (closedir (opendir (".")) != 0);]])],
+                                [[$ac_main_return (closedir (opendir (".")) != 0);]])],
                [ac_cv_func_closedir_void=no],
                [ac_cv_func_closedir_void=yes],
                [ac_cv_func_closedir_void=yes])])
@@ -341,7 +341,7 @@ AC_DEFUN([AC_FUNC_FNMATCH],
 # So we run a test program.  If we are cross-compiling, take no chance.
 # Thanks to John Oleynick, Franc,ois Pinard, and Paul Eggert for this test.
 [AC_RUN_IFELSE([AC_LANG_PROGRAM([@%:@include <fnmatch.h>],
- [exit (fnmatch ("a*", "abc", 0) != 0
+ [$ac_main_return (fnmatch ("a*", "abc", 0) != 0
 	|| fnmatch ("d*/*1", "d/s/1", FNM_FILE_NAME) != FNM_NOMATCH
 	|| fnmatch ("*", "x", FNM_FILE_NAME | FNM_LEADING_DIR) != 0
 	|| fnmatch ("x*", "x/y/z", FNM_FILE_NAME | FNM_LEADING_DIR) != 0
@@ -408,7 +408,7 @@ if test $ac_cv_func_getgroups = yes; then
   AC_CACHE_CHECK([for working getgroups], ac_cv_func_getgroups_works,
    [AC_RUN_IFELSE([AC_LANG_PROGRAM([],
       [[/* On Ultrix 4.3, getgroups (0, 0) always fails.  */
-       exit (getgroups (0, 0) == -1 ? 1 : 0);]])],
+       $ac_main_return (getgroups (0, 0) == -1 ? 1 : 0);]])],
                   [ac_cv_func_getgroups_works=yes],
                   [ac_cv_func_getgroups_works=no],
                   [ac_cv_func_getgroups_works=no])
@@ -612,11 +612,11 @@ main ()
   /* If all of these values are the same, it's pretty sure that we're
      on a system that ignores getpgrp's first argument.  */
   if (pg2 == pg4 && pg1 == pg3 && pg2 == pg3)
-    exit (0);
+    $ac_main_return (0);
 
   child = fork ();
   if (child < 0)
-    exit(1);
+    $ac_main_return(1);
   else if (child == 0)
     {
       np = getpid ();
@@ -626,14 +626,14 @@ main ()
       setpgrp (np, pg1);
       ng = getpgrp (0);        /* Same result for Sys V and BSD */
       if (ng == pg1)
-  	exit (1);
+  	$ac_main_return (1);
       else
-  	exit (0);
+  	$ac_main_return (0);
     }
   else
     {
       wait (&s);
-      exit (s>>8);
+      $ac_main_return (s>>8);
     }
 }]])
 ])# _AC_FUNC_GETPGRP_TEST
@@ -688,7 +688,7 @@ if ln -s conftest.file conftest.sym; then
      /* Linux will dereference the symlink and fail.
         That is better in the sense that it means we will not
         have to compile and use the lstat wrapper.  */
-     exit (lstat ("conftest.sym/", &sbuf) ? 0 : 1);])],
+     $ac_main_return (lstat ("conftest.sym/", &sbuf) ? 0 : 1);])],
                 [ac_cv_func_lstat_dereferences_slashed_symlink=yes],
                 [ac_cv_func_lstat_dereferences_slashed_symlink=no],
                 [ac_cv_func_lstat_dereferences_slashed_symlink=no])
@@ -726,7 +726,7 @@ AC_CACHE_CHECK([for working malloc], ac_cv_func_malloc_works,
 char *malloc ();
 #endif
 ]],
-                 [exit (malloc (0) ? 0 : 1);])],
+                 [$ac_main_return (malloc (0) ? 0 : 1);])],
                [ac_cv_func_malloc_works=yes],
                [ac_cv_func_malloc_works=no],
                [ac_cv_func_malloc_works=no])])
@@ -745,7 +745,7 @@ AC_DEFUN([AC_FUNC_MEMCMP],
   /* Some versions of memcmp are not 8-bit clean.  */
   char c0 = 0x40, c1 = 0x80, c2 = 0x81;
   if (memcmp(&c0, &c2, 1) >= 0 || memcmp(&c1, &c2, 1) >= 0)
-    exit (1);
+    $ac_main_return (1);
 
   /* The Next x86 OpenStep bug shows up only when comparing 16 bytes
      or more and with at least one buffer not starting on a 4-byte boundary.
@@ -761,9 +761,9 @@ AC_DEFUN([AC_FUNC_MEMCMP],
         strcpy (a, "--------01111111");
         strcpy (b, "--------10000000");
         if (memcmp (a, b, 16) >= 0)
-          exit (1);
+          $ac_main_return (1);
       }
-    exit (0);
+    $ac_main_return (0);
   }
 ]])],
                [ac_cv_func_memcmp_working=yes],
@@ -835,7 +835,7 @@ spring_forward_gap ()
   tm.tm_sec = 0;
   tm.tm_isdst = -1;
   if (mktime (&tm) == (time_t)-1)
-    exit (1);
+    $ac_main_return (1);
 }
 
 static void
@@ -844,10 +844,10 @@ mktime_test (now)
 {
   struct tm *lt;
   if ((lt = localtime (&now)) && mktime (lt) != now)
-    exit (1);
+    $ac_main_return (1);
   now = time_t_max - now;
   if ((lt = localtime (&now)) && mktime (lt) != now)
-    exit (1);
+    $ac_main_return (1);
 }
 
 static void
@@ -864,7 +864,7 @@ irix_6_4_bug ()
   tm.tm_isdst = -1;
   mktime (&tm);
   if (tm.tm_mon != 2 || tm.tm_mday != 31)
-    exit (1);
+    $ac_main_return (1);
 }
 
 static void
@@ -889,7 +889,7 @@ bigtime_test (j)
 	     && lt->tm_wday == tm.tm_wday
 	     && ((lt->tm_isdst < 0 ? -1 : 0 < lt->tm_isdst)
 		  == (tm.tm_isdst < 0 ? -1 : 0 < tm.tm_isdst))))
-	exit (1);
+	$ac_main_return (1);
     }
 }
 
@@ -924,7 +924,7 @@ main ()
     }
   irix_6_4_bug ();
   spring_forward_gap ();
-  exit (0);
+  $ac_main_return (0);
 }]])],
                [ac_cv_func_working_mktime=yes],
                [ac_cv_func_working_mktime=no],
@@ -1025,15 +1025,15 @@ main ()
   /* First, make a file with some known garbage in it. */
   data = (char *) malloc (pagesize);
   if (!data)
-    exit (1);
+    $ac_main_return (1);
   for (i = 0; i < pagesize; ++i)
     *(data + i) = rand ();
   umask (0);
   fd = creat ("conftest.mmap", 0600);
   if (fd < 0)
-    exit (1);
+    $ac_main_return (1);
   if (write (fd, data, pagesize) != pagesize)
-    exit (1);
+    $ac_main_return (1);
   close (fd);
 
   /* Next, try to mmap the file at a fixed address which already has
@@ -1041,17 +1041,17 @@ main ()
      we see the same garbage.  */
   fd = open ("conftest.mmap", O_RDWR);
   if (fd < 0)
-    exit (1);
+    $ac_main_return (1);
   data2 = (char *) malloc (2 * pagesize);
   if (!data2)
-    exit (1);
+    $ac_main_return (1);
   data2 += (pagesize - ((int) data2 & (pagesize - 1))) & (pagesize - 1);
   if (data2 != mmap (data2, pagesize, PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_FIXED, fd, 0L))
-    exit (1);
+    $ac_main_return (1);
   for (i = 0; i < pagesize; ++i)
     if (*(data + i) != *(data2 + i))
-      exit (1);
+      $ac_main_return (1);
 
   /* Finally, make sure that changes to the mapped area do not
      percolate back to the file as seen by read().  (This is a bug on
@@ -1060,14 +1060,14 @@ main ()
     *(data2 + i) = *(data2 + i) + 1;
   data3 = (char *) malloc (pagesize);
   if (!data3)
-    exit (1);
+    $ac_main_return (1);
   if (read (fd, data3, pagesize) != pagesize)
-    exit (1);
+    $ac_main_return (1);
   for (i = 0; i < pagesize; ++i)
     if (*(data + i) != *(data3 + i))
-      exit (1);
+      $ac_main_return (1);
   close (fd);
-  exit (0);
+  $ac_main_return (0);
 }]])],
                [ac_cv_func_mmap_fixed_mapped=yes],
                [ac_cv_func_mmap_fixed_mapped=no],
@@ -1166,7 +1166,7 @@ AC_DEFUN([AC_FUNC_SETPGRP],
 ],
 [/* If this system has a BSD-style setpgrp, which takes arguments, exit
    successfully.  */
-  exit (setpgrp (1,1) == -1);])],
+  $ac_main_return (setpgrp (1,1) == -1);])],
                [ac_cv_func_setpgrp_void=no],
                [ac_cv_func_setpgrp_void=yes],
                [AC_MSG_ERROR([cannot check setpgrp if cross compiling])])])
@@ -1192,7 +1192,7 @@ AC_CACHE_CHECK([whether $1 accepts an empty string],
                [ac_cv_func_$1_empty_string_bug],
 [AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT],
 [[struct stat sbuf;
-  exit ($1 ("", &sbuf) ? 1 : 0);]])],
+  $ac_main_return ($1 ("", &sbuf) ? 1 : 0);]])],
             [ac_cv_func_$1_empty_string_bug=yes],
             [ac_cv_func_$1_empty_string_bug=no],
             [ac_cv_func_$1_empty_string_bug=yes])])
@@ -1240,7 +1240,7 @@ main()
     double value;
     value = strtod (string, &term);
     if (value != 69 || term != (string + 4))
-      exit (1);
+      $ac_main_return (1);
   }
 
   {
@@ -1250,9 +1250,9 @@ main()
     char *term;
     strtod (string, &term);
     if (term != string && *(term - 1) == 0)
-      exit (1);
+      $ac_main_return (1);
   }
-  exit (0);
+  $ac_main_return (0);
 }
 ]])],
                ac_cv_func_strtod=yes,
@@ -1296,7 +1296,7 @@ if test $ac_cv_func_strerror_r = yes; then
 	extern char *strerror_r ();],
 	[[char buf[100];
 	  char x = *strerror_r (0, buf, sizeof buf);
-	  exit (!isalpha (x));]])],
+	  $ac_main_return (!isalpha (x));]])],
                     ac_cv_func_strerror_r_works=yes,
                     ac_cv_func_strerror_r_works=no,
                     ac_cv_func_strerror_r_works=no)
@@ -1335,9 +1335,9 @@ main ()
      A reversed system may check and see that the address of main
      is not _IOLBF, _IONBF, or _IOFBF, and return nonzero.  */
   if (setvbuf(stdout, _IOLBF, (char *) main, BUFSIZ) != 0)
-    exit(1);
+    $ac_main_return(1);
   putc('\r', stdout);
-  exit(0);			/* Non-reversed systems segv here.  */
+  $ac_main_return(0);			/* Non-reversed systems segv here.  */
 }], ac_cv_func_setvbuf_reversed=yes, ac_cv_func_setvbuf_reversed=no)
 rm -f core core.* *.core])
 if test $ac_cv_func_setvbuf_reversed = yes; then
@@ -1359,7 +1359,7 @@ AU_ALIAS([AC_SETVBUF_REVERSED], [AC_FUNC_SETVBUF_REVERSED])
 AC_DEFUN([AC_FUNC_STRCOLL],
 [AC_CACHE_CHECK(for working strcoll, ac_cv_func_strcoll_works,
 [AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT],
-  [[exit (strcoll ("abc", "def") >= 0 ||
+  [[$ac_main_return (strcoll ("abc", "def") >= 0 ||
 	 strcoll ("ABC", "DEF") >= 0 ||
 	 strcoll ("123", "456") >= 0)]])],
                ac_cv_func_strcoll_works=yes,
@@ -1386,7 +1386,7 @@ AC_DEFUN([AC_FUNC_UTIME_NULL],
 # Sequent interprets utime(file, 0) to mean use start of epoch.  Wrong.
 AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT],
 [[struct stat s, t;
-  exit (!(stat ("conftest.data", &s) == 0
+  $ac_main_return (!(stat ("conftest.data", &s) == 0
           && utime ("conftest.data", (long *)0) == 0
           && stat ("conftest.data", &t) == 0
           && t.st_mtime >= s.st_mtime
@@ -1464,8 +1464,8 @@ AC_DEFUN([_AC_FUNC_FORK],
       int main ()
       {
         if (fork() < 0)
-          exit (1);
-        exit (0);
+          $ac_main_return (1);
+        $ac_main_return (0);
       }],
     [ac_cv_func_fork_works=yes],
     [ac_cv_func_fork_works=no],
@@ -1555,7 +1555,7 @@ main ()
 
     while (wait(&status) != child)
       ;
-    exit(
+    $ac_main_return(
 	 /* Was there some problem with vforking?  */
 	 child < 0
 
@@ -1646,7 +1646,7 @@ main ()
       wait3(&i, 0, &r);
       /* Avoid "text file busy" from rm on fast HP-UX machines.  */
       sleep(2);
-      exit (r.ru_nvcsw == 0 && r.ru_majflt == 0 && r.ru_minflt == 0
+      $ac_main_return (r.ru_nvcsw == 0 && r.ru_majflt == 0 && r.ru_minflt == 0
 	    && r.ru_stime.tv_sec == 0 && r.ru_stime.tv_usec == 0);
     }
 }]])],

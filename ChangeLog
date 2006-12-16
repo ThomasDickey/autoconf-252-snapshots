@@ -1,3 +1,9 @@
+2006-12-16  Thomas Dickey <dickey@invisible-island.net>
+
+	Replace exit() calls in test compiles with $ac_main_return, to allow
+	for override in case of old platforms relying on the use of exit()
+	vs return.
+
 2006-12-09  Thomas Dickey <dickey@invisible-island.net>
 
 	Disable the workaround for mis-prototyped 'exit()' in GNU libc
