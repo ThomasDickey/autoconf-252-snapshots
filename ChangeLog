@@ -1,3 +1,10 @@
+2008-12-25  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20081225.
+
+	Extend suffixes ignored when looking for executable produced by
+	C compiler (based on patch from Paul Gilmartin).
+
 2008-03-25  Thomas Dickey <dickey@invisible-island.net>
 
 	Modify _AC_PATH_X_XMKMF and _AC_PATH_X_DIRECT, adding "dylib"

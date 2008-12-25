@@ -669,7 +669,7 @@ for ac_file in `ls a.exe conftest.exe 2>/dev/null;
                 ls a.out conftest 2>/dev/null;
                 ls a.* conftest.* 2>/dev/null`; do
   case $ac_file in
-    *.$ac_ext | *.o | *.obj | *.xcoff | *.tds | *.d | *.pdb ) ;;
+    *.$ac_ext | *.xcoff | *.tds | *.d | *.dbg | *.pdb | *.xSYM | *.bb | *.bbg | *.map | *.inf | *.o | *.obj ) ;;
     a.out ) # We found the default executable, but exeext='' is most
             # certainly right.
             break;;
@@ -735,7 +735,7 @@ AS_IF([AC_TRY_EVAL(ac_link)],
 # `rm'.
 for ac_file in `(ls conftest.exe; ls conftest; ls conftest.*) 2>/dev/null`; do
   case $ac_file in
-    *.$ac_ext | *.o | *.obj | *.xcoff | *.tds | *.d | *.pdb ) ;;
+    *.$ac_ext | *.xcoff | *.tds | *.d | *.dbg | *.pdb | *.xSYM | *.bb | *.bbg | *.map | *.inf | *.o | *.obj ) ;;
     *.* ) ac_cv_exeext=`expr "$ac_file" : ['[^.]*\(\..*\)']`
           export ac_cv_exeext
           break;;
@@ -793,7 +793,7 @@ rm -f conftest.o conftest.obj
 AS_IF([AC_TRY_EVAL(ac_compile)],
 [for ac_file in `(ls conftest.o conftest.obj; ls conftest.*) 2>/dev/null`; do
   case $ac_file in
-    *.$ac_ext | *.xcoff | *.tds | *.d | *.pdb ) ;;
+    *.$ac_ext | *.xcoff | *.tds | *.d | *.dbg | *.pdb | *.xSYM | *.map | *.inf ) ;;
     *) ac_cv_objext=`expr "$ac_file" : '.*\.\(.*\)'`
        break;;
   esac
