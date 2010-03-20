@@ -1,3 +1,9 @@
+2010-03-20  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20100320.
+
+	Update check for lex to include "reflex".
+
 2008-12-25  Thomas Dickey <dickey@invisible-island.net>
 
 	Version 2.52.20081225.
