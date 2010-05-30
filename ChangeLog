@@ -1,3 +1,17 @@
+-- vile:fk=utf-8
+2010-05-30  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20100530.
+
+	change some ISO-8859-1 encoded comments to UTF-8 to allow this to
+	build with a UTF-8 locale (GNU sed chokes on the mis-encoded byte).
+
+	add check in _AC_OUTPUT_COMMANDS to ensure it does not generate an
+	empty case-statement, which gives a warning in NetBSD's shell.
+
+	change m4exit(-1) to m4exit(1) in autoconf.in, to work around incorrect
+	range check added in GNU m4 1.4.6
+
 2010-03-20  Thomas Dickey <dickey@invisible-island.net>
 
 	Version 2.52.20100320.
@@ -467,7 +481,7 @@
 
 	* acfunctions.m4 (AC_FUNC_FORK): Fix typos.
 
-2001-06-18  Rüdiger Kuhlmann  <info@ruediger-kuhlmann.de>
+2001-06-18  RÃ¼diger Kuhlmann  <info@ruediger-kuhlmann.de>
 
 	* acfunctions.m4: (AC_FUNC_VFORK) rename as...
 	(_AC_FUNC_VFORK): this.

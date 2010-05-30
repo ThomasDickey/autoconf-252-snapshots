@@ -4399,8 +4399,7 @@ EOF
 # It has to send itself into $CONFIG_STATUS (eg, via here documents).
 # Upon exit, no here document shall be opened.
 m4_define([_AC_OUTPUT_COMMANDS],
-[cat >>$CONFIG_STATUS <<\EOF
-
+[m4_ifset([AC_LIST_COMMANDS_COMMANDS],[cat >>$CONFIG_STATUS <<\EOF
 #
 # CONFIG_COMMANDS section.
 #
@@ -4417,7 +4416,7 @@ AC_LIST_COMMANDS_COMMANDS()dnl
   esac
 done
 EOF
-])# _AC_OUTPUT_COMMANDS
+])])# _AC_OUTPUT_COMMANDS
 
 
 # _AC_OUTPUT_SUBDIRS
