@@ -1,4 +1,5 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
+# vile:fk=utf-8
 # Checking for functions.
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
@@ -1455,7 +1456,7 @@ fi
 # -------------
 AC_DEFUN([_AC_FUNC_FORK],
   [AC_CACHE_CHECK(for working fork, ac_cv_func_fork_works,
-    [AC_RUN_IFELSE([/* By Rüdiger Kuhlmann. */
+    [AC_RUN_IFELSE([/* By RÃ¼diger Kuhlmann. */
       #include <sys/types.h>
       #if HAVE_UNISTD_H
       # include <unistd.h>
