@@ -2706,7 +2706,7 @@ dnl Quote $1 to prevent m4 from eating character classes
 m4_ifvaln([$4], [else
   $4])dnl
 fi
-rm -f conftest*
+rm -rf conftest*
 ])# AC_EGREP_CPP
 
 

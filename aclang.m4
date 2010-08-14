@@ -1070,7 +1070,7 @@ then
 else
   eval ac_cv_prog_cc_${ac_cc}_c_o=no
 fi
-rm -f conftest*
+rm -rf conftest*
 ])dnl
 if eval "test \"`echo '$ac_cv_prog_cc_'${ac_cc}_c_o`\" = yes"; then
   AC_MSG_RESULT([yes])
@@ -1235,7 +1235,7 @@ $ac_declaration],
                                       [exit (42);])],
                      [break])
 done
-rm -f conftest*
+rm -rf conftest*
 if test -n "$ac_declaration"; then
   echo '#ifdef __cplusplus' >>confdefs.h
   echo $ac_declaration      >>confdefs.h
@@ -1383,7 +1383,7 @@ if AC_TRY_EVAL(ac_try) &&
 else
   ac_cv_prog_f77_c_o=no
 fi
-rm -f conftest*])
+rm -rf conftest*])
 if test $ac_cv_prog_f77_c_o = no; then
   AC_DEFINE(F77_NO_MINUS_C_MINUS_O, 1,
             [Define if your Fortran 77 compiler doesn't accept -c and -o together.])
@@ -1760,7 +1760,7 @@ ac_f77_v_output=`eval $ac_link AS_MESSAGE_LOG_FD>&1 2>&1 | grep -v 'Driving:'`
 echo "$ac_f77_v_output" >&AS_MESSAGE_LOG_FD
 FFLAGS=$ac_save_FFLAGS
 
-rm -f conftest*
+rm -rf conftest*
 AC_LANG_POP(Fortran 77)dnl
 
 # If we are using xlf then replace all the commas with spaces.
@@ -1981,7 +1981,7 @@ AC_CACHE_CHECK([for dummy main to link with Fortran 77 libraries],
                  [], [ac_cv_f77_dummy_main=$ac_func; break])
    done
  fi
- rm -f conftest*
+ rm -rf conftest*
  LIBS=$ac_f77_dm_save_LIBS
  AC_LANG_POP(C)dnl
 ])
@@ -2019,7 +2019,7 @@ AC_CACHE_CHECK([for alternate main to link with Fortran 77 libraries],
    AC_TRY_LINK([#undef F77_DUMMY_MAIN
 @%:@define main $ac_func], [], [ac_cv_f77_main=$ac_func; break])
  done
- rm -f conftest*
+ rm -rf conftest*
  LIBS=$ac_f77_m_save_LIBS
  AC_LANG_POP(C)dnl
 ])
@@ -2113,7 +2113,7 @@ AC_COMPILE_IFELSE(
 
   LIBS=$ac_save_LIBS
   AC_LANG_POP(C)dnl
-  rm -f cf77_test* conftest*])
+  rm -rf cf77_test* conftest*])
 AC_LANG_POP(Fortran 77)dnl
 ])
 ])# _AC_F77_NAME_MANGLING

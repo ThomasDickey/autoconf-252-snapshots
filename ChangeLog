@@ -1,4 +1,11 @@
 -- vile:fk=utf-8
+2010-08-14  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20100814.
+
+	Modify test-cleanup to also remove conftest.dSYM, to quiet misleading
+	warnings with Mac OS X.
+
 2010-05-30  Thomas Dickey <dickey@invisible-island.net>
 
 	Version 2.52.20100530.
