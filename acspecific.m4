@@ -386,7 +386,7 @@ done])
 if test "$$3" != no; then
   AC_DEFINE_UNQUOTED([$1], [$$3], [$4])
 fi
-rm -f conftest*[]dnl
+rm -rf conftest*[]dnl
 ])# _AC_SYS_LARGEFILE_MACRO_VALUE
 
 
