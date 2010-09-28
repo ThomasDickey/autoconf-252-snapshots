@@ -58,7 +58,7 @@ Tracing:
 
 In tracing mode, no configuration script is created.
 
-Report bugs to <bug-autoconf@gnu.org>."
+Report bugs to <dickey@invisible-island.net>."
 
 version="\
 autoconf (@PACKAGE_NAME@) @VERSION@
