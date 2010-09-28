@@ -1,6 +1,9 @@
 -- vile:fk=utf-8
 2010-09-28  Thomas Dickey <dickey@invisible-island.net>
 
+	remove tests/foreign.at, since libtool is not a dependency of autoconf
+	(report by Sven Joachim).
+
 	update bug-reporting address.
 
 	Remove usage of automake; it is not used to maintain this package,
