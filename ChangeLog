@@ -1,4 +1,11 @@
 -- vile:fk=utf-8
+2010-09-28  Thomas Dickey <dickey@invisible-island.net>
+
+	update bug-reporting address.
+
+	Remove usage of automake; it is not used to maintain this package,
+	and owing to automake's absence of design stability is only a nuisance.
+
 2010-08-14  Thomas Dickey <dickey@invisible-island.net>
 
 	Version 2.52.20100814.

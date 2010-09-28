@@ -6,7 +6,7 @@ AT_BANNER([[Testing config.status.
 ## This section of torture tests is trying to make Autoconf produce ##
 ## failing `configure' scripts, which must never happen.  If one of ##
 ## these tests ever fails, it is extremely important that you       ##
-## report the failure to bug-autoconf@gnu.org.                      ##
+## report the failure to dickey@invisible-island.net.               ##
 ## ---------------------------------------------------------------- ##]])
 
 

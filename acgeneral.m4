@@ -3634,7 +3634,7 @@ m4_ifset([AC_LIST_COMMANDS],
 $config_commands
 
 ])dnl
-Report bugs to <bug-autoconf@gnu.org>."
+Report bugs to <dickey@invisible-island.net>."
 EOF
 
 cat >>$CONFIG_STATUS <<EOF
