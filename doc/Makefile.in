@@ -78,7 +78,6 @@ CLEANFILES = autoconf.cvs autoconf.ev autoconf.evs autoconf.ma autoconf.mas \
              autoconf.ov autoconf.ovs autoconf.ms autoconf.mss autoconf.tmp
 
 subdir = doc
-mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 TEXINFO_TEX = $(top_srcdir)/config/texinfo.tex
@@ -91,9 +90,7 @@ all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .dvi .info .ps .texi
-#$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
-#	cd $(top_srcdir) && \
-#	  $(AUTOMAKE) --gnu  doc/Makefile
+
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && \
 	  CONFIG_HEADERS= CONFIG_LINKS= \
@@ -206,7 +203,7 @@ distdir: $(DISTFILES)
 	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
 	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
 	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
-	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	    mkdir -p "$(distdir)/$$dir"; \
 	  fi; \
 	  if test -d $$d/$$file; then \
 	    cp -pR $$d/$$file $(distdir) \
@@ -225,7 +222,7 @@ check: check-am
 all-am: Makefile $(INFO_DEPS)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(infodir)
+	mkdir -p $(DESTDIR)$(infodir)
 
 install: install-am
 install-exec: install-exec-am
@@ -275,7 +272,7 @@ install-info: install-info-am
 
 install-info-am: $(INFO_DEPS)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(infodir)
+	mkdir -p $(DESTDIR)$(infodir)
 	@list='$(INFO_DEPS)'; \
 	for file in $$list; do \
 	  d=$(srcdir); \

@@ -67,17 +67,14 @@ VERSION = @VERSION@
 
 EXTRA_DIST = move-if-change prev-version.txt
 subdir = config
-mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 DIST_COMMON = Makefile.am Makefile.in config.guess config.sub \
-	install-sh mdate-sh missing mkinstalldirs texinfo.tex
+	install-sh mdate-sh missing texinfo.tex
 all: all-am
 
 .SUFFIXES:
-#$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
-#	cd $(top_srcdir) && \
-#	  $(AUTOMAKE) --gnu  config/Makefile
+
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && \
 	  CONFIG_HEADERS= CONFIG_LINKS= \
@@ -97,7 +94,7 @@ distdir: $(DISTFILES)
 	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
 	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
 	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
-	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	    mkdir -p "$(distdir)/$$dir"; \
 	  fi; \
 	  if test -d $$d/$$file; then \
 	    cp -pR $$d/$$file $(distdir) \

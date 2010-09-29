@@ -81,7 +81,6 @@ common_dep = $(top_srcdir)/configure.ac $(srcdir)/common.x
 
 SUFFIXES = .x .1
 subdir = man
-mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
 
@@ -92,9 +91,7 @@ all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .x .1
-#$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
-#	cd $(top_srcdir) && \
-#	  $(AUTOMAKE) --gnu  man/Makefile
+
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && \
 	  CONFIG_HEADERS= CONFIG_LINKS= \
@@ -104,7 +101,7 @@ uninstall-info-am:
 man1dir = $(mandir)/man1
 install-man1: $(man1_MANS) $(man_MANS)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(man1dir)
+	mkdir -p $(DESTDIR)$(man1dir)
 	@list='$(man1_MANS) $(dist_man1_MANS) $(nodist_man1_MANS)'; \
 	l2='$(man_MANS) $(dist_man_MANS) $(nodist_man_MANS)'; \
 	for i in $$l2; do \
@@ -153,7 +150,7 @@ distdir: $(DISTFILES)
 	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
 	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
 	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
-	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	    mkdir -p "$(distdir)/$$dir"; \
 	  fi; \
 	  if test -d $$d/$$file; then \
 	    cp -pR $$d/$$file $(distdir) \
@@ -169,7 +166,7 @@ check: check-am
 all-am: Makefile $(MANS)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(man1dir)
+	mkdir -p $(DESTDIR)$(man1dir)
 
 install: install-am
 install-exec: install-exec-am
