@@ -33,6 +33,7 @@ configure-stamp:
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--prefix=/usr \
 		--mandir=\$${prefix}/share/man \
+		--infodir=\$${prefix}/share/info \
 		--datadir=\$${prefix}/share/ac252
 
 	touch configure-stamp
@@ -67,6 +68,15 @@ install-stamp: build-stamp
 
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/ac252
 
+	# autoconf 2.52 was released implicitly under FDL 1.1, which restricts
+	# distribution of modified documentation.  That makes it unsuitable
+	# for a Debian package.
+	( cd $(CURDIR)/debian/ac252 \
+	  && rm -rf usr/man \
+		    usr/share/man \
+		    usr/info \
+		    usr/share/info )
+
 	touch install-stamp
 
 # Build architecture-independent files here.
@@ -78,7 +88,6 @@ binary-arch: build install
 	dh_testdir
 	dh_testroot
 	dh_installdocs
-	dh_installexamples
 	dh_installchangelogs ChangeLog
 	dh_strip
 	dh_compress

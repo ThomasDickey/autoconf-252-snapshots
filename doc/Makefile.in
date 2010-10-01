@@ -43,6 +43,8 @@ AUTOCONF = @AUTOCONF@
 #AUTOMAKE = @AUTOMAKE@
 AUTOHEADER = @AUTOHEADER@
 
+INSTALL_INFO = @INSTALL_INFO@
+
 INSTALL = @INSTALL@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_DATA = @INSTALL_DATA@
@@ -145,19 +147,22 @@ DVIPS = dvips
 
 uninstall-info-am:
 	$(PRE_UNINSTALL)
-	@if (install-info --version && \
-	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
+	@if test $(INSTALL_INFO) != no; then \
 	  list='$(INFO_DEPS)'; \
 	  for file in $$list; do \
-	    echo " install-info --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$file"; \
-	    install-info --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$file; \
+	    name=`basename "$$file" .info | sed -e '$(transform)'`; \
+	    FILE=$$name.info; \
+	    echo " $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$FILE"; \
+	    $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$FILE; \
 	  done; \
 	else :; fi
 	@$(NORMAL_UNINSTALL)
 	@list='$(INFO_DEPS)'; \
 	for file in $$list; do \
+	  name=`basename "$$file" .info | sed -e '$(transform)'`; \
+	  FILE=$$name.info; \
 	  (if cd $(DESTDIR)$(infodir); then \
-	     echo " rm -f $$file $$file-[0-9] $$file-[0-9][0-9])"; \
+	     echo " rm -f $$FILE $$FILE-[0-9] $$FILE-[0-9][0-9])"; \
 	     rm -f $$file $$file-[0-9] $$file-[0-9][0-9]; \
 	   else :; fi); \
 	done
@@ -275,21 +280,24 @@ install-info-am: $(INFO_DEPS)
 	mkdir -p $(DESTDIR)$(infodir)
 	@list='$(INFO_DEPS)'; \
 	for file in $$list; do \
+	  name=`basename "$$file" .info | sed -e '$(transform)'`; \
+	  FILE=$$name.info; \
 	  d=$(srcdir); \
 	  for ifile in `CDPATH=: && cd $$d && echo $$file $$file-[0-9] $$file-[0-9][0-9]`; do \
 	    if test -f $$d/$$ifile; then \
-	      echo " $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$ifile"; \
-	      $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$ifile; \
+	      echo " $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$FILE"; \
+	      $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$FILE; \
 	    else : ; fi; \
 	  done; \
 	done
 	@$(POST_INSTALL)
-	@if (install-info --version && \
-	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
+	@if test $(INSTALL_INFO) != no; then \
 	  list='$(INFO_DEPS)'; \
 	  for file in $$list; do \
-	    echo " install-info --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$file";\
-	    install-info --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$file || :;\
+	    name=`basename "$$file" .info | sed -e '$(transform)'`; \
+	    FILE=$$name.info; \
+	    echo " $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$FILE";\
+	    $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$FILE || :;\
 	  done; \
 	else : ; fi
 install-man:
