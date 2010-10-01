@@ -1,5 +1,10 @@
 -- vile:fk=utf-8
-2010-09-28  Thomas Dickey <dickey@invisible-island.net>
+2010-09-30  Thomas Dickey <dickey@invisible-island.net>
+
+	add build-scripts for Debian and RPM packages.
+
+	add configure check for install-info, to work with Debian's renaming
+	of this utility.
 
 	drop mkinstalldirs, use "mkdir -p"
 
@@ -8,7 +13,7 @@
 
 	update bug-reporting address.
 
-	Remove usage of automake; it is not used to maintain this package,
+	remove usage of automake; it is not used to maintain this package,
 	and owing to automake's absence of design stability is only a nuisance.
 
 2010-08-14  Thomas Dickey <dickey@invisible-island.net>

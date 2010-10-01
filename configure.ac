@@ -1,10 +1,10 @@
 #                                                       -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.50)
-AC_INIT(GNU Autoconf, [2.52.20100928], dickey@invisible-island.net)
+AC_INIT(GNU Autoconf, [2.52.20100930], dickey@invisible-island.net)
 AC_CONFIG_SRCDIR(acgeneral.m4)
 AC_CONFIG_AUX_DIR(config)
-AM_INIT_AUTOMAKE(autoconf, [2.52.20100928])
+AM_INIT_AUTOMAKE(autoconf, [2.52.20100930])
 
 # Initialize the test suite.
 AT_CONFIG(..)
@@ -44,6 +44,17 @@ else
 fi
 
 AC_PROG_INSTALL
+
+AC_CHECK_PROGS(INSTALL_INFO, ginstall-info install-info, no)
+if test "$INSTALL_INFO" != no; then
+  if $INSTALL_INFO --version && \
+	 ( $INSTALL_INFO --version | fgrep -i -v debian ) >/dev/null 2>&1; then
+     :
+  else
+    AC_MSG_WARN(install-info utility not found)
+	INSTALL_INFO=no
+  fi
+fi
 
 # Automake can't see inner AC_SUBSTS (`aclocal' is bypassed), so we tag the
 # AC_SUBSTS here too.

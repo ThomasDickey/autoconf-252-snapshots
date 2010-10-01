@@ -87,30 +87,24 @@ Supported PROGRAM values:
     exit 1
     ;;
 
-  aclocal)
+  aclocal*)
     echo 1>&2 "\
 WARNING: \`$1' is missing on your system.  You should only need it if
-         you modified \`acinclude.m4' or \`${configure_ac}'.  You might want
-         to install the \`Automake' and \`Perl' packages.  Grab them from
-         any GNU archive site."
+         you modified \`acinclude.m4' or \`${configure_ac}'."
     touch aclocal.m4
     ;;
 
-  autoconf)
+  autoconf*)
     echo 1>&2 "\
 WARNING: \`$1' is missing on your system.  You should only need it if
-         you modified \`${configure_ac}'.  You might want to install the
-         \`Autoconf' and \`GNU m4' packages.  Grab them from any GNU
-         archive site."
+         you modified \`${configure_ac}'."
     touch configure
     ;;
 
-  autoheader)
+  autoheader*)
     echo 1>&2 "\
 WARNING: \`$1' is missing on your system.  You should only need it if
-         you modified \`acconfig.h' or \`${configure_ac}'.  You might want
-         to install the \`Autoconf' and \`GNU m4' packages.  Grab them
-         from any GNU archive site."
+         you modified \`acconfig.h' or \`${configure_ac}'."
     files=`sed -n 's/^[ ]*A[CM]_CONFIG_HEADER(\([^)]*\)).*/\1/p' ${configure_ac}`
     test -z "$files" && files="config.h"
     touch_files=
