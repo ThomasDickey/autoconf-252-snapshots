@@ -1,5 +1,7 @@
 -- vile:fk=utf-8
-2010-09-30  Thomas Dickey <dickey@invisible-island.net>
+2010-10-01  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20101001.
 
 	add build-scripts for Debian and RPM packages.
 

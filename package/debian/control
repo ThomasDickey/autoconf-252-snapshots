@@ -12,3 +12,5 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: autoconf 2.52 (stable)
  This is the supported version of autoconf used for programs developed and
  maintained by Thomas E. Dickey
+ .
+ See http://invisible-island.net/autoconf/

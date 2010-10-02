@@ -69,12 +69,10 @@ install-stamp: build-stamp
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/ac252
 
 	# autoconf 2.52 was released implicitly under FDL 1.1, which restricts
-	# distribution of modified documentation.  That makes it unsuitable
-	# for a Debian package.
+	# distribution of modified documentation.  That makes its info files
+	# unsuitable for a Debian package.
 	( cd $(CURDIR)/debian/ac252 \
-	  && rm -rf usr/man \
-		    usr/share/man \
-		    usr/info \
+	  && rm -rf usr/info \
 		    usr/share/info )
 
 	touch install-stamp

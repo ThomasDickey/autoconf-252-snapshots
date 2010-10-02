@@ -61,7 +61,7 @@ The following options are passed to \`automake':
 The environment variables AUTOCONF, AUTOHEADER, AUTOMAKE, and ACLOCAL
 are honored.
 
-Report bugs to <dickey@invisible-island.net>."
+Report bugs to <@PACKAGE_BUGREPORT@>."
 
 version="\
 autoreconf (@PACKAGE_NAME@) @VERSION@

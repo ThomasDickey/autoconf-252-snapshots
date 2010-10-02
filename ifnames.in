@@ -38,7 +38,7 @@ space-separated list of the files in which that identifier occurs.
   -h, --help      print this help, then exit
   -V, --version   print version number, then exit
 
-Report bugs to <dickey@invisible-island.net>."
+Report bugs to <@PACKAGE_BUGREPORT@>."
 
 version="\
 ifnames (@PACKAGE_NAME@) @VERSION@

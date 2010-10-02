@@ -1,10 +1,10 @@
 #                                                       -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.50)
-AC_INIT(GNU Autoconf, [2.52.20100930], dickey@invisible-island.net)
+AC_INIT(GNU Autoconf, [2.52.20101001], dickey@invisible-island.net)
 AC_CONFIG_SRCDIR(acgeneral.m4)
 AC_CONFIG_AUX_DIR(config)
-AM_INIT_AUTOMAKE(autoconf, [2.52.20100930])
+AM_INIT_AUTOMAKE(autoconf, [2.52.20101001])
 
 # Initialize the test suite.
 AT_CONFIG(..)
@@ -45,7 +45,7 @@ fi
 
 AC_PROG_INSTALL
 
-AC_CHECK_PROGS(INSTALL_INFO, ginstall-info install-info, no)
+AC_PATH_PROGS(INSTALL_INFO, ginstall-info install-info, no, $PATH:/sbin:/usr/sbin)
 if test "$INSTALL_INFO" != no; then
   if $INSTALL_INFO --version && \
 	 ( $INSTALL_INFO --version | fgrep -i -v debian ) >/dev/null 2>&1; then
@@ -61,6 +61,10 @@ fi
 AC_SUBST(PACKAGE_NAME)
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
+
+# Provide a properly-escaped bug-report address for the perl scripts.
+PACKAGE_BUGREPORT_PL=`echo "$PACKAGE_BUGREPORT" | sed -e 's/@/\\\\\\\\@/g'`
+AC_SUBST(PACKAGE_BUGREPORT_PL)
 
 AC_CONFIG_FILES(Makefile m4/Makefile man/Makefile doc/Makefile config/Makefile
                 tests/Makefile tests/atconfig)
