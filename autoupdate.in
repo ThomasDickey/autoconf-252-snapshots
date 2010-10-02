@@ -123,7 +123,7 @@ Environment variables:
   M4         GNU M4 1.4 or above
   AUTOCONF   autoconf @VERSION@
 
-Report bugs to <bug-autoconf\@gnu.org>.
+Report bugs to <@PACKAGE_BUGREPORT@>.
 END
   exit 0;
 }

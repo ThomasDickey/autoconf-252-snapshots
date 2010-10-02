@@ -58,7 +58,7 @@ Tracing:
 
 In tracing mode, no configuration script is created.
 
-Report bugs to <dickey@invisible-island.net>."
+Report bugs to <@PACKAGE_BUGREPORT@>."
 
 version="\
 autoconf (@PACKAGE_NAME@) @VERSION@

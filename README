@@ -28,10 +28,7 @@ of the package, where to report bugs, and a pointer to INSTALL for
 instructions on compilation and installation.  This removes the need
 to maintain many similar sets of installation instructions.
 
-Be sure to read BUGS (especially if this Autoconf is not an official
-release) and INSTALL.
+Mail bug reports to dickey@invisible-island.net
 
-Mail suggestions to autoconf@gnu.org, bug reports to
-autoconf-bugs@gnu.org, and patches to autoconf-patches@gnu.org.
 Please include the Autoconf version number, which you can get by
 running `autoconf --version'.

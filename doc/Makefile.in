@@ -152,8 +152,8 @@ uninstall-info-am:
 	  for file in $$list; do \
 	    name=`basename "$$file" .info | sed -e '$(transform)'`; \
 	    FILE=$$name.info; \
-	    echo " $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$FILE"; \
-	    $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$FILE; \
+	    echo " $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$FILE"; \
+	    $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$FILE; \
 	  done; \
 	else :; fi
 	@$(NORMAL_UNINSTALL)
@@ -285,8 +285,11 @@ install-info-am: $(INFO_DEPS)
 	  d=$(srcdir); \
 	  for ifile in `CDPATH=: && cd $$d && echo $$file $$file-[0-9] $$file-[0-9][0-9]`; do \
 	    if test -f $$d/$$ifile; then \
+	      $(SHELL) $$d/rename.sh $$d/$$ifile $$FILE; \
 	      echo " $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$FILE"; \
-	      $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$FILE; \
+	      $(INSTALL_DATA) $$FILE $(DESTDIR)$(infodir)/$$FILE; \
+	      test "$$file" != "$$FILE" && rm -f "$$FILE"; \
+	      break; \
 	    else : ; fi; \
 	  done; \
 	done
@@ -296,8 +299,8 @@ install-info-am: $(INFO_DEPS)
 	  for file in $$list; do \
 	    name=`basename "$$file" .info | sed -e '$(transform)'`; \
 	    FILE=$$name.info; \
-	    echo " $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$FILE";\
-	    $(INSTALL_INFO) --name=$$name --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$FILE || :;\
+	    echo " $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$FILE";\
+	    $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$FILE || :;\
 	  done; \
 	else : ; fi
 install-man:
