@@ -50,12 +50,8 @@ clean:
 	dh_testdir
 	dh_testroot
 
-	[ ! -f Makefile ] || $(MAKE) clean
-
-	rm -f configure-stamp build-stamp install-stamp \
-		config.cache config.h config.status config.log makefile
-
-	rm -f *.o
+	[ ! -f Makefile ] || $(MAKE) distclean
+	rm -f build-stamp install-stamp
 
 	dh_clean
 
@@ -67,13 +63,6 @@ install-stamp: build-stamp
 	dh_installdirs
 
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/ac252
-
-	# autoconf 2.52 was released implicitly under FDL 1.1, which restricts
-	# distribution of modified documentation.  That makes its info files
-	# unsuitable for a Debian package.
-	( cd $(CURDIR)/debian/ac252 \
-	  && rm -rf usr/info \
-		    usr/share/info )
 
 	touch install-stamp
 
