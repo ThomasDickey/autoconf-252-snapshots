@@ -3,12 +3,13 @@ Maintainer: Thomas E. Dickey <dickey@invisible-island.net>
 Section: devel
 Priority: extra
 Standards-Version: 3.8.4
+Build-Depends-Indep: texinfo (>= 4.6), m4 (>= 1.4), help2man
 Build-Depends: debhelper (>= 5)
 Homepage: http://invisible-island.net/autoconf/
 
 Package: ac252
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: m4 (>= 1.4.6), ${misc:Depends}
 Description: autoconf 2.52 (stable)
  This is the supported version of autoconf used for programs developed and
  maintained by Thomas E. Dickey

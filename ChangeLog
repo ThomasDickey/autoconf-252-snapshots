@@ -1,7 +1,12 @@
 -- vile:fk=utf-8
-2010-10-01  Thomas Dickey <dickey@invisible-island.net>
+2010-10-02  Thomas Dickey <dickey@invisible-island.net>
 
-	Version 2.52.20101001.
+	Version 2.52.20101002.
+
+	add build-depends to dpkg script (report by Sven Joachim).
+
+	drop manpages for config.guess and config.sub, not provided by this
+	package (report by Sven Joachim).
 
 	add build-scripts for Debian and RPM packages.
 

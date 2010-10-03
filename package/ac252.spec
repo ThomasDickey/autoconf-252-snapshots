@@ -1,9 +1,9 @@
 Summary: autoconf-252 - Generate configuration scripts
 %define AppProgram autoconf
 %define AppVersion 2.52
-%define AppRelease 20101001
+%define AppRelease 20101002
 %define AppSuffix  -252
-# $Id: ac252.spec,v 1.7 2010/10/02 13:07:43 tom Exp $
+# $Id: ac252.spec,v 1.10 2010/10/03 00:47:48 tom Exp $
 Name: ac252
 Version: %{AppVersion}
 Release: %{AppRelease}
@@ -12,6 +12,10 @@ Group: Applications/Development
 URL: ftp://invisible-island.net/%{AppProgram}
 Source0: %{AppProgram}-%{AppVersion}-%{AppRelease}.tgz
 Packager: Thomas E. Dickey <dickey@invisible-island.net>
+
+BuildArch:	noarch
+#BuildRequires:	m4
+Requires:	m4
 
 %description
 This is a stable version of autoconf, used by all of my applications.
