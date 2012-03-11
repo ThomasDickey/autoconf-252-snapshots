@@ -1,4 +1,19 @@
 -- vile:fk=utf-8
+2012-03-10  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20120310.
+
+	no code change - regenerate files to ensure their versions are
+	consistent (report by Sven Joachim).
+
+2012-03-03  Thomas Dickey <dickey@invisible-island.net>
+
+	Version 2.52.20120303.
+
+	modify AC_LANG_FUNC_LINK_TRY to ensure that the external function's
+	address is nonnull, to work around breakage in Intel compiler's use of
+	linker.
+
 2010-10-02  Thomas Dickey <dickey@invisible-island.net>
 
 	Version 2.52.20101002.
