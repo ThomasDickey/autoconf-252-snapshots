@@ -1,3 +1,16 @@
+ac252 (20120310) unstable; urgency=low
+
+  * repackaging for consistent versions
+
+ -- Thomas E. Dickey <dickey@invisible-island.net>  Sat, 10 Mar 2012 20:27:13 -0500
+
+ac252 (20120303) unstable; urgency=low
+
+  * Modify AC_LANG_FUNC_LINK_TRY to work around breakage in Intel compiler's
+    use of linker.
+
+ -- Thomas E. Dickey <dickey@invisible-island.net>  Tue, 28 Sep 2010 20:11:31 -0400
+
 ac252 (20101002) unstable; urgency=low
 
   * Add package scripts to upstream source, for test-builds.

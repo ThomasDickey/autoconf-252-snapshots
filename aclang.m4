@@ -412,7 +412,7 @@ char (*f) ();
 #if defined (__stub_$1) || defined (__stub___$1)
 choke me
 #else
-f = $1;
+f = $1; /* workaround for ICC 12.0.3 */ if (f == 0) return 1;
 #endif
 ])])
 
