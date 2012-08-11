@@ -693,15 +693,16 @@ x_libraries=NONE
 AC_SUBST([bindir],         ['${exec_prefix}/bin'])dnl
 AC_SUBST([sbindir],        ['${exec_prefix}/sbin'])dnl
 AC_SUBST([libexecdir],     ['${exec_prefix}/libexec'])dnl
-AC_SUBST([datadir],        ['${prefix}/share'])dnl
+AC_SUBST([datarootdir],    ['${prefix}/share'])dnl
+AC_SUBST([datadir],        ['${datarootdir}'])dnl
 AC_SUBST([sysconfdir],     ['${prefix}/etc'])dnl
 AC_SUBST([sharedstatedir], ['${prefix}/com'])dnl
 AC_SUBST([localstatedir],  ['${prefix}/var'])dnl
 AC_SUBST([libdir],         ['${exec_prefix}/lib'])dnl
 AC_SUBST([includedir],     ['${prefix}/include'])dnl
 AC_SUBST([oldincludedir],  ['/usr/include'])dnl
-AC_SUBST([infodir],        ['${prefix}/info'])dnl
-AC_SUBST([mandir],         ['${prefix}/man'])dnl
+AC_SUBST([infodir],        ['${datarootdir}/info'])dnl
+AC_SUBST([mandir],         ['${datarootdir}/man'])dnl
 
 # Identity of this package.
 AC_SUBST([PACKAGE_NAME],
@@ -756,6 +757,13 @@ do
   -datadir=* | --datadir=* | --datadi=* | --datad=* | --data=* | --dat=* \
   | --da=*)
     datadir=$ac_optarg ;;
+
+  -datarootdir | --datarootdir | --datarootdi | --datarootd | --dataroot \
+  | --dataroo | --dataro | --datar)
+    ac_prev=datarootdir ;;
+  -datarootdir=* | --datarootdir=* | --datarootdi=* | --datarootd=* \
+  | --dataroot=* | --dataroo=* | --dataro=* | --datar=*)
+    datarootdir=$ac_optarg ;;
 
   -disable-* | --disable-*)
     ac_feature=`expr "x$ac_option" : 'x-*disable-\(.*\)'`
@@ -1024,7 +1032,7 @@ do
 done
 
 # Be sure to have absolute paths.
-for ac_var in bindir sbindir libexecdir datadir sysconfdir sharedstatedir \
+for ac_var in bindir sbindir libexecdir datarootdir datadir sysconfdir sharedstatedir \
               localstatedir libdir includedir oldincludedir infodir mandir
 do
   eval ac_val=$`echo $ac_var`
@@ -1115,15 +1123,16 @@ Fine tuning of the installation directories:
   --bindir=DIR            user executables [EPREFIX/bin]
   --sbindir=DIR           system admin executables [EPREFIX/sbin]
   --libexecdir=DIR        program executables [EPREFIX/libexec]
-  --datadir=DIR           read-only architecture-independent data [PREFIX/share]
+  --datarootdir=DIR       read-only architecture-independent data [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
   --libdir=DIR            object code libraries [EPREFIX/lib]
   --includedir=DIR        C header files [PREFIX/include]
   --oldincludedir=DIR     C header files for non-gcc [/usr/include]
-  --infodir=DIR           info documentation [PREFIX/info]
-  --mandir=DIR            man documentation [PREFIX/man]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
 EOF
 
   cat <<\EOF]

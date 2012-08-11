@@ -1,4 +1,10 @@
 -- vile:fk=utf-8
+2012-08-11  Thomas Dickey <dickey@invisible-island.net>
+	Version 2.52.20120811.
+
+	add support for --datarootdir, which changes the default location for
+	infodir and mandir.
+	
 2012-03-10  Thomas Dickey <dickey@invisible-island.net>
 
 	Version 2.52.20120310.
