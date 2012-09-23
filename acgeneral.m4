@@ -4042,11 +4042,31 @@ dnl     rm -f $ac_file
 dnl    mv $tmp/out $ac_file
 dnl  fi
   if test x"$ac_file" != x-; then
-    mv $tmp/out $ac_file
+    echo "... substituted $ac_file_inputs -> $ac_file"
+    cp $tmp/out $ac_file
+
+    for ac_name in prefix exec_prefix datarootdir
+    do
+	    ac_seen=`fgrep -n '${'$ac_name'}' $ac_file`
+	    if test -n "$ac_seen"; then
+		    ac_init=`egrep '[[ 	]]*'$ac_name'[[ 	]]*=' $ac_file`
+		    if test -z "$ac_init"; then
+			ac_seen=`echo "$ac_seen" |sed -e 's/^/'$ac_file':/'`
+		    	echo "Variable $ac_name is used but was not set:
+$ac_seen" >&2
+		    fi
+	    fi
+    done
+    egrep -n '@[[a-z_]][[a-z_0-9]]+@' $ac_file >$tmp/out
+    egrep -n '@[[A-Z_]][[A-Z_0-9]]+@' $ac_file >>$tmp/out
+    if test -s $tmp/out; then
+      echo "Some variables may not be substituted:" >&2
+      sed -e 's/^/'$ac_file':/' < $tmp/out >&2
+    fi
   else
     cat $tmp/out
-    rm -f $tmp/out
   fi
+  rm -f $tmp/out
 
 m4_ifset([AC_LIST_FILES_COMMANDS],
 [  # Run the commands associated with the file.
