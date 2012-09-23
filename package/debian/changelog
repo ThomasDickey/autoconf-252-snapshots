@@ -1,4 +1,4 @@
-ac252 (20120922) unstable; urgency=low
+ac252 (20120923) unstable; urgency=low
 
   * improve --datarootdir support
 
