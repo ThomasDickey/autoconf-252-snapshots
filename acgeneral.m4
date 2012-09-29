@@ -4075,11 +4075,11 @@ dnl  fi
 
     for ac_name in prefix exec_prefix datarootdir
     do
-        ac_seen=`fgrep -n '${'$ac_name'}' $ac_file`
+        ac_seen=`fgrep -n '${'$ac_name'[[:=]].*}' $ac_file`
         if test -n "$ac_seen"; then
             ac_init=`egrep '[[ 	]]*'$ac_name'[[ 	]]*=' $ac_file`
             if test -z "$ac_init"; then
-              ac_seen=`echo "$ac_seen" |sed -e 's/^/'$ac_file':/'`
+              ac_seen=`echo "$ac_seen" |sed -e 's,^,'$ac_file':,'`
               AC_MSG_WARN(Variable $ac_name is used but was not set:
 $ac_seen)
             fi
@@ -4088,7 +4088,7 @@ $ac_seen)
     egrep -n '@[[a-z_]][[a-z_0-9]]+@' $ac_file >$tmp/out
     egrep -n '@[[A-Z_]][[A-Z_0-9]]+@' $ac_file >>$tmp/out
     if test -s $tmp/out; then
-      ac_seen=`sed -e 's/^/'$ac_file':/' < $tmp/out`
+      ac_seen=`sed -e 's,^,'$ac_file':,' < $tmp/out`
       AC_MSG_WARN(Some variables may not be substituted:
 $ac_seen)
     fi

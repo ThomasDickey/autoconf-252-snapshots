@@ -1,4 +1,14 @@
 -- vile:fk=utf-8
+2012-09-29  Thomas Dickey <dickey@invisible-island.net>
+	Version 2.52.20120929.
+
+	Modify grep pattern used to detect variables never set to allow
+	matches with lines such as
+		: ${name:=value}
+
+	The last update used '/' in a sed command where a pathname might be
+	also be found; change to ','.
+
 2012-09-23  Thomas Dickey <dickey@invisible-island.net>
 	Version 2.52.20120923.
 
