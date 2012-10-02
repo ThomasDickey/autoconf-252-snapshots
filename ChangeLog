@@ -1,4 +1,11 @@
 -- vile:fk=utf-8
+2012-10-02  Thomas Dickey <dickey@invisible-island.net>
+	Version 2.52.20121002.
+
+	Modify autoheader to discard parameter lists on the assignments to
+	ac_verbatim_XXX variables to work with GCC_PRINTFLIKE, similar
+	macros.
+
 2012-09-29  Thomas Dickey <dickey@invisible-island.net>
 	Version 2.52.20120929.
 
