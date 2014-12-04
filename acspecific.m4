@@ -65,9 +65,9 @@
 # Idea borrowed from dist 3.0.  Use `*c*,', not `*c,' because if `\c'
 # failed there is also a new-line to match.
 m4_define([_AC_PROG_ECHO],
-[case `echo "testing\c"; echo 1,2,3`,`echo -n testing; echo 1,2,3` in
-  *c*,-n*) ECHO_N= ECHO_C='
-' ECHO_T='	' ;;
+[case `echo "testing\c" 2>/dev/null; echo 1,2,3`,`echo -n testing 2>/dev/null; echo 1,2,3` in
+  *c*,-n*) ECHO_N= ECHO_C=	# newlines do not sed ;-) only broken shells would use this case anyway
+		   ECHO_T='	' ;;
   *c*,*  ) ECHO_N=-n ECHO_C= ECHO_T= ;;
   *)      ECHO_N= ECHO_C='\c' ECHO_T= ;;
 esac
