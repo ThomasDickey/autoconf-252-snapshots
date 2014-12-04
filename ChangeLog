@@ -1,4 +1,9 @@
 -- vile:fk=utf-8
+2014-12-04  Thomas Dickey <dickey@invisible-island.net>
+	Version 2.52.20141204.
+
+	Minor tweak to work around breakage in one of the "dash" variants.
+
 2012-10-02  Thomas Dickey <dickey@invisible-island.net>
 	Version 2.52.20121002.
 

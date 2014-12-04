@@ -1,3 +1,9 @@
+ac252 (20141204) unstable; urgency=low
+
+  * workaround for a broken port of "dash"
+
+ -- Thomas E. Dickey <dickey@invisible-island.net>  Wed, 03 Dec 2014 20:40:36 -0500
+
 ac252 (20121002) unstable; urgency=low
 
   * workaround for GCC_PRINTFLIKE in autoheader
