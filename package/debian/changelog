@@ -1,3 +1,9 @@
+ac252 (20150926) unstable; urgency=low
+
+  * workaround multiline substitutions vs splitting of script in config.status
+
+ -- Thomas E. Dickey <dickey@invisible-island.net>  Sat, 26 Sep 2015 17:17:41 -0400
+
 ac252 (20141204) unstable; urgency=low
 
   * workaround for a broken port of "dash"
