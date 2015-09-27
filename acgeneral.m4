@@ -3920,10 +3920,28 @@ dnl Here, there are 2 cmd per line, and two cmd are added later.
       # These are the two extra sed commands mentioned above.
       (echo [':t
   /@[a-zA-Z_][a-zA-Z_0-9]*@/!b'] && cat $tmp/subs.frag) >$tmp/subs-$ac_sed_frag.sed
+      # It is possible to make a multiline substitution using escaped newlines.
+      # Ensure that we do not split the substitution between script fragments.
+      ac_BEG=$ac_end
+      ac_END=`expr $ac_end + $ac_max_sed_lines`
+      sed "1,${ac_BEG}d; ${ac_END}p; q" $tmp/subs.sed >$tmp/subs.next
+      if test -s $tmp/subs.next; then
+        grep '^s,@[[^@,]][[^@,]]*@,.*\\$' $tmp/subs.next >$tmp/subs.edit
+        if test ! -s $tmp/subs.edit; then
+          grep "^s,@[[^@,]][[^@,]]*@,.*,;t t$" $tmp/subs.next >$tmp/subs.edit
+          if test ! -s $tmp/subs.edit; then
+            if test $ac_beg -gt 1; then
+              ac_end=`expr $ac_end - 1`
+              continue
+            fi
+          fi
+        fi
+      fi
+
       if test -z "$ac_sed_cmds"; then
-  	ac_sed_cmds="sed -f $tmp/subs-$ac_sed_frag.sed"
+        ac_sed_cmds="sed -f $tmp/subs-$ac_sed_frag.sed"
       else
-  	ac_sed_cmds="$ac_sed_cmds | sed -f $tmp/subs-$ac_sed_frag.sed"
+        ac_sed_cmds="$ac_sed_cmds | sed -f $tmp/subs-$ac_sed_frag.sed"
       fi
       ac_sed_frag=`expr $ac_sed_frag + 1`
       ac_beg=$ac_end

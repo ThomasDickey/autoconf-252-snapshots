@@ -1,4 +1,10 @@
 -- vile:fk=utf-8
+2015-09-26  Thomas Dickey <dickey@invisible-island.net>
+	Version 2.52.20150926.
+
+	Workaround for splitting sed script in config.status when the script
+	contains multiline values.
+
 2014-12-04  Thomas Dickey <dickey@invisible-island.net>
 	Version 2.52.20141204.
 
