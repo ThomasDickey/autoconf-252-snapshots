@@ -362,7 +362,7 @@ m4_define([AC_LANG_PROGRAM(C)],
 [$1
 m4_ifdef([_AC_LANG_PROGRAM_C_F77_HOOKS], [_AC_LANG_PROGRAM_C_F77_HOOKS()])dnl
 int
-main ()
+main (void)
 {
 dnl Do *not* indent the following line: there may be CPP directives.
 dnl Don't move the `;' right after for the same reason.
@@ -1514,7 +1514,7 @@ AC_DEFUN([AC_C_LONG_DOUBLE],
 else
 AC_TRY_RUN(
 [int
-main ()
+main (void)
 {
   /* The Stardent Vistra knows sizeof(long double), but does not
      support it.  */
@@ -1555,7 +1555,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
 if test $ac_cv_c_bigendian = unknown; then
 AC_TRY_RUN(
 [int
-main ()
+main (void)
 {
   /* Are we little or big endian?  From Harbison&Steele.  */
   union

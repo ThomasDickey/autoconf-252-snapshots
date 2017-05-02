@@ -50,10 +50,10 @@ m4_defun([AC_STATE_SAVE],
       [^(ALLOCA|GETLOADAVG_LIBS|KMEM_GROUP|NEED_SETGID|POW_LIB)=],
       [^(AWK|LEX|LEXLIB|LEX_OUTPUT_ROOT|LN_S|M4|RANLIB|SET_MAKE|YACC)=],
       [^(_|@|.[*#?].|LINENO|OLDPWD|PIPESTATUS|RANDOM|SECONDS)=])' 2>/dev/null |
-  # There maybe variables spread on several lines, eg IFS, remove the dead
+  # There may be variables spread on several lines, eg IFS, remove the dead
   # lines.
   grep '^m4_defn([m4_re_word])=' >state-env.$1
 test $? = 0 || rm -f state-env.$1
 
-ls -1 | egrep -v '^(at-|state-|config\.)' | sort >state-ls.$1
+ls -1 | egrep -v '^(at-|state-|config\.|conftest\.dSYM)' | sort >state-ls.$1
 ])# AC_STATE_SAVE

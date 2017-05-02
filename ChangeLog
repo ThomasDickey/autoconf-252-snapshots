@@ -1,4 +1,13 @@
 -- vile:fk=utf-8
+2017-05-01  Thomas Dickey <dickey@invisible-island.net>
+	Version 2.52.20170501.
+
+	fix "make check" to work with OSX.
+
+	Modify test-program stubs to reduce compiler warnings.
+
+	updated config/config.{guess,sub}
+
 2015-09-26  Thomas Dickey <dickey@invisible-island.net>
 	Version 2.52.20150926.
 
