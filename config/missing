@@ -155,7 +155,7 @@ WARNING: \`$1' is missing on your system.  You should only need it if
 	echo >y.tab.h
     fi
     if [ ! -f y.tab.c ]; then
-	echo 'main() { return 0; }' >y.tab.c
+	echo 'int main(void) { return 0; }' >y.tab.c
     fi
     ;;
 
@@ -178,7 +178,7 @@ WARNING: \`$1' is missing on your system.  You should only need it if
 	esac
     fi
     if [ ! -f lex.yy.c ]; then
-	echo 'main() { return 0; }' >lex.yy.c
+	echo 'int main(void) { return 0; }' >lex.yy.c
     fi
     ;;
 

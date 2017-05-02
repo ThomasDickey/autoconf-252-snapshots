@@ -164,7 +164,7 @@ AC_CACHE_CHECK([stack direction for C alloca],
                [ac_cv_c_stack_direction],
 [AC_RUN_IFELSE([AC_LANG_SOURCE(
 [int
-find_stack_direction ()
+find_stack_direction (void)
 {
   static char *addr = 0;
   auto char dummy;
@@ -178,7 +178,7 @@ find_stack_direction ()
 }
 
 int
-main ()
+main (void)
 {
   $ac_main_return (find_stack_direction () < 0);
 }])],
@@ -602,7 +602,7 @@ int     pg1, pg2, pg3, pg4;
 int     ng, np, s, child;
 
 int
-main ()
+main (void)
 {
   pid = getpid ();
   pg1 = getpgrp (0);
@@ -817,7 +817,7 @@ static const char *const tz_strings[] = {
 /* Fail if mktime fails to convert a date in the spring-forward gap.
    Based on a problem report from Andreas Jaeger.  */
 static void
-spring_forward_gap ()
+spring_forward_gap (void)
 {
   /* glibc (up to about 1998-10-07) failed this test. */
   struct tm tm;
@@ -852,7 +852,7 @@ mktime_test (now)
 }
 
 static void
-irix_6_4_bug ()
+irix_6_4_bug (void)
 {
   /* Based on code from Ariel Faigon.  */
   struct tm tm;
@@ -895,7 +895,7 @@ bigtime_test (j)
 }
 
 int
-main ()
+main (void)
 {
   time_t t, delta;
   int i, j;
@@ -1015,7 +1015,7 @@ char *malloc ();
 #endif /* no HAVE_GETPAGESIZE */
 
 int
-main ()
+main (void)
 {
   char *data, *data2, *data3;
   int i, pagesize;
@@ -1232,7 +1232,7 @@ AC_DEFUN([AC_FUNC_STRTOD],
 [AC_RUN_IFELSE([AC_LANG_SOURCE([[
 double strtod ();
 int
-main()
+main(void)
 {
   {
     /* Some versions of Linux strtod mis-parse strings with leading '+'.  */
@@ -1330,7 +1330,7 @@ AC_DEFUN([AC_FUNC_SETVBUF_REVERSED],
 [AC_TRY_RUN([#include <stdio.h>
 /* If setvbuf has the reversed format, exit 0. */
 int
-main ()
+main (void)
 {
   /* This call has the arguments reversed.
      A reversed system may check and see that the address of main
@@ -1462,7 +1462,7 @@ AC_DEFUN([_AC_FUNC_FORK],
       # include <unistd.h>
       #endif
       /* Some systems only have a dummy stub for fork() */
-      int main ()
+      int main (void)
       {
         if (fork() < 0)
           $ac_main_return (1);
@@ -1517,7 +1517,7 @@ sparc_address_test (arg) int arg;
 }
 
 int
-main ()
+main (void)
 {
   pid_t parent = getpid ();
   pid_t child;
@@ -1622,7 +1622,7 @@ AC_CACHE_CHECK([for wait3 that fills in rusage],
 #include <stdio.h>
 /* HP-UX has wait3 but does not fill in rusage at all.  */
 int
-main ()
+main (void)
 {
   struct rusage r;
   int i;

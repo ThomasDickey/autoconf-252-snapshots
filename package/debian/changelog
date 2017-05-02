@@ -1,3 +1,9 @@
+ac252 (20170501) unstable; urgency=low
+
+  * fix "make check" for OSX, also use 'int main(void)', per c89.
+
+ -- Thomas E. Dickey <dickey@invisible-island.net>  Sun, 30 Apr 2017 10:48:44 -0400
+
 ac252 (20150926) unstable; urgency=low
 
   * workaround multiline substitutions vs splitting of script in config.status
