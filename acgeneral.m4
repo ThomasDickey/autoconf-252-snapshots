@@ -698,6 +698,7 @@ AC_SUBST([datadir],        ['${datarootdir}'])dnl
 AC_SUBST([sysconfdir],     ['${prefix}/etc'])dnl
 AC_SUBST([sharedstatedir], ['${prefix}/com'])dnl
 AC_SUBST([localstatedir],  ['${prefix}/var'])dnl
+AC_SUBST([runstatedir],    ['${localstatedir}/run'])dnl
 AC_SUBST([libdir],         ['${exec_prefix}/lib'])dnl
 AC_SUBST([includedir],     ['${prefix}/include'])dnl
 AC_SUBST([oldincludedir],  ['/usr/include'])dnl
@@ -842,6 +843,15 @@ do
   | --localstate=* | --localstat=* | --localsta=* | --localst=* \
   | --locals=* | --local=* | --loca=* | --loc=* | --lo=*)
     localstatedir=$ac_optarg ;;
+
+  -runstatedir | --runstatedir | --runstatedi | --runstated \
+  | --runstate | --runstat | --runsta | --runst \
+  | --runs | --run | --ru)
+    ac_prev=runstatedir ;;
+  -runstatedir=* | --runstatedir=* | --runstatedi=* | --runstated=* \
+  | --runstate=* | --runstat=* | --runsta=* | --runst=* \
+  | --runs=* | --run=* | --ru=*)
+    runstatedir=$ac_optarg ;;
 
   -mandir | --mandir | --mandi | --mand | --man | --ma | --m)
     ac_prev=mandir ;;
@@ -1128,6 +1138,7 @@ Fine tuning of the installation directories:
   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --runstatedir=DIR       extra definition of runtime data [LOCALSTATEDIR/run]
   --libdir=DIR            object code libraries [EPREFIX/lib]
   --includedir=DIR        C header files [PREFIX/include]
   --oldincludedir=DIR     C header files for non-gcc [/usr/include]

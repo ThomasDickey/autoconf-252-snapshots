@@ -1,7 +1,7 @@
 Source: ac252
 Maintainer: Thomas E. Dickey <dickey@invisible-island.net>
 Section: devel
-Priority: extra
+Priority: optional
 Standards-Version: 3.8.4
 Build-Depends-Indep: texinfo (>= 4.6), m4 (>= 1.4), help2man
 Build-Depends: debhelper (>= 5)

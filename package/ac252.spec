@@ -1,15 +1,15 @@
 Summary: autoconf-252 - Generate configuration scripts
 %define AppProgram autoconf
 %define AppVersion 2.52
-%define AppRelease 20170501
+%define AppRelease 20180819
 %define AppSuffix  -252
-# $Id: ac252.spec,v 1.21 2017/05/02 01:18:04 tom Exp $
+# $Id: ac252.spec,v 1.23 2018/08/19 15:43:59 tom Exp $
 Name: ac252
 Version: %{AppVersion}
 Release: %{AppRelease}
 License: GPLv2
 Group: Applications/Development
-URL: ftp://invisible-island.net/%{AppProgram}
+URL: ftp://ftp.invisible-island.net/%{AppProgram}
 Source0: %{AppProgram}-%{AppVersion}-%{AppRelease}.tgz
 Packager: Thomas E. Dickey <dickey@invisible-island.net>
 
@@ -77,6 +77,9 @@ fi
 
 %changelog
 # each patch should add its ChangeLog entries here
+
+* Sun Aug 19 2018 Thomas E. Dickey
+- update ftp-url
 
 * Fri Oct 01 2010 Thomas E. Dickey
 - adapt rules for installing info file from
