@@ -1,4 +1,13 @@
 -- vile:fk=utf-8
+2018-08-19  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20180819.
+
+	Recognize recent cruft "--runstatedir" which has made its way into
+	packager's boilerplate, notwithstanding the blatant inconsistency with
+	actual usage (Debian #887390).
+
+	Fix some warnings in test-packages.
+
 2017-05-01  Thomas Dickey <dickey@invisible-island.net>
 	Version 2.52.20170501.
 

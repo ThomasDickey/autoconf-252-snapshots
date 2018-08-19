@@ -1,3 +1,9 @@
+ac252 (20180819) unstable; urgency=low
+
+  * recognize "--runstatedir"
+
+ -- Thomas E. Dickey <dickey@invisible-island.net>  Sun, 19 Aug 2018 11:43:59 -0400
+
 ac252 (20170501) unstable; urgency=low
 
   * fix "make check" for OSX, also use 'int main(void)', per c89.
