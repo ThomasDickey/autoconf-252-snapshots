@@ -1,4 +1,10 @@
 -- vile:fk=utf-8
+2018-10-06  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20181006.
+
+	Adapt changes from autoconf in 2002, etc., to work around optimization
+	in AC_LANG_FUNC_LINK_TRY.  The workaround in 2012-03-03 is not needed.
+
 2018-08-19  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20180819.
 

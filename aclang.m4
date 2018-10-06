@@ -389,32 +389,35 @@ char $2 ();])], [$2 ();])])
 
 # AC_LANG_FUNC_LINK_TRY(C)(FUNCTION)
 # ----------------------------------
-# Don't include <ctype.h> because on OSF/1 3.0 it includes
-# <sys/types.h> which includes <sys/select.h> which contains a
-# prototype for select.  Similarly for bzero.
+# This test used to merely assign f=$1 in main(), but that was optimized away
+# by HP unbundled cc A.05.36 for ia64 under +O3, presumably because the program
+# is about to exit.  Conversely, the AIX linker optimizes an unused external
+# declaration that initializes f=$1.  Therefore, the test program has both an
+# external initialization of f, as well as using f in a way that affects the
+# exit status.
+#
 m4_define([AC_LANG_FUNC_LINK_TRY(C)],
 [AC_LANG_PROGRAM(
-[/* System header to define __stub macros and hopefully few prototypes,
-    which can conflict with char $1 (); below.  */
-#include <assert.h>
-/* Override any gcc2 internal prototype to avoid an error.  */
+[#define $1 autoconf_temporary
+#include <limits.h>	/* least-intrusive standard header which defines gcc2 __stub macros */
+#undef $1
+
 #ifdef __cplusplus
 extern "C"
 #endif
+
 /* We use char because int might match the return type of a gcc2
    builtin and then its argument prototype would still apply.  */
-char $1 ();
-char (*f) ();
-],
-[/* The GNU C library defines this for functions which it implements
+char $1 (void);
+],[
+/* The GNU C library defines stubs for functions which it implements
     to always fail with ENOSYS.  Some functions are actually named
     something starting with __ and the normal name is an alias.  */
 #if defined (__stub_$1) || defined (__stub___$1)
-choke me
-#else
-f = $1; /* workaround for ICC 12.0.3 */ if (f == 0) return 1;
+#error found stub for $1
 #endif
-])])
+
+	return $1 ();])])
 
 
 # AC_LANG_BOOL_COMPILE_TRY(C)(PROLOGUE, EXPRESSION)
