@@ -1306,7 +1306,7 @@ AC_ARG_VAR([FFLAGS], [Fortran 77 compiler flags])dnl
 _AC_ARG_VAR_LDFLAGS()dnl
 AC_CHECK_TOOLS(F77,
       [m4_default([$1],
-                  [g77 f77 xlf cf77 cft77 frt pgf77 fl32 af77 fort77 f90 xlf90 pgf90 epcf90 f95 fort xlf95 lf95 g95 fc])])
+                  [g77 f77 xlf cf77 cft77 frt pgf77 fl32 af77 fort77 f90 xlf90 pgf90 epcf90 f95 fort xlf95 lf95 g95])])
 
 # Provide some information about the compiler.
 echo "$as_me:__oline__:" \

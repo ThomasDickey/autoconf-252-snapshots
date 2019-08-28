@@ -1,4 +1,11 @@
 -- vile:fk=utf-8
+2019-08-28  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20190828.
+
+	Add X11R7 include/lib paths for some older NetBSD configurations.
+
+	Drop "fc" from Fortran77 choices, to work with modern Unix systems.
+
 2018-10-06  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20181006.
 
