@@ -1,4 +1,9 @@
 -- vile:fk=utf-8
+2019-09-01  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20190901.
+
+	Correct version in generated manpages (report by Sven Joachim).
+
 2019-08-28  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20190828.
 
