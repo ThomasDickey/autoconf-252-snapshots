@@ -1,4 +1,13 @@
 -- vile:fk=utf-8
+2020-01-11  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20200111.
+
+	Check/display m4's version in AC_PROG_GNU_M4
+
+	Add /opt/local and /opt/X11 paths for recent MacOS configurations.
+
+	Check for byacc before bison, etc., for consistency with mawk, etc.
+
 2019-09-01  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20190901.
 

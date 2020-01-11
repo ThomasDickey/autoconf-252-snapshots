@@ -1,5 +1,6 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Macros that test for specific features.
+# Copyright 2006-2019,2020	Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -121,7 +122,7 @@ AC_DEFUN([AC_PROG_AWK],
 # AC_PROG_YACC
 # ------------
 AC_DEFUN([AC_PROG_YACC],
-[AC_CHECK_PROGS(YACC, 'bison -y' byacc, yacc)])
+[AC_CHECK_PROGS(YACC, byacc 'bison -y', yacc)])
 
 
 # AC_PROG_LEX
@@ -628,6 +629,9 @@ ac_x_header_dirs='
 /usr/X11R6/include
 /usr/X11R5/include
 /usr/X11R4/include
+
+/opt/local/include
+/opt/X11/include
 
 /usr/include/X11
 /usr/include/X11R7

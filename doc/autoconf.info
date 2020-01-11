@@ -1,4 +1,4 @@
-This is autoconf.info, produced by makeinfo version 5.2 from
+This is autoconf.info, produced by makeinfo version 6.3 from
 autoconf.texi.
 
 INFO-DIR-SECTION GNU admin
@@ -50,8 +50,8 @@ File: autoconf.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 
 This file documents the GNU Autoconf package for creating scripts to
 configure source code packages using templates and the GNU M4 macro
-package.  This is edition 2.52.20190901, for Autoconf version
-2.52.20190901.
+package.  This is edition 2.52.20200111, for Autoconf version
+2.52.20200111.
 
 * Menu:
 
@@ -1343,7 +1343,7 @@ Using them is optional.
      than VERSION, print an error message to the standard error output
      and do not create 'configure'.  For example:
 
-          AC_PREREQ(2.52.20190901)
+          AC_PREREQ(2.52.20200111)
 
      This macro is the only macro that may be used before 'AC_INIT', but
      for consistency, you are invited not to do so.
@@ -1366,7 +1366,7 @@ Using them is optional.
 
      For example, this line in 'configure.ac':
 
-          AC_REVISION($Revision: 1.51 $)
+          AC_REVISION($Revision: 1.53 $)
 
      produces this in 'configure':
 
@@ -2589,9 +2589,9 @@ some cases whether they support certain features.
      otherwise to ':' (do nothing).
 
  -- Macro: AC_PROG_YACC
-     If 'bison' is found, set output variable 'YACC' to 'bison -y'.
-     Otherwise, if 'byacc' is found, set 'YACC' to 'byacc'.  Otherwise
-     set 'YACC' to 'yacc'.
+     If 'byacc' is found, set 'YACC' to 'byacc'.  Otherwise, if 'bison'
+     is found, set output variable 'YACC' to 'bison -y'.  Finally, if
+     neither 'byacc' or 'bison' is found, set 'YACC' to 'yacc'.
 
 
 File: autoconf.info,  Node: Generic Programs,  Prev: Particular Programs,  Up: Alternative Programs
@@ -10506,122 +10506,122 @@ introduced in this document.
  [index ]
 * Menu:
 
-* '!':                                   Limitations of Builtins.
+* !:                                     Limitations of Builtins.
                                                               (line  16)
-* '"$@"':                                Shell Substitutions. (line  31)
+* "$@":                                  Shell Substitutions. (line  31)
 * $(COMMANDS):                           Shell Substitutions. (line 132)
 * ${VAR:-VALUE}:                         Shell Substitutions. (line  38)
 * ${VAR=EXPANDED-VALUE}:                 Shell Substitutions. (line  71)
 * ${VAR=LITERAL}:                        Shell Substitutions. (line  42)
-* '/usr/xpg4/bin/sh' on Solaris:         Shellology.          (line  43)
-* ':':                                   Limitations of Builtins.
+* /usr/xpg4/bin/sh on Solaris:           Shellology.          (line  43)
+* ::                                     Limitations of Builtins.
                                                               (line 312)
-* '@%:@':                                Quadrigraphs.        (line   6)
-* '@:>@':                                Quadrigraphs.        (line   6)
-* '@<:@':                                Quadrigraphs.        (line   6)
-* '@S|@':                                Quadrigraphs.        (line   6)
+* @%:@:                                  Quadrigraphs.        (line   6)
+* @:>@:                                  Quadrigraphs.        (line   6)
+* @<:@:                                  Quadrigraphs.        (line   6)
+* @S|@:                                  Quadrigraphs.        (line   6)
 * 'COMMANDS':                            Shell Substitutions. (line 117)
-* 'acconfig.h':                          acconfig.h.          (line   6)
-* 'aclocal.m4':                          Making configure Scripts.
+* acconfig.h:                            acconfig.h.          (line   6)
+* aclocal.m4:                            Making configure Scripts.
                                                               (line   6)
 * Ash:                                   Shellology.          (line  13)
-* 'autoconf':                            autoconf Invocation. (line   6)
-* 'autoheader':                          autoheader Invocation.
+* autoconf:                              autoconf Invocation. (line   6)
+* autoheader:                            autoheader Invocation.
                                                               (line   6)
 * Automake:                              Automake.            (line  19)
-* 'autoreconf':                          autoreconf Invocation.
+* autoreconf:                            autoreconf Invocation.
                                                               (line   6)
-* 'autoscan':                            autoscan Invocation. (line   6)
-* 'autoupdate':                          autoupdate Invocation.
+* autoscan:                              autoscan Invocation. (line   6)
+* autoupdate:                            autoupdate Invocation.
                                                               (line   6)
-* 'awk':                                 Limitations of Usual Tools.
+* awk:                                   Limitations of Usual Tools.
                                                               (line  10)
 * Back trace:                            autoconf Invocation. (line  93)
 * Bash:                                  Shellology.          (line  37)
-* 'break':                               Limitations of Builtins.
+* break:                                 Limitations of Builtins.
                                                               (line  19)
 * Cache:                                 Caching Results.     (line   6)
 * Cache variable:                        Cache Variable Names.
                                                               (line   6)
 * Cache, enabling:                       configure Invocation.
                                                               (line  18)
-* 'case':                                Limitations of Builtins.
+* case:                                  Limitations of Builtins.
                                                               (line  22)
-* 'cat':                                 Limitations of Usual Tools.
+* cat:                                   Limitations of Usual Tools.
                                                               (line  53)
-* 'cmp':                                 Limitations of Usual Tools.
+* cmp:                                   Limitations of Usual Tools.
                                                               (line  61)
 * Command Substitution:                  Shell Substitutions. (line 117)
-* 'config.h':                            Configuration Headers.
+* config.h:                              Configuration Headers.
                                                               (line   6)
-* 'config.h.bot':                        acconfig.h.          (line   6)
-* 'config.h.in':                         Header Templates.    (line   6)
-* 'config.h.top':                        acconfig.h.          (line   6)
-* 'config.status':                       config.status Invocation.
+* config.h.bot:                          acconfig.h.          (line   6)
+* config.h.in:                           Header Templates.    (line   6)
+* config.h.top:                          acconfig.h.          (line   6)
+* config.status:                         config.status Invocation.
                                                               (line   6)
 * Configuration Header:                  Configuration Headers.
                                                               (line   6)
 * Configuration Header Template:         Header Templates.    (line   6)
-* 'configure':                           Making configure Scripts.
+* configure:                             Making configure Scripts.
                                                               (line   6)
-* 'configure' <1>:                       Running configure scripts.
+* configure <1>:                         Running configure scripts.
                                                               (line   6)
-* 'configure.ac':                        Making configure Scripts.
+* configure.ac:                          Making configure Scripts.
                                                               (line  27)
-* 'configure.in':                        Making configure Scripts.
+* configure.in:                          Making configure Scripts.
                                                               (line  27)
 * Copyright Notice:                      Notices.             (line  21)
-* 'cp':                                  Limitations of Usual Tools.
+* cp:                                    Limitations of Usual Tools.
                                                               (line  68)
 * Declaration, checking:                 Declarations.        (line   6)
-* 'diff':                                Limitations of Usual Tools.
+* diff:                                  Limitations of Usual Tools.
                                                               (line  79)
-* 'dirname':                             Limitations of Usual Tools.
+* dirname:                               Limitations of Usual Tools.
                                                               (line  85)
-* 'dnl':                                 Macro Definitions.   (line  35)
-* 'dnl' <1>:                             Coding Style.        (line  40)
-* 'echo':                                Limitations of Builtins.
+* dnl:                                   Macro Definitions.   (line  35)
+* dnl <1>:                               Coding Style.        (line  40)
+* echo:                                  Limitations of Builtins.
                                                               (line  42)
-* 'egrep':                               Limitations of Usual Tools.
+* egrep:                                 Limitations of Usual Tools.
                                                               (line 112)
 * Endianness:                            C Compiler.          (line  68)
-* 'exit':                                Limitations of Builtins.
+* exit:                                  Limitations of Builtins.
                                                               (line  69)
-* 'export':                              Limitations of Builtins.
+* export:                                Limitations of Builtins.
                                                               (line  94)
-* 'expr':                                Limitations of Usual Tools.
+* expr:                                  Limitations of Usual Tools.
                                                               (line 126)
-* 'expr' <1>:                            Limitations of Usual Tools.
+* expr <1>:                              Limitations of Usual Tools.
                                                               (line 151)
-* 'expr' ('|'):                          Limitations of Usual Tools.
+* expr (|):                              Limitations of Usual Tools.
                                                               (line 132)
-* 'false':                               Limitations of Builtins.
+* false:                                 Limitations of Builtins.
                                                               (line 120)
 * File, checking:                        Files.               (line   6)
-* 'for':                                 Limitations of Builtins.
+* for:                                   Limitations of Builtins.
                                                               (line 124)
 * Function, checking:                    Particular Functions.
                                                               (line   6)
-* 'grep':                                Limitations of Usual Tools.
+* grep:                                  Limitations of Usual Tools.
                                                               (line 204)
 * Header, checking:                      Header Files.        (line   6)
-* 'if':                                  Limitations of Builtins.
+* if:                                    Limitations of Builtins.
                                                               (line 146)
-* 'ifnames':                             ifnames Invocation.  (line   6)
+* ifnames:                               ifnames Invocation.  (line   6)
 * Includes, default:                     Default Includes.    (line   6)
 * Instantiation:                         Output.              (line  12)
 * Language:                              Language Choice.     (line   6)
 * Library, checking:                     Libraries.           (line   6)
 * Libtool:                               Libtool.             (line  13)
 * Links:                                 Configuration Links. (line  12)
-* 'ln':                                  Limitations of Usual Tools.
+* ln:                                    Limitations of Usual Tools.
                                                               (line 216)
 * M4sugar:                               Programming in M4sugar.
                                                               (line   6)
 * Macro invocation stack:                autoconf Invocation. (line  93)
-* Messages, from 'autoconf':             Reporting Messages.  (line   6)
-* Messages, from 'configure':            Printing Messages.   (line   6)
-* 'mv':                                  Limitations of Usual Tools.
+* Messages, from autoconf:               Reporting Messages.  (line   6)
+* Messages, from configure:              Printing Messages.   (line   6)
+* mv:                                    Limitations of Usual Tools.
                                                               (line 228)
 * obstack:                               Particular Functions.
                                                               (line 176)
@@ -10635,33 +10635,33 @@ introduced in this document.
 * quotation:                             Autoconf Language.   (line   6)
 * quotation <1>:                         M4 Quotation.        (line   6)
 * Revision:                              Notices.             (line  29)
-* 'sed':                                 Limitations of Usual Tools.
+* sed:                                   Limitations of Usual Tools.
                                                               (line 239)
-* 'sed' ('t'):                           Limitations of Usual Tools.
+* sed (t):                               Limitations of Usual Tools.
                                                               (line 278)
-* 'set':                                 Limitations of Builtins.
+* set:                                   Limitations of Builtins.
                                                               (line 175)
-* 'shift':                               Limitations of Builtins.
+* shift:                                 Limitations of Builtins.
                                                               (line 186)
 * Structure, checking:                   Structures.          (line   6)
 * Symbolic links:                        Limitations of Usual Tools.
                                                               (line 216)
 * termios POSIX headers:                 System Services.     (line  62)
-* 'test':                                Limitations of Builtins.
+* test:                                  Limitations of Builtins.
                                                               (line 191)
-* 'touch':                               Limitations of Usual Tools.
+* touch:                                 Limitations of Usual Tools.
                                                               (line 338)
-* 'trap':                                Limitations of Builtins.
+* trap:                                  Limitations of Builtins.
                                                               (line 272)
-* 'true':                                Limitations of Builtins.
+* true:                                  Limitations of Builtins.
                                                               (line 312)
-* 'undefined macro: _m4_divert_diversion': New Macros.        (line   6)
-* 'unset':                               Limitations of Builtins.
+* undefined macro: _m4_divert_diversion: New Macros.          (line   6)
+* unset:                                 Limitations of Builtins.
                                                               (line 323)
 * Variable, Precious:                    Setting Output Variables.
                                                               (line  44)
 * Version:                               Notices.             (line  10)
-* 'VPATH':                               Limitations of Make. (line  31)
+* VPATH:                                 Limitations of Make. (line  31)
 * Zsh:                                   Shellology.          (line  49)
 
 
@@ -10718,142 +10718,142 @@ Node: Standard Symbols97974
 Node: Default Includes98575
 Node: Alternative Programs100507
 Node: Particular Programs101193
-Node: Generic Programs106187
-Node: Files110096
-Node: Libraries110991
-Node: Library Functions113856
-Node: Function Portability114479
-Node: Particular Functions115484
-Node: Generic Functions126076
-Node: Header Files130321
-Node: Particular Headers130884
-Node: Generic Headers137853
-Node: Declarations139925
-Node: Particular Declarations140514
-Node: Generic Declarations140937
-Node: Structures143310
-Node: Particular Structures143917
-Node: Generic Structures145639
-Node: Types146883
-Node: Particular Types147403
-Node: Generic Types148573
-Node: Compilers and Preprocessors149945
-Node: Generic Compiler Characteristics150956
-Node: C Compiler151819
-Node: C++ Compiler159160
-Node: Fortran 77 Compiler161403
-Node: System Services169900
-Ref: System Services-Footnote-1173016
-Node: UNIX Variants173107
-Node: Writing Tests174289
-Node: Examining Declarations176221
-Node: Examining Syntax178721
-Node: Examining Libraries180169
-Node: Run Time183181
-Node: Test Programs184162
-Node: Guidelines186429
-Node: Test Functions187628
-Node: Systemology189184
-Ref: Systemology-Footnote-1189812
-Ref: Systemology-Footnote-2189850
-Node: Multiple Cases189918
-Node: Language Choice191175
-Node: Results193210
-Node: Defining Symbols193960
-Node: Setting Output Variables197216
-Node: Caching Results201407
-Node: Cache Variable Names205090
-Node: Cache Files206679
-Node: Cache Checkpointing208709
-Node: Printing Messages210040
-Node: Programming in M4213225
-Node: M4 Quotation213898
-Node: Active Characters214708
-Ref: Active Characters-Footnote-1216086
-Node: One Macro Call216108
-Node: Quotation and Nested Macros217670
-Node: Quadrigraphs220636
-Node: Quotation Rule Of Thumb221561
-Node: Programming in M4sugar224204
-Node: Redefined M4 Macros224712
-Node: Forbidden Patterns225682
-Node: Writing Autoconf Macros227047
-Node: Macro Definitions227848
-Node: Macro Names229656
-Node: Reporting Messages232257
-Node: Dependencies Between Macros233603
-Node: Prerequisite Macros234227
-Node: Suggested Ordering237008
-Node: Obsoleting Macros238527
-Node: Coding Style239650
-Node: Portable Shell246656
-Node: Shellology248742
-Node: Here-Documents251721
-Node: File Descriptors253683
-Node: File System Conventions255691
-Ref: File System Conventions-Footnote-1259811
-Node: Shell Substitutions259885
-Node: Assignments264794
-Node: Special Shell Variables266431
-Node: Limitations of Builtins270477
-Node: Limitations of Usual Tools282805
-Node: Limitations of Make295548
-Node: Manual Configuration296529
-Node: Specifying Names297358
-Ref: Specifying Names-Footnote-1300169
-Node: Canonicalizing300569
-Node: Using System Type302973
-Node: Site Configuration304022
-Node: External Software304854
-Node: Package Options308170
-Node: Pretty Help Strings311038
-Node: Site Details313017
-Node: Transforming Names314252
-Node: Transformation Options315400
-Node: Transformation Examples315904
-Node: Transformation Rules317626
-Node: Site Defaults319462
-Node: Running configure scripts323381
-Node: Basic Installation324398
-Node: Compilers and Options327246
-Node: Multiple Architectures327888
-Node: Installation Names328887
-Node: Optional Features330086
-Node: System Type330870
-Node: Sharing Defaults332396
-Node: Environment Variables333038
-Node: configure Invocation333724
-Node: config.status Invocation334856
-Node: Obsolete Constructs338681
-Node: Obsolete config.status Use339607
-Node: acconfig.h341406
-Node: autoupdate Invocation343422
-Node: Obsolete Macros345384
-Node: Autoconf 1362537
-Node: Changed File Names363603
-Node: Changed Makefiles364378
-Node: Changed Macros365471
-Node: Changed Results366727
-Node: Changed Macro Writing368838
-Node: Autoconf 2.13370113
-Node: Changed Quotation371122
-Node: New Macros373029
-Node: Questions374663
-Node: Distributing375187
-Node: Why GNU m4376258
-Node: Bootstrapping377156
-Node: Why Not Imake377772
-Node: History382477
-Node: Genesis383276
-Node: Exodus384472
-Node: Leviticus387523
-Node: Numbers389057
-Node: Deuteronomy390978
-Node: Environment Variable Index393650
-Node: Output Variable Index397693
-Node: Preprocessor Symbol Index407503
-Node: Autoconf Macro Index418510
-Node: M4 Macro Index441842
-Node: Concept Index442529
+Node: Generic Programs106227
+Node: Files110136
+Node: Libraries111031
+Node: Library Functions113896
+Node: Function Portability114519
+Node: Particular Functions115524
+Node: Generic Functions126116
+Node: Header Files130361
+Node: Particular Headers130924
+Node: Generic Headers137893
+Node: Declarations139965
+Node: Particular Declarations140554
+Node: Generic Declarations140977
+Node: Structures143350
+Node: Particular Structures143957
+Node: Generic Structures145679
+Node: Types146923
+Node: Particular Types147443
+Node: Generic Types148613
+Node: Compilers and Preprocessors149985
+Node: Generic Compiler Characteristics150996
+Node: C Compiler151859
+Node: C++ Compiler159200
+Node: Fortran 77 Compiler161443
+Node: System Services169940
+Ref: System Services-Footnote-1173056
+Node: UNIX Variants173147
+Node: Writing Tests174329
+Node: Examining Declarations176261
+Node: Examining Syntax178761
+Node: Examining Libraries180209
+Node: Run Time183221
+Node: Test Programs184202
+Node: Guidelines186469
+Node: Test Functions187668
+Node: Systemology189224
+Ref: Systemology-Footnote-1189852
+Ref: Systemology-Footnote-2189890
+Node: Multiple Cases189958
+Node: Language Choice191215
+Node: Results193250
+Node: Defining Symbols194000
+Node: Setting Output Variables197256
+Node: Caching Results201447
+Node: Cache Variable Names205130
+Node: Cache Files206719
+Node: Cache Checkpointing208749
+Node: Printing Messages210080
+Node: Programming in M4213265
+Node: M4 Quotation213938
+Node: Active Characters214748
+Ref: Active Characters-Footnote-1216126
+Node: One Macro Call216148
+Node: Quotation and Nested Macros217710
+Node: Quadrigraphs220676
+Node: Quotation Rule Of Thumb221601
+Node: Programming in M4sugar224244
+Node: Redefined M4 Macros224752
+Node: Forbidden Patterns225722
+Node: Writing Autoconf Macros227087
+Node: Macro Definitions227888
+Node: Macro Names229696
+Node: Reporting Messages232297
+Node: Dependencies Between Macros233643
+Node: Prerequisite Macros234267
+Node: Suggested Ordering237048
+Node: Obsoleting Macros238567
+Node: Coding Style239690
+Node: Portable Shell246696
+Node: Shellology248782
+Node: Here-Documents251761
+Node: File Descriptors253723
+Node: File System Conventions255731
+Ref: File System Conventions-Footnote-1259851
+Node: Shell Substitutions259925
+Node: Assignments264834
+Node: Special Shell Variables266471
+Node: Limitations of Builtins270517
+Node: Limitations of Usual Tools282845
+Node: Limitations of Make295588
+Node: Manual Configuration296569
+Node: Specifying Names297398
+Ref: Specifying Names-Footnote-1300209
+Node: Canonicalizing300609
+Node: Using System Type303013
+Node: Site Configuration304062
+Node: External Software304894
+Node: Package Options308210
+Node: Pretty Help Strings311078
+Node: Site Details313057
+Node: Transforming Names314292
+Node: Transformation Options315440
+Node: Transformation Examples315944
+Node: Transformation Rules317666
+Node: Site Defaults319502
+Node: Running configure scripts323421
+Node: Basic Installation324438
+Node: Compilers and Options327286
+Node: Multiple Architectures327928
+Node: Installation Names328927
+Node: Optional Features330126
+Node: System Type330910
+Node: Sharing Defaults332436
+Node: Environment Variables333078
+Node: configure Invocation333764
+Node: config.status Invocation334896
+Node: Obsolete Constructs338721
+Node: Obsolete config.status Use339647
+Node: acconfig.h341446
+Node: autoupdate Invocation343462
+Node: Obsolete Macros345424
+Node: Autoconf 1362577
+Node: Changed File Names363643
+Node: Changed Makefiles364418
+Node: Changed Macros365511
+Node: Changed Results366767
+Node: Changed Macro Writing368878
+Node: Autoconf 2.13370153
+Node: Changed Quotation371162
+Node: New Macros373069
+Node: Questions374703
+Node: Distributing375227
+Node: Why GNU m4376298
+Node: Bootstrapping377196
+Node: Why Not Imake377812
+Node: History382517
+Node: Genesis383316
+Node: Exodus384512
+Node: Leviticus387563
+Node: Numbers389097
+Node: Deuteronomy391018
+Node: Environment Variable Index393690
+Node: Output Variable Index397733
+Node: Preprocessor Symbol Index407543
+Node: Autoconf Macro Index418550
+Node: M4 Macro Index441882
+Node: Concept Index442569
 
 End Tag Table

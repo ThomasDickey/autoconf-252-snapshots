@@ -3006,9 +3006,11 @@ is found, and otherwise to @samp{:} (do nothing).
 @defmac AC_PROG_YACC
 @maindex PROG_YACC
 @ovindex YACC
-If @code{bison} is found, set output variable @code{YACC} to @samp{bison
--y}.  Otherwise, if @code{byacc} is found, set @code{YACC} to
-@samp{byacc}.  Otherwise set @code{YACC} to @samp{yacc}.
+If @code{byacc} is found, set @code{YACC} to @samp{byacc}.
+Otherwise, if @code{bison} is found,
+set output variable @code{YACC} to @samp{bison -y}.
+Finally, if neither @code{byacc} or @code{bison} is found,
+set @code{YACC} to @samp{yacc}.
 @end defmac
 
 @node Generic Programs,  , Particular Programs, Alternative Programs
