@@ -3588,6 +3588,8 @@ debug=false
 SHELL=\${CONFIG_SHELL-$SHELL}
 ac_cs_invocation="\$[0] \$[@]"
 
+CLICOLOR_FORCE= GREP_OPTIONS=
+unset CLICOLOR_FORCE GREP_OPTIONS
 _ACEOF
 
 cat >>$CONFIG_STATUS <<\_ACEOF

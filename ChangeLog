@@ -1,4 +1,10 @@
 -- vile:fk=utf-8
+2020-08-02  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20200802.
+
+	Unset CLICOLOR_FORCE and GREP_OPTIONS environment variables (report by
+	"Victor").
+
 2020-01-11  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20200111.
 
