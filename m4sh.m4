@@ -145,9 +145,9 @@ fi
 m4_defun([_AS_UNSET_PREPARE],
 [# Support unset when possible.
 if (FOO=FOO; unset FOO) >/dev/null 2>&1; then
-  as_unset=unset
+  as_unset="unset"
 else
-  as_unset=false
+  as_unset="false"
 fi
 ])
 
@@ -647,7 +647,7 @@ m4_define([AS_VAR_SET],
 m4_define([AS_VAR_GET],
 [AS_LITERAL_IF([$1],
                [$[]$1],
-               [`eval echo '${'m4_patsubst($1, [[\\`]], [\\\&])'}'`])])
+               [`eval echo '${'"m4_patsubst($1, [[\\`]], [\\\&])"'}'`])])
 
 
 # AS_VAR_TEST_SET(VARIABLE)

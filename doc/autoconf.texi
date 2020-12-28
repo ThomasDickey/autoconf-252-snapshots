@@ -2890,6 +2890,27 @@ fastest implementation.
 @end defmac
 
 
+@defmac AC_PROG_EGREP
+@ovindex EGREP
+Check for @code{grep -E}, @code{egrep} in that
+order, and set output variable @code{EGREP} to the first one that is found.
+@end defmac
+
+
+@defmac AC_PROG_FGREP
+@ovindex FGREP
+Check for @code{grep -F}, @code{fgrep} in that
+order, and set output variable @code{FGREP} to the first one that is found.
+@end defmac
+
+
+@defmac AC_PROG_GREP
+@ovindex GREP
+Check for @code{grep}, @code{ggrep} in that
+order, and set output variable @code{GREP} to the first one that is found.
+@end defmac
+
+
 @defmac AC_PROG_INSTALL
 @maindex PROG_INSTALL
 @ovindex INSTALL

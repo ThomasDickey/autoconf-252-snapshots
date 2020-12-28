@@ -67,10 +67,18 @@
 # failed there is also a new-line to match.
 m4_define([_AC_PROG_ECHO],
 [case `echo "testing\c" 2>/dev/null; echo 1,2,3`,`echo -n testing 2>/dev/null; echo 1,2,3` in
-  *c*,-n*) ECHO_N= ECHO_C=	# newlines do not sed ;-) only broken shells would use this case anyway
-		   ECHO_T='	' ;;
-  *c*,*  ) ECHO_N=-n ECHO_C= ECHO_T= ;;
-  *)      ECHO_N= ECHO_C='\c' ECHO_T= ;;
+  *c*,-n*) ECHO_N=
+           ECHO_C=      # newlines do not sed ;-) only broken shells would use this case anyway
+           ECHO_T='	'
+           ;;
+  *c*,*  ) ECHO_N=-n
+           ECHO_C=
+           ECHO_T=
+           ;;
+  *)       ECHO_N=
+           ECHO_C='\c'
+           ECHO_T=
+           ;;
 esac
 AC_SUBST(ECHO_C)dnl
 AC_SUBST(ECHO_N)dnl
@@ -114,9 +122,49 @@ AC_DEFUN([AC_PROG_RANLIB],
 [AC_CHECK_TOOL(RANLIB, ranlib, :)])
 
 
+# AC_PROG_AWK
+# -----------
 # Check for mawk first since it's generally faster.
 AC_DEFUN([AC_PROG_AWK],
 [AC_CHECK_PROGS(AWK, mawk gawk nawk awk, )])
+
+
+# AC_PROG_EGREP
+# -------------
+AC_DEFUN([AC_PROG_EGREP],
+[AC_REQUIRE([AC_PROG_GREP])dnl
+AC_CACHE_CHECK([for egrep], ac_cv_path_EGREP,
+   [if echo a | $GREP -E '(a|b)' >/dev/null 2>&1
+   then ac_cv_path_EGREP="$GREP -E"
+   else
+     AC_CHECK_PROGS(EGREP, egrep, )
+   fi])
+ EGREP="$ac_cv_path_EGREP"
+ AC_SUBST([EGREP])
+])# AC_PROG_EGREP
+
+
+# AC_PROG_FGREP
+# -------------
+AC_DEFUN([AC_PROG_FGREP],
+[AC_REQUIRE([AC_PROG_GREP])dnl
+AC_CACHE_CHECK([for fgrep], ac_cv_path_FGREP,
+   [if echo 'ab*c' | $GREP -F 'ab*c' >/dev/null 2>&1
+   then ac_cv_path_FGREP="$GREP -F"
+   else
+     AC_CHECK_PROGS(FGREP, fgrep, )
+   fi])
+ FGREP="$ac_cv_path_FGREP"
+ AC_SUBST([FGREP])
+])# AC_PROG_FGREP
+
+
+# AC_PROG_GREP
+# ------------
+AC_DEFUN([AC_PROG_GREP],
+[AC_CHECK_PROGS(GREP, grep ggrep, )
+ AC_SUBST([GREP])
+])
 
 
 # AC_PROG_YACC
@@ -417,7 +465,7 @@ if test "$enable_largefile" != no; then
          break
        done
        CC=$ac_save_CC
-       rm -f conftest.$ac_ext
+       rm -f "conftest.$ac_ext"
     fi])
   if test "$ac_cv_sys_largefile_CC" != no; then
     CC=$CC$ac_cv_sys_largefile_CC
@@ -593,8 +641,8 @@ EOF
     eval `${MAKE-make} acfindx 2>/dev/null | grep -v make`
     # Open Windows xmkmf reportedly sets LIBDIR instead of USRLIBDIR.
     for ac_extension in a so sl dylib dll; do
-      if test ! -f $ac_im_usrlibdir/libX11.$ac_extension &&
-         test -f $ac_im_libdir/libX11.$ac_extension; then
+      if test ! -f "$ac_im_usrlibdir/libX11.$ac_extension" &&
+         test -f "$ac_im_libdir/libX11.$ac_extension"; then
         ac_im_usrlibdir=$ac_im_libdir; break
       fi
     done
@@ -694,7 +742,7 @@ for ac_dir in `echo "$ac_x_includes $ac_x_header_dirs" | sed s/include/lib/g`
 do
   # Don't even attempt the hair of trying to link an X program!
   for ac_extension in a so sl dylib dll; do
-    if test -r $ac_dir/libXt.$ac_extension; then
+    if test -r "$ac_dir/libXt.$ac_extension"; then
       ac_x_libraries=$ac_dir
       break 2
     fi
@@ -778,7 +826,10 @@ if test "$no_x" = yes; then
   # Not all programs may use this symbol, but it does not hurt to define it.
   AC_DEFINE([X_DISPLAY_MISSING], 1,
             [Define if the X Window System is missing or not being used.])
-  X_CFLAGS= X_PRE_LIBS= X_LIBS= X_EXTRA_LIBS=
+  X_CFLAGS=
+  X_PRE_LIBS=
+  X_LIBS=
+  X_EXTRA_LIBS=
 else
   if test -n "$x_includes"; then
     X_CFLAGS="$X_CFLAGS -I$x_includes"

@@ -1,4 +1,4 @@
-This is autoconf.info, produced by makeinfo version 6.3 from
+This is autoconf.info, produced by makeinfo version 6.5 from
 autoconf.texi.
 
 INFO-DIR-SECTION GNU admin
@@ -50,8 +50,8 @@ File: autoconf.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 
 This file documents the GNU Autoconf package for creating scripts to
 configure source code packages using templates and the GNU M4 macro
-package.  This is edition 2.52.20200802, for Autoconf version
-2.52.20200802.
+package.  This is edition 2.52.20201228, for Autoconf version
+2.52.20201228.
 
 * Menu:
 
@@ -1343,7 +1343,7 @@ Using them is optional.
      than VERSION, print an error message to the standard error output
      and do not create 'configure'.  For example:
 
-          AC_PREREQ(2.52.20200802)
+          AC_PREREQ(2.52.20201228)
 
      This macro is the only macro that may be used before 'AC_INIT', but
      for consistency, you are invited not to do so.
@@ -1366,7 +1366,7 @@ Using them is optional.
 
      For example, this line in 'configure.ac':
 
-          AC_REVISION($Revision: 1.54 $)
+          AC_REVISION($Revision: 1.57 $)
 
      produces this in 'configure':
 
@@ -2497,6 +2497,18 @@ some cases whether they support certain features.
      output variable 'AWK' to the first one that is found.  It tries
      'mawk' first because that is reported to be the fastest
      implementation.
+
+ -- Macro: AC_PROG_EGREP
+     Check for 'grep -E', 'egrep' in that order, and set output variable
+     'EGREP' to the first one that is found.
+
+ -- Macro: AC_PROG_FGREP
+     Check for 'grep -F', 'fgrep' in that order, and set output variable
+     'FGREP' to the first one that is found.
+
+ -- Macro: AC_PROG_GREP
+     Check for 'grep', 'ggrep' in that order, and set output variable
+     'GREP' to the first one that is found.
 
  -- Macro: AC_PROG_INSTALL
      Set output variable 'INSTALL' to the path of a BSD compatible
@@ -9882,6 +9894,7 @@ how this is done.
                                                               (line  60)
 * ECHO_T:                                Preset Output Variables.
                                                               (line  60)
+* EGREP:                                 Particular Programs. (line  16)
 * exec_prefix:                           Installation Directory Variables.
                                                               (line  19)
 * EXEEXT:                                Compilers and Preprocessors.
@@ -9891,11 +9904,13 @@ how this is done.
 * FFLAGS:                                Preset Output Variables.
                                                               (line  72)
 * FFLAGS <1>:                            Fortran 77 Compiler. (line   7)
+* FGREP:                                 Particular Programs. (line  20)
 * FLIBS:                                 Fortran 77 Compiler. (line  38)
 * GETGROUPS_LIBS:                        Particular Functions.
                                                               (line  97)
 * GETLOADAVG_LIBS:                       Particular Functions.
                                                               (line 103)
+* GREP:                                  Particular Programs. (line  24)
 * host:                                  Canonicalizing.      (line  34)
 * host_alias:                            Canonicalizing.      (line   9)
 * host_cpu:                              Canonicalizing.      (line  34)
@@ -9905,17 +9920,17 @@ how this is done.
                                                               (line  26)
 * infodir:                               Installation Directory Variables.
                                                               (line  29)
-* INSTALL:                               Particular Programs. (line  16)
-* INSTALL_DATA:                          Particular Programs. (line  16)
-* INSTALL_PROGRAM:                       Particular Programs. (line  16)
-* INSTALL_SCRIPT:                        Particular Programs. (line  16)
+* INSTALL:                               Particular Programs. (line  28)
+* INSTALL_DATA:                          Particular Programs. (line  28)
+* INSTALL_PROGRAM:                       Particular Programs. (line  28)
+* INSTALL_SCRIPT:                        Particular Programs. (line  28)
 * KMEM_GROUP:                            Particular Functions.
                                                               (line 103)
 * LDFLAGS:                               Preset Output Variables.
                                                               (line  79)
-* LEX:                                   Particular Programs. (line  45)
-* LEXLIB:                                Particular Programs. (line  45)
-* LEX_OUTPUT_ROOT:                       Particular Programs. (line  45)
+* LEX:                                   Particular Programs. (line  57)
+* LEXLIB:                                Particular Programs. (line  57)
+* LEX_OUTPUT_ROOT:                       Particular Programs. (line  57)
 * libdir:                                Installation Directory Variables.
                                                               (line  32)
 * libexecdir:                            Installation Directory Variables.
@@ -9934,7 +9949,7 @@ how this is done.
                                                               (line  87)
 * LIBS <1>:                              Obsolete Macros.     (line 408)
 * LIBS <2>:                              Obsolete Macros.     (line 515)
-* LN_S:                                  Particular Programs. (line  83)
+* LN_S:                                  Particular Programs. (line  95)
 * localstatedir:                         Installation Directory Variables.
                                                               (line  38)
 * mandir:                                Installation Directory Variables.
@@ -9951,7 +9966,7 @@ how this is done.
 * prefix:                                Installation Directory Variables.
                                                               (line  47)
 * program_transform_name:                Transforming Names.  (line  11)
-* RANLIB:                                Particular Programs. (line 102)
+* RANLIB:                                Particular Programs. (line 114)
 * sbindir:                               Installation Directory Variables.
                                                               (line  52)
 * SET_MAKE:                              Output.              (line  37)
@@ -9973,7 +9988,7 @@ how this is done.
 * X_EXTRA_LIBS:                          System Services.     (line  26)
 * X_LIBS:                                System Services.     (line  26)
 * X_PRE_LIBS:                            System Services.     (line  26)
-* YACC:                                  Particular Programs. (line 106)
+* YACC:                                  Particular Programs. (line 118)
 
 
 File: autoconf.info,  Node: Preprocessor Symbol Index,  Next: Autoconf Macro Index,  Prev: Output Variable Index,  Up: Top
@@ -10139,7 +10154,7 @@ use these names in '#if' directives.
 * volatile:                              C Compiler.          (line  98)
 * WORDS_BIGENDIAN:                       C Compiler.          (line  68)
 * X_DISPLAY_MISSING:                     System Services.     (line  26)
-* YYTEXT_POINTER:                        Particular Programs. (line  45)
+* YYTEXT_POINTER:                        Particular Programs. (line  57)
 
 
 File: autoconf.info,  Node: Autoconf Macro Index,  Next: M4 Macro Index,  Prev: Preprocessor Symbol Index,  Up: Top
@@ -10392,12 +10407,12 @@ easier to use, the macros are listed without their preceding 'AC_'.
 * PROG_F77_C_O:                          Fortran 77 Compiler. (line  28)
 * PROG_FORTRAN:                          Fortran 77 Compiler. (line   7)
 * PROG_GCC_TRADITIONAL:                  C Compiler.          (line 156)
-* PROG_INSTALL:                          Particular Programs. (line  16)
-* PROG_LEX:                              Particular Programs. (line  45)
-* PROG_LN_S:                             Particular Programs. (line  83)
+* PROG_INSTALL:                          Particular Programs. (line  28)
+* PROG_LEX:                              Particular Programs. (line  57)
+* PROG_LN_S:                             Particular Programs. (line  95)
 * PROG_MAKE_SET:                         Output.              (line  37)
-* PROG_RANLIB:                           Particular Programs. (line 102)
-* PROG_YACC:                             Particular Programs. (line 106)
+* PROG_RANLIB:                           Particular Programs. (line 114)
+* PROG_YACC:                             Particular Programs. (line 118)
 * REMOTE_TAPE:                           Obsolete Macros.     (line 396)
 * REPLACE_FUNCS:                         Generic Functions.   (line  84)
 * REQUIRE:                               Prerequisite Macros. (line  17)
@@ -10718,142 +10733,142 @@ Node: Standard Symbols97974
 Node: Default Includes98575
 Node: Alternative Programs100507
 Node: Particular Programs101193
-Node: Generic Programs106227
-Node: Files110136
-Node: Libraries111031
-Node: Library Functions113896
-Node: Function Portability114519
-Node: Particular Functions115524
-Node: Generic Functions126116
-Node: Header Files130361
-Node: Particular Headers130924
-Node: Generic Headers137893
-Node: Declarations139965
-Node: Particular Declarations140554
-Node: Generic Declarations140977
-Node: Structures143350
-Node: Particular Structures143957
-Node: Generic Structures145679
-Node: Types146923
-Node: Particular Types147443
-Node: Generic Types148613
-Node: Compilers and Preprocessors149985
-Node: Generic Compiler Characteristics150996
-Node: C Compiler151859
-Node: C++ Compiler159200
-Node: Fortran 77 Compiler161443
-Node: System Services169940
-Ref: System Services-Footnote-1173056
-Node: UNIX Variants173147
-Node: Writing Tests174329
-Node: Examining Declarations176261
-Node: Examining Syntax178761
-Node: Examining Libraries180209
-Node: Run Time183221
-Node: Test Programs184202
-Node: Guidelines186469
-Node: Test Functions187668
-Node: Systemology189224
-Ref: Systemology-Footnote-1189852
-Ref: Systemology-Footnote-2189890
-Node: Multiple Cases189958
-Node: Language Choice191215
-Node: Results193250
-Node: Defining Symbols194000
-Node: Setting Output Variables197256
-Node: Caching Results201447
-Node: Cache Variable Names205130
-Node: Cache Files206719
-Node: Cache Checkpointing208749
-Node: Printing Messages210080
-Node: Programming in M4213265
-Node: M4 Quotation213938
-Node: Active Characters214748
-Ref: Active Characters-Footnote-1216126
-Node: One Macro Call216148
-Node: Quotation and Nested Macros217710
-Node: Quadrigraphs220676
-Node: Quotation Rule Of Thumb221601
-Node: Programming in M4sugar224244
-Node: Redefined M4 Macros224752
-Node: Forbidden Patterns225722
-Node: Writing Autoconf Macros227087
-Node: Macro Definitions227888
-Node: Macro Names229696
-Node: Reporting Messages232297
-Node: Dependencies Between Macros233643
-Node: Prerequisite Macros234267
-Node: Suggested Ordering237048
-Node: Obsoleting Macros238567
-Node: Coding Style239690
-Node: Portable Shell246696
-Node: Shellology248782
-Node: Here-Documents251761
-Node: File Descriptors253723
-Node: File System Conventions255731
-Ref: File System Conventions-Footnote-1259851
-Node: Shell Substitutions259925
-Node: Assignments264834
-Node: Special Shell Variables266471
-Node: Limitations of Builtins270517
-Node: Limitations of Usual Tools282845
-Node: Limitations of Make295588
-Node: Manual Configuration296569
-Node: Specifying Names297398
-Ref: Specifying Names-Footnote-1300209
-Node: Canonicalizing300609
-Node: Using System Type303013
-Node: Site Configuration304062
-Node: External Software304894
-Node: Package Options308210
-Node: Pretty Help Strings311078
-Node: Site Details313057
-Node: Transforming Names314292
-Node: Transformation Options315440
-Node: Transformation Examples315944
-Node: Transformation Rules317666
-Node: Site Defaults319502
-Node: Running configure scripts323421
-Node: Basic Installation324438
-Node: Compilers and Options327286
-Node: Multiple Architectures327928
-Node: Installation Names328927
-Node: Optional Features330126
-Node: System Type330910
-Node: Sharing Defaults332436
-Node: Environment Variables333078
-Node: configure Invocation333764
-Node: config.status Invocation334896
-Node: Obsolete Constructs338721
-Node: Obsolete config.status Use339647
-Node: acconfig.h341446
-Node: autoupdate Invocation343462
-Node: Obsolete Macros345424
-Node: Autoconf 1362577
-Node: Changed File Names363643
-Node: Changed Makefiles364418
-Node: Changed Macros365511
-Node: Changed Results366767
-Node: Changed Macro Writing368878
-Node: Autoconf 2.13370153
-Node: Changed Quotation371162
-Node: New Macros373069
-Node: Questions374703
-Node: Distributing375227
-Node: Why GNU m4376298
-Node: Bootstrapping377196
-Node: Why Not Imake377812
-Node: History382517
-Node: Genesis383316
-Node: Exodus384512
-Node: Leviticus387563
-Node: Numbers389097
-Node: Deuteronomy391018
-Node: Environment Variable Index393690
-Node: Output Variable Index397733
-Node: Preprocessor Symbol Index407543
-Node: Autoconf Macro Index418550
-Node: M4 Macro Index441882
-Node: Concept Index442569
+Node: Generic Programs106654
+Node: Files110563
+Node: Libraries111458
+Node: Library Functions114323
+Node: Function Portability114946
+Node: Particular Functions115951
+Node: Generic Functions126543
+Node: Header Files130788
+Node: Particular Headers131351
+Node: Generic Headers138320
+Node: Declarations140392
+Node: Particular Declarations140981
+Node: Generic Declarations141404
+Node: Structures143777
+Node: Particular Structures144384
+Node: Generic Structures146106
+Node: Types147350
+Node: Particular Types147870
+Node: Generic Types149040
+Node: Compilers and Preprocessors150412
+Node: Generic Compiler Characteristics151423
+Node: C Compiler152286
+Node: C++ Compiler159627
+Node: Fortran 77 Compiler161870
+Node: System Services170367
+Ref: System Services-Footnote-1173483
+Node: UNIX Variants173574
+Node: Writing Tests174756
+Node: Examining Declarations176688
+Node: Examining Syntax179188
+Node: Examining Libraries180636
+Node: Run Time183648
+Node: Test Programs184629
+Node: Guidelines186896
+Node: Test Functions188095
+Node: Systemology189651
+Ref: Systemology-Footnote-1190279
+Ref: Systemology-Footnote-2190317
+Node: Multiple Cases190385
+Node: Language Choice191642
+Node: Results193677
+Node: Defining Symbols194427
+Node: Setting Output Variables197683
+Node: Caching Results201874
+Node: Cache Variable Names205557
+Node: Cache Files207146
+Node: Cache Checkpointing209176
+Node: Printing Messages210507
+Node: Programming in M4213692
+Node: M4 Quotation214365
+Node: Active Characters215175
+Ref: Active Characters-Footnote-1216553
+Node: One Macro Call216575
+Node: Quotation and Nested Macros218137
+Node: Quadrigraphs221103
+Node: Quotation Rule Of Thumb222028
+Node: Programming in M4sugar224671
+Node: Redefined M4 Macros225179
+Node: Forbidden Patterns226149
+Node: Writing Autoconf Macros227514
+Node: Macro Definitions228315
+Node: Macro Names230123
+Node: Reporting Messages232724
+Node: Dependencies Between Macros234070
+Node: Prerequisite Macros234694
+Node: Suggested Ordering237475
+Node: Obsoleting Macros238994
+Node: Coding Style240117
+Node: Portable Shell247123
+Node: Shellology249209
+Node: Here-Documents252188
+Node: File Descriptors254150
+Node: File System Conventions256158
+Ref: File System Conventions-Footnote-1260278
+Node: Shell Substitutions260352
+Node: Assignments265261
+Node: Special Shell Variables266898
+Node: Limitations of Builtins270944
+Node: Limitations of Usual Tools283272
+Node: Limitations of Make296015
+Node: Manual Configuration296996
+Node: Specifying Names297825
+Ref: Specifying Names-Footnote-1300636
+Node: Canonicalizing301036
+Node: Using System Type303440
+Node: Site Configuration304489
+Node: External Software305321
+Node: Package Options308637
+Node: Pretty Help Strings311505
+Node: Site Details313484
+Node: Transforming Names314719
+Node: Transformation Options315867
+Node: Transformation Examples316371
+Node: Transformation Rules318093
+Node: Site Defaults319929
+Node: Running configure scripts323848
+Node: Basic Installation324865
+Node: Compilers and Options327713
+Node: Multiple Architectures328355
+Node: Installation Names329354
+Node: Optional Features330553
+Node: System Type331337
+Node: Sharing Defaults332863
+Node: Environment Variables333505
+Node: configure Invocation334191
+Node: config.status Invocation335323
+Node: Obsolete Constructs339148
+Node: Obsolete config.status Use340074
+Node: acconfig.h341873
+Node: autoupdate Invocation343889
+Node: Obsolete Macros345851
+Node: Autoconf 1363004
+Node: Changed File Names364070
+Node: Changed Makefiles364845
+Node: Changed Macros365938
+Node: Changed Results367194
+Node: Changed Macro Writing369305
+Node: Autoconf 2.13370580
+Node: Changed Quotation371589
+Node: New Macros373496
+Node: Questions375130
+Node: Distributing375654
+Node: Why GNU m4376725
+Node: Bootstrapping377623
+Node: Why Not Imake378239
+Node: History382944
+Node: Genesis383743
+Node: Exodus384939
+Node: Leviticus387990
+Node: Numbers389524
+Node: Deuteronomy391445
+Node: Environment Variable Index394117
+Node: Output Variable Index398160
+Node: Preprocessor Symbol Index408189
+Node: Autoconf Macro Index419196
+Node: M4 Macro Index442528
+Node: Concept Index443215
 
 End Tag Table
