@@ -137,7 +137,7 @@ m4_define([_AC_LIBOBJ_ALLOCA],
 # contain a buggy version.  If you still want to use their alloca,
 # use ar to extract alloca.o from them instead of compiling alloca.c.
 AC_LIBSOURCES(alloca.c)
-AC_SUBST(ALLOCA, alloca.$ac_objext)dnl
+AC_SUBST(ALLOCA, "alloca.$ac_objext")dnl
 AC_DEFINE(C_ALLOCA, 1, [Define if using `alloca.c'.])
 
 AC_CACHE_CHECK(whether `alloca.c' needs Cray hooks, ac_cv_os_cray,
@@ -1340,7 +1340,7 @@ main (void)
   putc('\r', stdout);
   $ac_main_return(0);			/* Non-reversed systems segv here.  */
 }], ac_cv_func_setvbuf_reversed=yes, ac_cv_func_setvbuf_reversed=no)
-rm -f core core.* *.core])
+rm -f core ./core.* ./*.core])
 if test $ac_cv_func_setvbuf_reversed = yes; then
   AC_DEFINE(SETVBUF_REVERSED, 1,
             [Define if the `setvbuf' function takes the buffering type as
@@ -1395,7 +1395,7 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT],
               ac_cv_func_utime_null=yes,
               ac_cv_func_utime_null=no,
               ac_cv_func_utime_null=no)
-rm -f core core.* *.core])
+rm -f core ./core.* ./*.core])
 if test $ac_cv_func_utime_null = yes; then
   AC_DEFINE(HAVE_UTIME_NULL, 1,
             [Define if `utime(file, NULL)' sets file's timestamp to the

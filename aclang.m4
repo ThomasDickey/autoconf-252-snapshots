@@ -201,10 +201,10 @@ m4_defun([AC_LANG_ASSERT],
 m4_define([AC_LANG(C)],
 [ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&AS_MESSAGE_LOG_FD'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&AS_MESSAGE_LOG_FD'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS "conftest.$ac_ext" >&AS_MESSAGE_LOG_FD'
+ac_link='$CC -o "conftest$ac_exeext" $CFLAGS $CPPFLAGS $LDFLAGS "conftest.$ac_ext" $LIBS >&AS_MESSAGE_LOG_FD'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
-ac_main_return=return
+ac_main_return="return"
 ])
 
 
@@ -229,10 +229,10 @@ m4_define([_AC_LANG_ABBREV(C)], [c])
 m4_define([AC_LANG(C++)],
 [ac_ext=cc
 ac_cpp='$CXXCPP $CPPFLAGS'
-ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&AS_MESSAGE_LOG_FD'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&AS_MESSAGE_LOG_FD'
+ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS "conftest.$ac_ext" >&AS_MESSAGE_LOG_FD'
+ac_link='$CXX -o "conftest$ac_exeext" $CXXFLAGS $CPPFLAGS $LDFLAGS "conftest.$ac_ext" $LIBS >&AS_MESSAGE_LOG_FD'
 ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
-ac_main_return=return
+ac_main_return="return"
 ])
 
 
@@ -255,8 +255,8 @@ m4_define([_AC_LANG_ABBREV(C++)], [cxx])
 # -------------------
 m4_define([AC_LANG(Fortran 77)],
 [ac_ext=f
-ac_compile='$F77 -c $FFLAGS conftest.$ac_ext >&AS_MESSAGE_LOG_FD'
-ac_link='$F77 -o conftest$ac_exeext $FFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&AS_MESSAGE_LOG_FD'
+ac_compile='$F77 -c $FFLAGS "conftest.$ac_ext" >&AS_MESSAGE_LOG_FD'
+ac_link='$F77 -o "conftest$ac_exeext" $FFLAGS $LDFLAGS "conftest.$ac_ext" $LIBS >&AS_MESSAGE_LOG_FD'
 ac_compiler_gnu=$ac_cv_f77_compiler_gnu
 ])
 
@@ -286,7 +286,7 @@ m4_define([_AC_LANG_ABBREV(Fortran 77)], [f77])
 # ----------------------
 # Save the BODY in `conftest.$ac_ext'.  Add a trailing new line.
 m4_define([AC_LANG_CONFTEST],
-[cat >conftest.$ac_ext <<_ACEOF
+[cat >"conftest.$ac_ext" <<_ACEOF
 $1
 _ACEOF])
 
@@ -663,7 +663,7 @@ m4_define([_AC_COMPILER_EXEEXT_DEFAULT],
 # It will help us diagnose broken compilers, and finding out an intuition
 # of exeext.
 AC_MSG_CHECKING([for _AC_LANG compiler default output])
-ac_link_default=`echo "$ac_link" | sed ['s/ -o *conftest[^ ]*//']`
+ac_link_default=`echo "$ac_link" | sed ['s/ -o *"conftest[^"]*"//']`
 AS_IF([AC_TRY_EVAL(ac_link_default)],
 [# Find the output, starting from the most likely.  This scheme is
 # not robust to junk in `.', hence go to wildcards (a.*) only as a last
@@ -684,7 +684,7 @@ for ac_file in `ls a.exe conftest.exe 2>/dev/null;
   esac
 done],
       [echo "$as_me: failed program was:" >&AS_MESSAGE_LOG_FD
-cat conftest.$ac_ext >&AS_MESSAGE_LOG_FD
+cat "conftest.$ac_ext" >&AS_MESSAGE_LOG_FD
 AC_MSG_ERROR([_AC_LANG compiler cannot create executables], 77)])
 ac_exeext=$ac_cv_exeext
 AC_MSG_RESULT([$ac_file])
@@ -746,7 +746,7 @@ for ac_file in `(ls conftest.exe; ls conftest; ls conftest.*) 2>/dev/null`; do
   esac
 done],
               [AC_MSG_ERROR([cannot compute EXEEXT: cannot compile and link])])
-rm -f conftest$ac_cv_exeext
+rm -f "conftest$ac_cv_exeext"
 AC_MSG_RESULT([$ac_cv_exeext])
 ])# _AC_COMPILER_EXEEXT_O
 
@@ -769,11 +769,11 @@ ac_clean_files_save=$ac_clean_files
 ac_clean_files="$ac_clean_files a.out a.exe"
 _AC_COMPILER_EXEEXT_DEFAULT
 _AC_COMPILER_EXEEXT_WORKS
-rm -f a.out a.exe conftest$ac_cv_exeext
+rm -f a.out a.exe "conftest$ac_cv_exeext"
 ac_clean_files=$ac_clean_files_save
 _AC_COMPILER_EXEEXT_CROSS
 _AC_COMPILER_EXEEXT_O
-rm -f conftest.$ac_ext
+rm -f "conftest.$ac_ext"
 AC_SUBST([EXEEXT], [$ac_cv_exeext])dnl
 ac_exeext=$EXEEXT
 ])# _AC_COMPILER_EXEEXT
@@ -802,9 +802,9 @@ AS_IF([AC_TRY_EVAL(ac_compile)],
   esac
 done],
       [echo "$as_me: failed program was:" >&AS_MESSAGE_LOG_FD
-cat conftest.$ac_ext >&AS_MESSAGE_LOG_FD
+cat "conftest.$ac_ext" >&AS_MESSAGE_LOG_FD
 AC_MSG_ERROR([cannot compute OBJEXT: cannot compile])])
-rm -f conftest.$ac_cv_objext conftest.$ac_ext])
+rm -f "conftest.$ac_cv_objext" "conftest.$ac_ext"])
 AC_SUBST([OBJEXT], [$ac_cv_objext])dnl
 ac_objext=$OBJEXT
 ])# _AC_COMPILER_OBJEXT
@@ -874,7 +874,7 @@ break])
 
 done
 # Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
-rm -f conftest.err conftest.$ac_ext
+rm -f conftest.err "conftest.$ac_ext"
 AS_IF([$ac_preproc_ok], [$1], [$2])])# _AC_PROG_PREPROC_WORKS_IFELSE
 
 
@@ -1050,17 +1050,17 @@ AC_CACHE_VAL(ac_cv_prog_cc_${ac_cc}_c_o,
 # Make sure it works both with $CC and with simple cc.
 # We do the test twice because some compilers refuse to overwrite an
 # existing .o file with -o, though they will create one.
-ac_try='$CC -c conftest.$ac_ext -o conftest.$ac_objext >&AS_MESSAGE_LOG_FD'
+ac_try='$CC -c "conftest.$ac_ext" -o "conftest.$ac_objext" >&AS_MESSAGE_LOG_FD'
 if AC_TRY_EVAL(ac_try) &&
-   test -f conftest.$ac_objext && AC_TRY_EVAL(ac_try);
+   test -f "conftest.$ac_objext" && AC_TRY_EVAL(ac_try);
 then
   eval ac_cv_prog_cc_${ac_cc}_c_o=yes
   if test "x$CC" != xcc; then
     # Test first that cc exists at all.
-    if AC_TRY_COMMAND(cc -c conftest.$ac_ext >&AS_MESSAGE_LOG_FD); then
-      ac_try='cc -c conftest.$ac_ext -o conftest.$ac_objext >&AS_MESSAGE_LOG_FD'
+    if AC_TRY_COMMAND(cc -c "conftest.$ac_ext" >&AS_MESSAGE_LOG_FD); then
+      ac_try='cc -c "conftest.$ac_ext" -o "conftest.$ac_objext" >&AS_MESSAGE_LOG_FD'
       if AC_TRY_EVAL(ac_try) &&
-	 test -f conftest.$ac_objext && AC_TRY_EVAL(ac_try);
+	 test -f "conftest.$ac_objext" && AC_TRY_EVAL(ac_try);
       then
         # cc works too.
         :
@@ -1241,7 +1241,7 @@ done
 rm -rf conftest*
 if test -n "$ac_declaration"; then
   echo '#ifdef __cplusplus' >>confdefs.h
-  echo $ac_declaration      >>confdefs.h
+  echo "$ac_declaration"    >>confdefs.h
   echo '#endif'             >>confdefs.h
 fi
 ])# _AC_PROG_CXX_EXIT_DECLARATION
@@ -1378,9 +1378,9 @@ AC_CACHE_CHECK([whether $F77 understand -c and -o together],
 [AC_LANG_CONFTEST([AC_LANG_PROGRAM([])])
 # We test twice because some compilers refuse to overwrite an existing
 # `.o' file with `-o', although they will create one.
-ac_try='$F77 $FFLAGS -c conftest.$ac_ext -o conftest.$ac_objext >&AS_MESSAGE_LOG_FD'
+ac_try='$F77 $FFLAGS -c "conftest.$ac_ext" -o "conftest.$ac_objext" >&AS_MESSAGE_LOG_FD'
 if AC_TRY_EVAL(ac_try) &&
-     test -f conftest.$ac_objext &&
+     test -f "conftest.$ac_objext" &&
      AC_TRY_EVAL(ac_try); then
   ac_cv_prog_f77_c_o=yes
 else
@@ -1471,7 +1471,7 @@ do
                     [ac_cv_prog_cc_stdc=$ac_arg
 break])
 done
-rm -f conftest.$ac_ext conftest.$ac_objext
+rm -f "conftest.$ac_ext" "conftest.$ac_objext"
 CC=$ac_save_CC
 ])
 case "x$ac_cv_prog_cc_stdc" in
@@ -2060,7 +2060,7 @@ AC_COMPILE_IFELSE(
       subroutine foo_bar()
       return
       end],
-[mv conftest.$ac_objext cf77_test.$ac_objext
+[mv "conftest.$ac_objext" "cf77_test.$ac_objext"
 
   AC_LANG_PUSH(C)dnl
 
