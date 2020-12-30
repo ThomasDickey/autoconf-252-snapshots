@@ -137,7 +137,7 @@ AC_CACHE_CHECK([for egrep], ac_cv_path_EGREP,
    [if echo a | $GREP -E '(a|b)' >/dev/null 2>&1
    then ac_cv_path_EGREP="$GREP -E"
    else
-     AC_CHECK_PROGS(EGREP, egrep, )
+     AC_PATH_PROGS(EGREP, egrep, )
    fi])
  EGREP="$ac_cv_path_EGREP"
  AC_SUBST([EGREP])
@@ -152,7 +152,7 @@ AC_CACHE_CHECK([for fgrep], ac_cv_path_FGREP,
    [if echo 'ab*c' | $GREP -F 'ab*c' >/dev/null 2>&1
    then ac_cv_path_FGREP="$GREP -F"
    else
-     AC_CHECK_PROGS(FGREP, fgrep, )
+     AC_PATH_PROGS(FGREP, fgrep, )
    fi])
  FGREP="$ac_cv_path_FGREP"
  AC_SUBST([FGREP])
