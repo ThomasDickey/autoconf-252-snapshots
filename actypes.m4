@@ -1,5 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Type related macros: existence, sizeof, and structure members.
+#------------------------------------------------------------------------------
+# Copyright 2020,2021	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -150,7 +152,7 @@ if (sizeof ($1))
   return 0;])],
                    [AS_VAR_SET(ac_Type, yes)],
                    [AS_VAR_SET(ac_Type, no)])])
-AS_IF([test AS_VAR_GET(ac_Type) = yes], [$2], [$3])[]dnl
+AS_IF([test "AS_VAR_GET(ac_Type)" = yes], [$2], [$3])[]dnl
 AS_VAR_POPDEF([ac_Type])dnl
 ])# _AC_CHECK_TYPE_NEW
 
@@ -430,7 +432,7 @@ if (ac_aggr.m4_patsubst([$1], [^[^.]*\.]))
 return 0;])],
                 [AS_VAR_SET(ac_Member, yes)],
                 [AS_VAR_SET(ac_Member, no)])])
-AS_IF([test AS_VAR_GET(ac_Member) = yes], [$2], [$3])dnl
+AS_IF([test "AS_VAR_GET(ac_Member)" = yes], [$2], [$3])dnl
 AS_VAR_POPDEF([ac_Member])dnl
 ])# AC_CHECK_MEMBER
 

@@ -1,4 +1,19 @@
 -- vile:fk=utf-8
+2021-01-01  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20210101.
+
+	Modify mktests.sh to work with the configured egrep.
+
+	Add quotes, etc., to appease some of shellcheck's warnings; most are
+	false positives.
+
+	Add autoconf option "--opt-functions" to optionally generate part of
+	the checks for compile/link/run in shell-functions, to reduce the
+	number of false-positives reported by shellcheck in its advice for
+	the eval feature.
+
+	Fix regression in adaptation of egrep check.
+
 2020-12-28  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20201228.
 

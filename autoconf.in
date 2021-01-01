@@ -1,6 +1,9 @@
 #! @SHELL@
 # -*- shell-script -*-
+# vile:shmode:
 # autoconf -- create `configure' using m4 macros
+#------------------------------------------------------------------------------
+# Copyright 2003-2020,2021	Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1996, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 
@@ -37,6 +40,9 @@ Operation modes:
   -o, --output=FILE        save output in FILE (stdout is the default)
   -W, --warnings=CATEGORY  report the warnings falling in CATEGORY [syntax]
 
+Options:
+  -opt-functions           use shell-functions to reduce repetition
+
 Warning categories include:
   \`cross'         cross compilation issues
   \`obsolete'      obsolete constructs
@@ -64,6 +70,7 @@ version="\
 autoconf (@PACKAGE_NAME@) @VERSION@
 Written by David J. MacKenzie.
 
+Copyright 2003-2020,2021	Thomas E. Dickey
 Copyright 1992, 1993, 1994, 1996, 1999, 2000, 2001
 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
@@ -134,6 +141,8 @@ debug=false
 initialization=false
 localdir=.
 outfile=
+# Options:
+autoconf_opts=
 # Exit status.
 status=0
 # Tasks:
@@ -187,6 +196,10 @@ while test $# -gt 0 ; do
        test $# = 1 && eval "$exit_missing_arg"
        shift
        autoconf_dir=$1
+       shift ;;
+
+    --opt-functions )
+       autoconf_opts="$autoconf_opts -D_OPT_SHFUN"
        shift ;;
 
     --trace=* | -t?* )
@@ -277,7 +290,7 @@ $debug ||
 # Running m4.
 test -f "$autoconf_dir/acsite.m4" && acsite_m4="$autoconf_dir/acsite.m4"
 test -f "$localdir/aclocal.m4"   && aclocal_m4="$localdir/aclocal.m4"
-m4_common="-I $autoconf_dir -I $localdir -Dm4_tmpdir=$tmp"
+m4_common="-I $autoconf_dir -I $localdir -Dm4_tmpdir=$tmp $autoconf_opts"
 m4_prefiles="                $autoconf_dir/autoconf.m4  $acsite_m4 $aclocal_m4"
 m4f_prefiles="--reload-state=$autoconf_dir/autoconf.m4f $acsite_m4 $aclocal_m4"
 run_m4="$M4 $m4_common"
@@ -348,7 +361,7 @@ case $task in
   sed 's/^    //' >"$tmp/finalize.awk" <<EOF
     # Load the list of tokens which escape the forbidden patterns.
     BEGIN {
-      # Be sure the read GAWK documentation to understand the parens
+      # Be sure to read the GAWK documentation to understand the parens
       # around \`tmp "/forbidden.rx"'.
       while ((getline pattern < (tmp "/forbidden.rx")) > 0)
         forbidden = (forbidden ? forbidden "|" : "") pattern

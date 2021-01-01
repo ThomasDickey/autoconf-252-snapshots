@@ -1,6 +1,8 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # vile:fk=utf-8
 # Checking for functions.
+#------------------------------------------------------------------------------
+# Copyright 2020,2021	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -70,7 +72,7 @@ AC_CACHE_CHECK([for $1], ac_var,
 [AC_LINK_IFELSE([AC_LANG_FUNC_LINK_TRY([$1])],
                 [AS_VAR_SET(ac_var, yes)],
                 [AS_VAR_SET(ac_var, no)])])
-AS_IF([test AS_VAR_GET(ac_var) = yes], [$2], [$3])dnl
+AS_IF([test "AS_VAR_GET(ac_var)" = yes], [$2], [$3])dnl
 AS_VAR_POPDEF([ac_var])dnl
 ])# AC_CHECK_FUNC
 
@@ -1139,7 +1141,7 @@ AC_CACHE_CHECK([types of arguments for select],
  done
 done
 # Provide a safe default value.
-: ${ac_cv_func_select_args='int,int *,struct timeval *'}
+: "${ac_cv_func_select_args='int,int *,struct timeval *'}"
 ])
 ac_save_IFS=$IFS; IFS=','
 set dummy `echo "$ac_cv_func_select_args" | sed 's/\*/\*/g'`
