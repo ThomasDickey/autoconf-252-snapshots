@@ -87,7 +87,7 @@ MACRO_FILES = ../acgeneral.m4               ../acspecific.m4               ../ac
 CLEANFILES = debug-*.sh macro configure configure.in configure.ac              config.status config.cache config.log config.h.in config.h              config.hin state-* at-*              stderr stdout empty 	     config.guess config.sub expr libtool ltconfig ltmain.sh install-sh
 
 DISTCLEANFILES = atconfig testsuite
-CONFIG_CLEAN_FILES =  atconfig
+CONFIG_CLEAN_FILES =  atconfig mktests.sh
 DIST_COMMON =  README Makefile.am Makefile.in atconfig.in
 
 
@@ -200,22 +200,22 @@ testsuite: $(top_srcdir)/m4sugar.m4 $(top_srcdir)/m4sh.m4 \
 	mv $@.tmp $@
 
 acgeneral.at: mktests.sh $(MACRO_FILES)
-	cd $(srcdir) && ./mktests.sh $(MACRO_FILES)
+	cd $(srcdir) && $(SHELL) ./mktests.sh $(MACRO_FILES)
 
 acspecific.at: mktests.sh $(MACRO_FILES)
-	cd $(srcdir) && ./mktests.sh $(MACRO_FILES)
+	cd $(srcdir) && $(SHELL) ./mktests.sh $(MACRO_FILES)
 
 acfunctions.at: mktests.sh $(MACRO_FILES)
-	cd $(srcdir) && ./mktests.sh $(MACRO_FILES)
+	cd $(srcdir) && $(SHELL) ./mktests.sh $(MACRO_FILES)
 
 aclang.at: mktests.sh $(MACRO_FILES)
-	cd $(srcdir) && ./mktests.sh $(MACRO_FILES)
+	cd $(srcdir) && $(SHELL) ./mktests.sh $(MACRO_FILES)
 
 acheaders.at: mktests.sh $(MACRO_FILES)
-	cd $(srcdir) && ./mktests.sh $(MACRO_FILES)
+	cd $(srcdir) && $(SHELL) ./mktests.sh $(MACRO_FILES)
 
 actypes.at: mktests.sh $(MACRO_FILES)
-	cd $(srcdir) && ./mktests.sh $(MACRO_FILES)
+	cd $(srcdir) && $(SHELL) ./mktests.sh $(MACRO_FILES)
 
 maintainer-check: maintainer-check-posix maintainer-check-c++
 

@@ -1,5 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Parameterized macros.
+#------------------------------------------------------------------------------
+# Copyright 2003-2020,2021	Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -102,6 +104,15 @@
 # - INIT_PREPARE
 #   Tail of initialization code.
 #
+# - SHFUN_BEGIN
+#   Add beginning comment-marker for shell-functions, if enabled.
+# - SHFUN_OURS
+#   Add autoconf shell-functions, if enabled rather than inline.
+# - SHFUN_USER
+#   Add user-defined shell-functions, if enabled rather than inline.
+# - SHFUN_END
+#   Add closing comment-marker for shell-functions, if enabled.
+#
 # - BODY
 #   the tests and output code
 #
@@ -134,7 +145,12 @@ m4_define([_m4_divert(VERSION_END)],    23)
 
 m4_define([_m4_divert(INIT_PREPARE)],   30)
 
-m4_define([_m4_divert(BODY)],           40)
+m4_define([_m4_divert(SHFUN_BEGIN)],    40)
+m4_define([_m4_divert(SHFUN_OURS)],     41)
+m4_define([_m4_divert(SHFUN_USER)],     42)
+m4_define([_m4_divert(SHFUN_END)],      43)
+
+m4_define([_m4_divert(BODY)],           50)
 
 m4_define([_m4_divert(PREPARE)],       100)
 
@@ -552,7 +568,8 @@ m4_ifset([AC_PACKAGE_BUGREPORT],
 # user copyrights, and after the setup of the --version handling.
 m4_define([_AC_INIT_COPYRIGHT],
 [AC_COPYRIGHT(
-[Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
+[Copyright 2003-2020,2021	Thomas E. Dickey
+Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 Free Software Foundation, Inc.
 This configure script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it.],
@@ -605,7 +622,7 @@ AC_SUBST(SHELL, ${CONFIG_SHELL-/bin/sh})dnl
 # Maximum number of lines to put in a shell here document.
 # This variable seems obsolete.  It should probably be removed, and
 # only ac_max_sed_lines should be used.
-: ${ac_max_here_lines=38}
+: "${ac_max_here_lines=38}"
 
 m4_divert_pop([DEFAULTS])dnl
 ])# _AC_INIT_DEFAULTS
@@ -1021,7 +1038,7 @@ Try `$[0] --help' for more information.])
     AC_MSG_WARN([you should use --build, --host, --target])
     expr "x$ac_option" : "[.*[^-._$as_cr_alnum]]" >/dev/null &&
       AC_MSG_WARN([invalid host type: $ac_option])
-    : ${build_alias=$ac_option} ${host_alias=$ac_option} ${target_alias=$ac_option}
+    : "${build_alias=$ac_option}" "${host_alias=$ac_option}" "${target_alias=$ac_option}"
     ;;
 
   esac
@@ -1442,6 +1459,7 @@ _AC_INIT_CONFIG_LOG
 _AC_INIT_PREPARE
 _AC_INIT_NOTICE
 _AC_INIT_COPYRIGHT
+_AC_INIT_SHFUN
 m4_ifval([$2], , [m4_ifval([$1], [AC_CONFIG_SRCDIR([$1])])])dnl
 ])
 
@@ -1464,6 +1482,21 @@ Options recognized by this package (as ordered in configure.in)]])dnl
 m4_define([AC_DIVERT_HELP],
 [m4_divert_once([HELP_DETAIL], [[$1]])
 ])
+
+
+# _AC_INIT_SHFUN
+# --------------
+# FIXME: this should be invoked on demand by the first shell function to be
+# stored.
+m4_define([_AC_INIT_SHFUN],
+[m4_ifdef([_OPT_SHFUN],[
+m4_divert_once([SHFUN_BEGIN], [
+## Begin shell-functions:
+])dnl
+m4_divert_once([SHFUN_END], [
+## End of shell-functions
+])dnl
+])])# _AC_INIT_SHFUN
 
 
 ## ----------------------------- ##
@@ -2174,22 +2207,47 @@ AC_DEFUN([_AC_RUN_LOG],
 # Note that when tracing, most shells will leave the traces in stderr
 AC_DEFUN([_AC_RUN_LOG_STDERR],
 [AC_REQUIRE([AC_PROG_EGREP])dnl
-{ ($2) >&AS_MESSAGE_LOG_FD
+m4_ifdef([_OPT_SHFUN],dnl
+[m4_divert_once([SHFUN_OURS], [# arg1=lineno, arg2=command, arg3=message
+eval_stderr() {
+  as_eval="$as_ms:[$]1"; shift
+  (eval "[$]2") >&AS_MESSAGE_LOG_FD
+  (eval "[$]1") 2>conftest.er1
+  ac_status=$?
+  $EGREP -v '^ *\+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&AS_MESSAGE_LOG_FD
+  echo "$as_eval: \$? = $ac_status" >&AS_MESSAGE_LOG_FD
+  (exit "$ac_status");
+}])dnl
+{ eval_stderr __oline__ '$1' '$2'; }],dnl
+[{ ($2) >&AS_MESSAGE_LOG_FD
   ($1) 2>conftest.er1
   ac_status=$?
   $EGREP -v '^ *\+' conftest.er1 >conftest.err
   rm -f conftest.er1
   cat conftest.err >&AS_MESSAGE_LOG_FD
   echo "$as_me:__oline__: \$? = $ac_status" >&AS_MESSAGE_LOG_FD
-  (exit "$ac_status"); }])
+  (exit "$ac_status"); }])])
 
 
 # _AC_EVAL(COMMAND)
 # -----------------
 # Eval COMMAND, save the exit status in ac_status, and log it.
 AC_DEFUN([_AC_EVAL],
+[m4_ifdef([_OPT_SHFUN],dnl
+[m4_divert_once([SHFUN_OURS], [# arg1=lineno, arg2=command, etc
+eval_command() {
+  as_eval="$as_ms:[$]1"; shift
+  (eval echo "$as_eval: \"[$]* >&AS_MESSAGE_LOG_FD\"") >&AS_MESSAGE_LOG_FD
+  (eval "[$]@" </dev/null >&AS_MESSAGE_LOG_FD) 2>&AS_MESSAGE_LOG_FD
+  ac_status=$?
+  echo "$as_eval: \$? = $ac_status" >&AS_MESSAGE_LOG_FD
+  (exit "$ac_status");
+}])dnl
+{ eval_command __oline__ "$1"; }],dnl
 [_AC_RUN_LOG([eval $1],
-             [eval echo "$as_me:__oline__: \"$1\""])])
+             [eval echo "$as_me:__oline__: \"$1\""])])])
 
 
 # _AC_EVAL_STDERR(COMMAND)
@@ -2616,7 +2674,7 @@ AC_TRY_LINK_FUNC([$2],
                  [AS_VAR_SET(ac_Lib, yes)],
                  [AS_VAR_SET(ac_Lib, no)])
 LIBS=$ac_check_lib_save_LIBS])
-AS_IF([test AS_VAR_GET(ac_Lib) = yes],
+AS_IF([test "AS_VAR_GET(ac_Lib)" = yes],
       [m4_default([$3], [AC_DEFINE_UNQUOTED(AS_TR_CPP(HAVE_LIB$1))
   LIBS="-l$1 $LIBS"
 ])],
@@ -2915,7 +2973,7 @@ if test -r "$1"; then
 else
   AS_VAR_SET(ac_File, no)
 fi])
-AS_IF([test AS_VAR_GET(ac_File) = yes], [$2], [$3])[]dnl
+AS_IF([test "AS_VAR_GET(ac_File)" = yes], [$2], [$3])[]dnl
 AS_VAR_POPDEF([ac_File])dnl
 ])# AC_CHECK_FILE
 
@@ -2951,7 +3009,7 @@ AC_CACHE_CHECK([whether $1 is declared], ac_Symbol,
 ])],
                    [AS_VAR_SET(ac_Symbol, yes)],
                    [AS_VAR_SET(ac_Symbol, no)])])
-AS_IF([test AS_VAR_GET(ac_Symbol) = yes], [$2], [$3])[]dnl
+AS_IF([test "AS_VAR_GET(ac_Symbol)" = yes], [$2], [$3])[]dnl
 AS_VAR_POPDEF([ac_Symbol])dnl
 ])# AC_CHECK_DECL
 
@@ -3542,7 +3600,7 @@ AC_SETUP_DEFS([$4])
 dnl Commands to run before creating config.status.
 AC_OUTPUT_COMMANDS_PRE()dnl
 
-: ${CONFIG_STATUS=./config.status}
+: "${CONFIG_STATUS=./config.status}"
 ac_clean_files_save=$ac_clean_files
 ac_clean_files="$ac_clean_files $CONFIG_STATUS"
 _AC_OUTPUT_CONFIG_STATUS()dnl
@@ -3669,6 +3727,7 @@ m4_ifset([AC_PACKAGE_VERSION], [ AC_PACKAGE_VERSION])
 configured by [$]0, generated by GNU Autoconf AC_ACVERSION,
   with options \\"`echo "$ac_configure_args" | sed 's/[[\\""\`\$]]/\\\\&/g'`\\"
 
+Copyright 2003-2020,2021	Thomas E. Dickey
 Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation

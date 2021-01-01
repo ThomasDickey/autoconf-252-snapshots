@@ -1,5 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Programming languages support.
+#------------------------------------------------------------------------------
+# Copyright 2020,2021	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -959,7 +961,7 @@ test -z "$CC" && AC_MSG_ERROR([no acceptable cc found in \$PATH])
 # Provide some information about the compiler.
 echo "$as_me:__oline__:" \
      "checking for _AC_LANG compiler version" >&AS_MESSAGE_LOG_FD
-ac_compiler=`set X $ac_compile; echo $[2]`
+ac_compiler=`set X $ac_compile; echo "$[2]"`
 _AC_EVAL([$ac_compiler --version </dev/null >&AS_MESSAGE_LOG_FD])
 _AC_EVAL([$ac_compiler -v </dev/null >&AS_MESSAGE_LOG_FD])
 _AC_EVAL([$ac_compiler -V </dev/null >&AS_MESSAGE_LOG_FD])

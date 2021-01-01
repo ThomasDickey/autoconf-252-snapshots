@@ -1,6 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Macros that test for specific features.
-# Copyright 2006-2019,2020	Thomas E. Dickey
+#------------------------------------------------------------------------------
+# Copyright 2006-2020,2021	Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -137,7 +138,8 @@ AC_CACHE_CHECK([for egrep], ac_cv_path_EGREP,
    [if echo a | $GREP -E '(a|b)' >/dev/null 2>&1
    then ac_cv_path_EGREP="$GREP -E"
    else
-     AC_PATH_PROGS(EGREP, egrep, )
+     AC_PATH_PROGS(EGREP, gegrep egrep, : )
+     test "x$ac_cv_path" = "x:" && AC_MSG_ERROR([cannot find workable egrep])
    fi])
  EGREP="$ac_cv_path_EGREP"
  AC_SUBST([EGREP])
@@ -152,7 +154,8 @@ AC_CACHE_CHECK([for fgrep], ac_cv_path_FGREP,
    [if echo 'ab*c' | $GREP -F 'ab*c' >/dev/null 2>&1
    then ac_cv_path_FGREP="$GREP -F"
    else
-     AC_PATH_PROGS(FGREP, fgrep, )
+     AC_PATH_PROGS(FGREP, gfgrep fgrep, : )
+     test "x$ac_cv_path" = "x:" && AC_MSG_ERROR([cannot find workable fgrep])
    fi])
  FGREP="$ac_cv_path_FGREP"
  AC_SUBST([FGREP])
@@ -162,7 +165,7 @@ AC_CACHE_CHECK([for fgrep], ac_cv_path_FGREP,
 # AC_PROG_GREP
 # ------------
 AC_DEFUN([AC_PROG_GREP],
-[AC_CHECK_PROGS(GREP, grep ggrep, )
+[AC_CHECK_PROGS(GREP, ggrep grep, : )
  AC_SUBST([GREP])
 ])
 
@@ -514,24 +517,24 @@ if test -n "$TMPDIR" && test -d "$TMPDIR" && test -w "$TMPDIR"; then
 else
   ac_tmpdirs='/tmp /var/tmp /usr/tmp'
 fi
-for ac_dir in  . $ac_tmpdirs `eval echo $prefix/lib $exec_prefix/lib` ; do
-  test -d $ac_dir || continue
-  test -w $ac_dir || continue # It is less confusing to not echo anything here.
+for ac_dir in  . $ac_tmpdirs `eval echo "$prefix/lib" "$exec_prefix/lib"` ; do
+  test -d "$ac_dir" || continue
+  test -w "$ac_dir" || continue # It is less confusing to not echo anything here.
   ac_xdir=$ac_dir/cf$$
-  (umask 077 && mkdir $ac_xdir 2>/dev/null) || continue
+  (umask 077 && mkdir "$ac_xdir" 2>/dev/null) || continue
   ac_tf1=$ac_xdir/conftest9012345
   ac_tf2=$ac_xdir/conftest9012346
-  (echo 1 >$ac_tf1) 2>/dev/null
-  (echo 2 >$ac_tf2) 2>/dev/null
-  ac_val=`cat $ac_tf1 2>/dev/null`
-  if test ! -f $ac_tf1 || test "$ac_val" != 1; then
+  (echo 1 >"$ac_tf1") 2>/dev/null
+  (echo 2 >"$ac_tf2") 2>/dev/null
+  ac_val=`cat "$ac_tf1" 2>/dev/null`
+  if test ! -f "$ac_tf1" || test "$ac_val" != 1; then
     ac_cv_sys_long_file_names=no
-    rm -rf $ac_xdir 2>/dev/null
+    rm -rf "$ac_xdir" 2>/dev/null
     break
   fi
-  rm -rf $ac_xdir 2>/dev/null
+  rm -rf "$ac_xdir" 2>/dev/null
 done])
-if test $ac_cv_sys_long_file_names = yes; then
+if test "$ac_cv_sys_long_file_names" = yes; then
   AC_DEFINE(HAVE_LONG_FILE_NAMES, 1,
             [Define if you support file names longer than 14 characters.])
 fi
@@ -638,7 +641,7 @@ acfindx:
 EOF
   if (xmkmf) >/dev/null 2>/dev/null && test -f Makefile; then
     # GNU make sometimes prints "make[1]: Entering...", which would confuse us.
-    eval `${MAKE-make} acfindx 2>/dev/null | grep -v make`
+    eval "`${MAKE-make} acfindx 2>/dev/null | grep -v make`"
     # Open Windows xmkmf reportedly sets LIBDIR instead of USRLIBDIR.
     for ac_extension in a so sl dylib dll; do
       if test ! -f "$ac_im_usrlibdir/libX11.$ac_extension" &&

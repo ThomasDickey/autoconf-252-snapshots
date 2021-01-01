@@ -1,6 +1,7 @@
 #! /bin/sh
 
 # Build some of the Autoconf test files.
+# Copyright 2021 Thomas E. Dickey
 # Copyright 2000 Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
@@ -185,14 +186,14 @@ do
     sort |
     uniq |
     # Watch out we are `set -e': don't fail.
-    ( egrep -v "$ac_exclude_egrep" || true) >acdefuns
+    ( @EGREP@ -v "$ac_exclude_egrep" || true) >acdefuns
 
   # Get the list of macros which are defined in Autoupdate level.
   cat $file |
     sed -n 's/^AU_DEFUN(\[*\([a-zA-Z][a-zA-Z0-9_]*\).*$/\1/p' |
     sort |
     uniq |
-    ( egrep -v "$au_exclude_egrep" || true) > audefuns
+    ( @EGREP@ -v "$au_exclude_egrep" || true) > audefuns
 
   # Filter out required macros.
   {

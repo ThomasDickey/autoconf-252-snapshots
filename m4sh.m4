@@ -2,6 +2,8 @@ include(m4sugar.m4)#                                        -*- Autoconf -*-
 # This file is part of Autoconf.
 # M4 sugar for common shell constructs.
 # Requires GNU M4 and M4sugar.
+#------------------------------------------------------------------------------
+# Copyright 2020,2021	Thomas E. Dickey
 # Copyright 2000, 2001 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify

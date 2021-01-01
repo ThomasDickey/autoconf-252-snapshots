@@ -1,5 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Checking for headers.
+#------------------------------------------------------------------------------
+# Copyright 2020,2021	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -80,7 +82,7 @@ AC_CACHE_CHECK([for $1], ac_Header,
                       [AC_PREPROC_IFELSE([AC_LANG_SOURCE([@%:@include <$1>])],
                                          [AS_VAR_SET(ac_Header, yes)],
                                          [AS_VAR_SET(ac_Header, no)])])])
-AS_IF([test AS_VAR_GET(ac_Header) = yes], [$2], [$3])[]dnl
+AS_IF([test "AS_VAR_GET(ac_Header)" = yes], [$2], [$3])[]dnl
 AS_VAR_POPDEF([ac_Header])dnl
 ])# AC_CHECK_HEADER
 
@@ -132,7 +134,7 @@ AC_CACHE_CHECK([for $1 that defines DIR], ac_Header,
 return 0;])],
                    [AS_VAR_SET(ac_Header, yes)],
                    [AS_VAR_SET(ac_Header, no)])])
-AS_IF([test AS_VAR_GET(ac_Header) = yes], [$2], [$3])[]dnl
+AS_IF([test "AS_VAR_GET(ac_Header)" = yes], [$2], [$3])[]dnl
 AS_VAR_POPDEF([ac_Header])dnl
 ])# _AC_CHECK_HEADER_DIRENT
 

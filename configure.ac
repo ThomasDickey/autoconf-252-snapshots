@@ -1,10 +1,12 @@
 #                                                       -*- Autoconf -*-
+# Copyright 2008-2020,2021	Thomas E. Dickey
+#------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.50)
-AC_INIT(GNU Autoconf, [2.52.20201228], dickey@invisible-island.net)
+AC_INIT(GNU Autoconf, [2.52.20210101], dickey@invisible-island.net)
 AC_CONFIG_SRCDIR(acgeneral.m4)
 AC_CONFIG_AUX_DIR(config)
-AM_INIT_AUTOMAKE(autoconf, [2.52.20201228])
+AM_INIT_AUTOMAKE(autoconf, [2.52.20210101])
 
 # Initialize the test suite.
 AT_CONFIG(..)
@@ -29,6 +31,9 @@ if echo xfoo | $AWK '/foo|^bar$/ { print }' | grep xfoo >/dev/null; then :; else
   AC_MSG_ERROR([the regex engine of $AWK is too broken to be used
                 you might want to install GNU AWK])
 fi
+
+# The "make check" needs a working egrep.
+AC_PROG_EGREP
 
 # Generating man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
@@ -67,7 +72,7 @@ PACKAGE_BUGREPORT_PL=`echo "$PACKAGE_BUGREPORT" | sed -e 's/@/\\\\\\\\@/g'`
 AC_SUBST(PACKAGE_BUGREPORT_PL)
 
 AC_CONFIG_FILES(Makefile m4/Makefile man/Makefile doc/Makefile config/Makefile
-                tests/Makefile tests/atconfig)
+                tests/Makefile tests/atconfig tests/mktests.sh:tests/mktests.in)
 
 AC_OUTPUT
 
