@@ -2210,7 +2210,7 @@ AC_DEFUN([_AC_RUN_LOG_STDERR],
 m4_ifdef([_OPT_SHFUN],dnl
 [m4_divert_once([SHFUN_OURS], [# arg1=lineno, arg2=command, arg3=message
 eval_stderr() {
-  as_eval="$as_ms:[$]1"; shift
+  as_eval="$as_me:[$]1"; shift
   (eval "[$]2") >&AS_MESSAGE_LOG_FD
   (eval "[$]1") 2>conftest.er1
   ac_status=$?
@@ -2238,7 +2238,7 @@ AC_DEFUN([_AC_EVAL],
 [m4_ifdef([_OPT_SHFUN],dnl
 [m4_divert_once([SHFUN_OURS], [# arg1=lineno, arg2=command, etc
 eval_command() {
-  as_eval="$as_ms:[$]1"; shift
+  as_eval="$as_me:[$]1"; shift
   (eval echo "$as_eval: \"[$]* >&AS_MESSAGE_LOG_FD\"") >&AS_MESSAGE_LOG_FD
   (eval "[$]@" </dev/null >&AS_MESSAGE_LOG_FD) 2>&AS_MESSAGE_LOG_FD
   ac_status=$?
