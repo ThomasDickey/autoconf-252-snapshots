@@ -1,4 +1,15 @@
 -- vile:fk=utf-8
+2021-01-05  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20210105.
+
+	Add ToD to tests/aclocal.m4 filtering for NetBSD's sh.
+
+	Corrected check when no fgrep or egrep is found.
+
+	Fix typo in generated shell-functions message-prefix.
+
+	Update tests/aclocal.m4 for g77.
+
 2021-01-01  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20210101.
 

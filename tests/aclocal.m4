@@ -47,9 +47,10 @@ m4_defun([AC_STATE_SAVE],
       [^(cross_compiling)=],
       [^(interpval|PATH_SEPARATOR)=],
       [^(F77_DUMMY_MAIN|f77_(case|underscore))=],
+      [^(COLLECT_(GCC|GCC_OPTIONS|LTO_WRAPPER)|(COMPILER|LIBRARY)_PATH)=],
       [^(ALLOCA|GETLOADAVG_LIBS|KMEM_GROUP|NEED_SETGID|POW_LIB)=],
       [^(AWK|LEX|LEXLIB|LEX_OUTPUT_ROOT|LN_S|M4|RANLIB|SET_MAKE|YACC)=],
-      [^(GREP|EGREP|FGREP)=],
+      [^(GREP|EGREP|FGREP|ToD)=],
       [^(_|@|.[*#?].|LINENO|OLDPWD|PIPESTATUS|RANDOM|SECONDS)=])' 2>/dev/null |
   # There may be variables spread on several lines, eg IFS, remove the dead
   # lines.

@@ -139,7 +139,7 @@ AC_CACHE_CHECK([for egrep], ac_cv_path_EGREP,
    then ac_cv_path_EGREP="$GREP -E"
    else
      AC_PATH_PROGS(EGREP, gegrep egrep, : )
-     test "x$ac_cv_path" = "x:" && AC_MSG_ERROR([cannot find workable egrep])
+     test "x$ac_cv_path_EGREP" = "x:" && AC_MSG_ERROR([cannot find workable egrep])
    fi])
  EGREP="$ac_cv_path_EGREP"
  AC_SUBST([EGREP])
@@ -155,7 +155,7 @@ AC_CACHE_CHECK([for fgrep], ac_cv_path_FGREP,
    then ac_cv_path_FGREP="$GREP -F"
    else
      AC_PATH_PROGS(FGREP, gfgrep fgrep, : )
-     test "x$ac_cv_path" = "x:" && AC_MSG_ERROR([cannot find workable fgrep])
+     test "x$ac_cv_path_FGREP" = "x:" && AC_MSG_ERROR([cannot find workable fgrep])
    fi])
  FGREP="$ac_cv_path_FGREP"
  AC_SUBST([FGREP])
