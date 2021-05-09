@@ -437,7 +437,7 @@ m4_define([AC_LANG_INT_SAVE(C)],
 [FILE *f = fopen ("conftest.val", "w");
 if (!f)
   $ac_main_return (1);
-fprintf (f, "%d", ($2));
+fprintf (f, "%ld", (long)($2));
 fclose (f);])])
 
 
