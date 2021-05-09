@@ -1,4 +1,12 @@
 -- vile:fk=utf-8
+2021-05-09  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20210509.
+
+	quiet a configure-time compile warning using a cast (report by Miroslav
+	Lichvar).
+
+	updated config/config.{guess,sub}
+
 2021-01-05  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20210105.
 
