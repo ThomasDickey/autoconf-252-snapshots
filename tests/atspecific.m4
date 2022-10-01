@@ -97,8 +97,8 @@ fi
 # but those of automatically checked features (STDC_HEADERS etc.).
 # AT_CHECK_HEADER is a better name, but too close from AC_CHECK_HEADER.
 m4_define([AT_CHECK_DEFINES],
-[AT_CHECK([[fgrep '#' config.h |
- egrep -v 'STDC_HEADERS|STD(INT|LIB)|INTTYPES|MEMORY|STRING|UNISTD|SYS_(TYPES|STAT)']],,
+[AT_CHECK([[$FGREP '#' config.h |
+ $EGREP -v 'STDC_HEADERS|STD(INT|LIB)|INTTYPES|MEMORY|STRING|UNISTD|SYS_(TYPES|STAT)']],,
           [$1])])
 
 

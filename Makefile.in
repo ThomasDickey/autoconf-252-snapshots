@@ -67,6 +67,9 @@ PERL = @PERL@
 PERLSCRIPTS = @PERLSCRIPTS@
 VERSION = @VERSION@
 
+EGREP = @EGREP@
+FGREP = @FGREP@
+
 AUTOMAKE_OPTIONS = check-news 1.4 readme-alpha
 
 SUBDIRS = . config m4 man doc tests
@@ -126,6 +129,8 @@ edit_sh = sed \
 	-e 's,@autoheader-name\@,'`echo autoheader | sed '$(transform)'`',g' \
 	-e 's,@M4\@,$(M4),g' \
 	-e 's,@AWK\@,$(AWK),g' \
+	-e 's,@EGREP\@,$(EGREP),g' \
+	-e 's,@FGREP\@,$(FGREP),g' \
 	-e 's,@VERSION\@,$(VERSION),g' \
 	-e 's,@PACKAGE_NAME\@,$(PACKAGE_NAME),g' \
 	-e 's,@PACKAGE_BUGREPORT\@,$(PACKAGE_BUGREPORT),g'
@@ -139,6 +144,8 @@ edit_pl = sed \
 	-e 's,@autoheader-name\@,'`echo autoheader | sed '$(transform)'`',g' \
 	-e 's,@M4\@,$(M4),g' \
 	-e 's,@AWK\@,$(AWK),g' \
+	-e 's,@EGREP\@,$(EGREP),g' \
+	-e 's,@FGREP\@,$(FGREP),g' \
 	-e 's,@VERSION\@,$(VERSION),g' \
 	-e 's,@PACKAGE_NAME\@,$(PACKAGE_NAME),g' \
 	-e 's,@PACKAGE_BUGREPORT\@,$(PACKAGE_BUGREPORT_PL),g'
@@ -328,7 +335,7 @@ distdir = $(PACKAGE)-$(VERSION)
 GZIP_ENV = --best
 
 distdir: $(DISTFILES)
-	@if sed 15q $(srcdir)/NEWS | fgrep -e "$(VERSION)" >/dev/null; \
+	@if sed 15q $(srcdir)/NEWS | $(FGREP) -e "$(VERSION)" >/dev/null; \
 	then :; else \
 	  echo "NEWS not updated; not releasing" 1>&2; \
 	  exit 1; \

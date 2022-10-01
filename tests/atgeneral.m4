@@ -176,7 +176,7 @@ EOF
     at_tests_pattern=`echo "$at_tests" | sed 's/^  *//;s/  *$//;s/  */|/g'`
     at_tests_pattern=" (${at_tests_pattern}): "
   fi
-  egrep -e "$at_tests_pattern" <<EOF
+  $EGREP -e "$at_tests_pattern" <<EOF
 m4_divert([HELP])dnl Help message inserted here.
 m4_divert([SETUP])dnl
 EOF
@@ -529,8 +529,8 @@ $at_verbose "$srcdir/AT_LINE: AS_ESCAPE([$1])"
 echo AT_LINE >at-check-line
 ( $at_traceon; $1 ) >at-stdout 2>at-stder1
 at_status=$?
-egrep '^ *\+' at-stder1 >&2
-egrep -v '^ *\+' at-stder1 >at-stderr
+$EGREP '^ *\+' at-stder1 >&2
+$EGREP -v '^ *\+' at-stder1 >at-stderr
 at_failed=false
 dnl Check stderr.
 m4_case([$4],

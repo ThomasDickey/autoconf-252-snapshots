@@ -72,6 +72,8 @@ AUTOMAKE_OPTIONS = gnits
 
 SUITE = suite.at         m4sugar.at m4sh.at         base.at tools.at torture.at compile.at semantics.at 	acgeneral.at acspecific.at acfunctions.at aclang.at acheaders.at 	actypes.at
 
+EGREP = @EGREP@
+FGREP = @FGREP@
 
 # We don't actually distribute the testsuite, since one only
 # needs m4 to build it, m4 being required anyway to install Autoconf.
@@ -188,7 +190,8 @@ mostlyclean distclean maintainer-clean
 
 
 check-local: atconfig testsuite
-	$(SHELL) testsuite
+	@echo "making $@"
+	@FGREP="$(FGREP)" EGREP="$(EGREP)" $(SHELL) testsuite
 
 testsuite: $(top_srcdir)/m4sugar.m4 $(top_srcdir)/m4sh.m4 \
            atgeneral.m4 atspecific.m4 \

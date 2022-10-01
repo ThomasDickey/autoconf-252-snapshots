@@ -1,4 +1,13 @@
 -- vile:fk=utf-8
+2022-10-01  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20221001.
+
+	work around warning messages from GNU grep 3.8 for egrep and fgrep.
+
+	fix some shellcheck warnings in the generated config.status
+
+	updated config/config.{guess,sub}
+
 2021-05-09  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20210509.
 

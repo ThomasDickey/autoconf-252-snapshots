@@ -206,14 +206,14 @@ MK_EOF
 
     echo "# Modern macros."
     for macro in `cat acdefuns`; do
-      if fgrep "$macro" requires >/dev/null 2>&1; then :; else
+      if @FGREP@ "$macro" requires >/dev/null 2>&1; then :; else
   	echo "AT_CHECK_MACRO([$macro])"
       fi
     done
     echo
     echo "# Obsolete macros."
     for macro in `cat audefuns`; do
-      if fgrep "$macro" requires >/dev/null 2>&1; then :; else
+      if @FGREP@ "$macro" requires >/dev/null 2>&1; then :; else
   	echo "AT_CHECK_AU_MACRO([$macro])"
       fi
     done
