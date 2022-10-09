@@ -3,10 +3,10 @@
 #------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.50)
-AC_INIT(GNU Autoconf, [2.52.20221001], dickey@invisible-island.net)
+AC_INIT(GNU Autoconf, [2.52.20221009], dickey@invisible-island.net)
 AC_CONFIG_SRCDIR(acgeneral.m4)
 AC_CONFIG_AUX_DIR(config)
-AM_INIT_AUTOMAKE(autoconf, [2.52.20221001])
+AM_INIT_AUTOMAKE(autoconf, [2.52.20221009])
 
 # Initialize the test suite.
 AT_CONFIG(..)

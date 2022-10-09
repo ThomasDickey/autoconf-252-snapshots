@@ -1,4 +1,13 @@
 -- vile:fk=utf-8
+2022-10-09  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20221009.
+
+	improve workaround for GNU grep 3.8 by requiring egrep/fgrep checks
+	for AC_OUTPUT.
+
+	corrected shell script for passing detected egrep/fgrep into
+	config.status
+
 2022-10-01  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20221001.
 

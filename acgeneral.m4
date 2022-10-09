@@ -3547,8 +3547,10 @@ m4_define([_AC_LIST_SUBDIRS])
 #
 # If there are arguments given to AC_OUTPUT, dispatch them to the
 # proper modern macros.
-AU_DEFUN([AC_OUTPUT],
-[m4_ifvaln([$1],
+AC_DEFUN([AC_OUTPUT],
+[AC_REQUIRE([AC_PROG_EGREP])dnl
+AC_REQUIRE([AC_PROG_FGREP])dnl
+m4_ifvaln([$1],
            [AC_CONFIG_FILES([$1])])dnl
 m4_ifvaln([$2$3],
           [AC_CONFIG_COMMANDS(default, [[$2]], [[$3]])])dnl
@@ -4158,8 +4160,14 @@ AC_PROVIDE_IFELSE([AC_PROG_INSTALL], [s,@INSTALL@,$ac_INSTALL,;t t
 dnl The parens around the eval prevent an "illegal io" in Ultrix sh.
 " $ac_file_inputs | (eval "$ac_sed_cmds") >"$tmp"/out
   rm -f "$tmp"/stdin
-  : "${FGREP:=grep -F}"
-  : "${EGREP:=grep -E}"
+EOF
+: "${FGREP:=grep -F}"
+: "${EGREP:=grep -E}"
+cat >>"$CONFIG_STATUS" <<EOF
+  : "\${FGREP:=$FGREP}"
+  : "\${EGREP:=$EGREP}"
+EOF
+cat >>"$CONFIG_STATUS" <<\EOF
   if test x"$ac_file" != x-; then
     cp "$tmp/out" "$ac_file"
 
