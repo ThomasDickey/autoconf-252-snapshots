@@ -1,7 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Type related macros: existence, sizeof, and structure members.
 #------------------------------------------------------------------------------
-# Copyright 2020,2021	Thomas E. Dickey
+# Copyright 2020-2021,2022	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -247,7 +247,7 @@ AC_DEFUN([AC_CHECK_TYPE],
 AC_DEFUN([AC_TYPE_GETGROUPS],
 [AC_REQUIRE([AC_TYPE_UID_T])dnl
 AC_CACHE_CHECK(type of array argument to getgroups, ac_cv_type_getgroups,
-[AC_RUN_IFELSE([AC_LANG_SOURCE(
+[AC_RUN_IFELSE([AC_LANG_SOURCE([AC_INCLUDES_DEFAULT]
 [[/* Thanks to Mike Rendell for this test.  */
 #include <sys/types.h>
 #define NGID 256

@@ -1,4 +1,14 @@
 -- vile:fk=utf-8
+2022-12-02  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20221202.
+
+	modify AC_TYPE_GETGROUPS to use AC_INCLUDES_DEFAULT
+
+	modify AC_FUNC_STRTOD to use stdlib.h, amend check to reduce compiler
+	warnings.
+
+	modify AC_FUNC_CLOSEDIR_VOID to reduce compiler warnings.
+
 2022-10-09  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20221009.
 

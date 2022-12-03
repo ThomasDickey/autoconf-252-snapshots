@@ -4,4 +4,4 @@
 # Copyright 2003-2021,2022	Thomas E. Dickey
 # Copyright 1999, 2000, 2001 Free Software Foundation, Inc.
 
-m4_define([AC_ACVERSION], [2.52.20221009])
+m4_define([AC_ACVERSION], [2.52.20221202])

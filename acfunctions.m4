@@ -2,7 +2,7 @@
 # vile:fk=utf-8
 # Checking for functions.
 #------------------------------------------------------------------------------
-# Copyright 2020,2021	Thomas E. Dickey
+# Copyright 2020-2021,2022	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -300,7 +300,7 @@ AC_CACHE_CHECK([whether closedir returns void],
 [AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT
 #include <$ac_header_dirent>
 #ifndef __cplusplus
-int closedir ();
+int closedir (DIR *);
 #endif
 ],
                                 [[$ac_main_return (closedir (opendir (".")) != 0);]])],
@@ -1232,13 +1232,17 @@ fi
 AC_DEFUN([AC_FUNC_STRTOD],
 [AC_CACHE_CHECK(for working strtod, ac_cv_func_strtod,
 [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+#if STDC_HEADERS || HAVE_STDLIB_H
+#include <stdlib.h>
+#else
 double strtod ();
+#endif
 int
 main(void)
 {
   {
     /* Some versions of Linux strtod mis-parse strings with leading '+'.  */
-    char *string = " +69";
+    static char string[] = " +69";
     char *term;
     double value;
     value = strtod (string, &term);
@@ -1249,7 +1253,7 @@ main(void)
   {
     /* Under Solaris 2.4, strtod returns the wrong value for the
        terminating character under some conditions.  */
-    char *string = "NaN";
+    static char string[] = "NaN";
     char *term;
     strtod (string, &term);
     if (term != string && *(term - 1) == 0)
