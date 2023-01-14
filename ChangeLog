@@ -1,4 +1,10 @@
 -- vile:fk=utf-8
+2023-01-14  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20230114.
+
+	modify AC_CHECK_DECL, AC_PROG_CC_STDC, AC_STRUCT_TM, and
+	AC_TYPE_SIGNAL to reduce compiler warnings.
+
 2022-12-02  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20221202.
 

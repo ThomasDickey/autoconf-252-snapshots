@@ -1,7 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Programming languages support.
 #------------------------------------------------------------------------------
-# Copyright 2020,2021	Thomas E. Dickey
+# Copyright 2020-2021,2023	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -1437,9 +1437,7 @@ AC_LANG_CONFTEST([AC_LANG_PROGRAM(
 /* Most of the following tests are stolen from RCS 5.7's src/conf.sh.  */
 struct buf { int x; };
 FILE * (*rcsopen) (struct buf *, struct stat *, int);
-static char *e (p, i)
-     char **p;
-     int i;
+static char *e (char **p, int i)
 {
   return p[i];
 }
