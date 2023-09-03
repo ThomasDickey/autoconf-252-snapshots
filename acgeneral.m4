@@ -1,7 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Parameterized macros.
 #------------------------------------------------------------------------------
-# Copyright 2003-2022,2023	Thomas E. Dickey
+# Copyright 2003-2022,2023 Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -4161,11 +4161,11 @@ dnl The parens around the eval prevent an "illegal io" in Ultrix sh.
 " $ac_file_inputs | (eval "$ac_sed_cmds") >"$tmp"/out
   rm -f "$tmp"/stdin
 EOF
-: "${FGREP:=grep -F}"
-: "${EGREP:=grep -E}"
+test -n "${FGREP}" || FGREP="grep -F"
+test -n "${EGREP}" || EGREP="grep -E"
 cat >>"$CONFIG_STATUS" <<EOF
-  : "\${FGREP:=$FGREP}"
-  : "\${EGREP:=$EGREP}"
+  test -n "\${FGREP}" || FGREP="$FGREP"
+  test -n "\${EGREP}" || EGREP="$EGREP"
 EOF
 cat >>"$CONFIG_STATUS" <<\EOF
   if test x"$ac_file" != x-; then
@@ -4398,7 +4398,8 @@ EOF
 # Break up conftest.defines because some shells have a limit on the size
 # of here documents, and old seds have small limits too (100 cmds).
 echo '  # Handle all the #define templates only if necessary.' >>"$CONFIG_STATUS"
-echo '  if ${EGREP-grep -E} ["^[ 	]*#[ 	]*define"] "$tmp"/in >/dev/null; then' >>"$CONFIG_STATUS"
+echo '  test -n "${EGREP}" || EGREP="grep -E"' >>"$CONFIG_STATUS"
+echo '  if ${EGREP} ["^[ 	]*#[ 	]*define"] "$tmp"/in >/dev/null; then' >>"$CONFIG_STATUS"
 echo '  # If there are no defines, we may have an empty if/fi' >>"$CONFIG_STATUS"
 echo '  :' >>"$CONFIG_STATUS"
 rm -f conftest.tail

@@ -1,5 +1,6 @@
 include(m4sh.m4)					    -*- Autoconf -*-
 # M4 macros used in building test suites.
+# Copyright 2022 Thomas E. Dickey
 # Copyright 2000, 2001 Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify

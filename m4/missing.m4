@@ -24,9 +24,6 @@ if test -z "$install_sh"; then
    do
      test -f "$install_sh" && break
    done
-   # FIXME: an evil hack: we remove the SHELL invocation from
-   # install_sh because automake adds it back in.  Sigh.
-   install_sh=`echo $install_sh | sed -e 's/\${SHELL}//'`
 fi
 AC_SUBST(install_sh)])
 

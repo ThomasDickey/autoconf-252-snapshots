@@ -76,15 +76,16 @@ AT_CHECK([top_srcdir=$top_srcdir ./configure $1],
 # ------------
 # Check that the full configure run remained in its variable name space,
 # and cleaned up tmp files.
-# me tests might exit prematurely when they find a problem, in
+# The tests might exit prematurely when they find a problem, in
 # which case `env-after' is probably missing.  Don't check it then.
 m4_define([AT_CHECK_ENV],
-[if test -f state-env.before -a -f state-env.after; then
-  mv -f state-env.before expout
+[if test -f expout; then chmod +w expout; fi
+if test -f state-env.before -a -f state-env.after; then
+  mv state-env.before expout
   AT_CHECK([cat state-env.after], 0, expout)
 fi
 if test -f state-ls.before -a -f state-ls.after; then
-  mv -f state-ls.before expout
+  mv state-ls.before expout
   AT_CHECK([cat state-ls.after], 0, expout)
 fi
 ])

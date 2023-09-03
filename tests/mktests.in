@@ -221,7 +221,7 @@ MK_EOF
 
   # In one atomic step so that if something above fails, the trap
   # preserves the old version of the file.
-  mv $base.tat $base.at
+  mv -f $base.tat $base.at
 done
 
 rm -f acdefuns audefuns requires

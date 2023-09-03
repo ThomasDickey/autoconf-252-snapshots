@@ -1,4 +1,21 @@
 -- vile:fk=utf-8
+2023-09-03  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20230903.
+
+	trim mentions of automake and aclocal, since unused (Debian #1035621).
+
+        fix a sign-extension bug in AC_FUNC_MKTIME which caused the test to run
+        longer than necessary.
+
+	amend fixes for $EGREP and $FGREP to work with Solaris 10 /bin/sh
+
+	improve rules for generating tests and cleanup in tests/Makefile.in
+
+	omit AC_PROG_FGREP from acspecific.at, to match output from mktests.sh
+	(Debian #1043105).
+
+	updated config/config.{guess,sub}, install-sh
+
 2023-01-14  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20230114.
 

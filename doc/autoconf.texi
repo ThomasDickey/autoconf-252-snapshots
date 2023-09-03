@@ -631,14 +631,8 @@ the GNU build tools.
 @item Web
 
 The home pages for
-@href{http://www.gnu.org/software/autoconf/,Autoconf},
-@href{http://www.gnu.org/software/automake/,Automake}, and
+@href{http://www.gnu.org/software/autoconf/,Autoconf}, and
 @href{http://www.gnu.org/software/libtool/,Libtool}.
-
-@item Automake Manual
-
-@xref{Top,,Automake,automake,GNU Automake}, for more
-information on Automake.
 
 @item Books
 
@@ -1340,9 +1334,7 @@ character is suitable as a separator)):
 @example
 @group
 $ autoconf -t 'AM_MISSING_PROG:$@{|:::::|@}*'
-ACLOCAL|:::::|aclocal|:::::|$missing_dir
 AUTOCONF|:::::|autoconf|:::::|$missing_dir
-AUTOMAKE|:::::|automake|:::::|$missing_dir
 @i{More traces deleted}
 @end group
 @end example
@@ -1413,7 +1405,7 @@ newer than their input files (@file{configure.ac} and, if present,
 @item --install
 @itemx -i
 Copy missing auxiliary files.  This option is similar to the option
-@code{--add-missing} in @code{automake}.
+@code{--add-missing} in other tools.
 
 @item --symlink
 @itemx -s
@@ -1439,26 +1431,6 @@ plays with different versions of Autoconf simultaneously.
 @item --m4dir=@var{dir}
 @itemx -M @var{dir}
 Specify location of additional macro files (@file{m4} by default).
-@end table
-
-Additionally, the following options are recognized and passed to
-@code{automake}:
-
-@table @option
-@item --cygnus
-Assume program is part of Cygnus-style tree.
-
-@item --foreign
-Set strictness to foreign.
-
-@item --gnits
-Set strictness to gnits.
-
-@item --gnu
-Set strictness to gnu.
-
-@item --include-deps
-Include generated dependencies in @file{Makefile.in}.
 @end table
 
 

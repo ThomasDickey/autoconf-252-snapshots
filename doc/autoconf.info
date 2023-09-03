@@ -1,4 +1,4 @@
-This is autoconf.info, produced by makeinfo version 6.5 from
+This is autoconf.info, produced by makeinfo version 6.7 from
 autoconf.texi.
 
 INFO-DIR-SECTION GNU admin
@@ -51,8 +51,8 @@ File: autoconf.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 
 This file documents the GNU Autoconf package for creating scripts to
 configure source code packages using templates and the GNU M4 macro
-package.  This is edition 2.52.20230114, for Autoconf version
-2.52.20230114.
+package.  This is edition 2.52.20230903, for Autoconf version
+2.52.20230903.
 
 * Menu:
 
@@ -240,7 +240,7 @@ Writing Autoconf Macros
 * Reporting Messages::          Notifying 'autoconf' users
 * Dependencies Between Macros::  What to do when macros depend on other macros
 * Obsoleting Macros::           Warning about old ways of doing things
-* Coding Style::                Writing Autoconf macros a` la Autoconf
+* Coding Style::                Writing Autoconf macros à la Autoconf
 
 Dependencies Between Macros
 
@@ -556,41 +556,35 @@ on the GNU build tools.
 
    - Web
 
-     The home pages for Autoconf(1), Automake(2), and Libtool(3).
-
-   - Automake Manual
-
-     *Note Automake: (automake)Top, for more information on Automake.
+     The home pages for Autoconf(1), and Libtool(2).
 
    - Books
 
-     The book 'GNU Autoconf, Automake and Libtool'(4) describes the
+     The book 'GNU Autoconf, Automake and Libtool'(3) describes the
      complete GNU build environment.  You can also find the entire book
-     on-line at "The Goat Book" home page(5).
+     on-line at "The Goat Book" home page(4).
 
    - Tutorials and Examples
 
-     The Autoconf Developer Page(6) maintains links to a number of
+     The Autoconf Developer Page(5) maintains links to a number of
      Autoconf/Automake tutorials online, and also links to the Autoconf
-     Macro Archive(7).
+     Macro Archive(6).
 
    ---------- Footnotes ----------
 
    (1) Autoconf, <http://www.gnu.org/software/autoconf/>.
 
-   (2) Automake, <http://www.gnu.org/software/automake/>.
+   (2) Libtool, <http://www.gnu.org/software/libtool/>.
 
-   (3) Libtool, <http://www.gnu.org/software/libtool/>.
-
-   (4) 'GNU Autoconf, Automake and Libtool', by G. V. Vaughan, B.
+   (3) 'GNU Autoconf, Automake and Libtool', by G. V. Vaughan, B.
 Elliston, T. Tromey, and I. L. Taylor.  New Riders, 2000, ISBN
 1578701902.
 
-   (5) "The Goat Book" home page, <http://sources.redhat.com/autobook/>.
+   (4) "The Goat Book" home page, <http://sources.redhat.com/autobook/>.
 
-   (6) Autoconf Developer Page, <http://sources.redhat.com/autoconf/>.
+   (5) Autoconf Developer Page, <http://sources.redhat.com/autoconf/>.
 
-   (7) Autoconf Macro Archive,
+   (6) Autoconf Macro Archive,
 <http://www.gnu.org/software/ac-archive/>.
 
 
@@ -813,7 +807,7 @@ therefore it must be quoted twice:
 
      AC_COMPILE_IFELSE([[char b[10];]],, [AC_MSG_ERROR([you lose])])
 
-Voila`, you actually produce 'char b[10];' this time!
+Voilà, you actually produce 'char b[10];' this time!
 
    The careful reader will notice that, according to these guidelines,
 the "properly" quoted 'AC_CHECK_HEADER' example above is actually
@@ -1192,9 +1186,7 @@ structures, and to ease its parsing (for instance when no single
 character is suitable as a separator)):
 
      $ autoconf -t 'AM_MISSING_PROG:${|:::::|}*'
-     ACLOCAL|:::::|aclocal|:::::|$missing_dir
      AUTOCONF|:::::|autoconf|:::::|$missing_dir
-     AUTOMAKE|:::::|automake|:::::|$missing_dir
      More traces deleted
 
 
@@ -1259,7 +1251,7 @@ does not pass '--autoconf-dir=DIR' or '--localdir=DIR'.
 '--install'
 '-i'
      Copy missing auxiliary files.  This option is similar to the option
-     '--add-missing' in 'automake'.
+     '--add-missing' in other tools.
 
 '--symlink'
 '-s'
@@ -1285,24 +1277,6 @@ does not pass '--autoconf-dir=DIR' or '--localdir=DIR'.
 '--m4dir=DIR'
 '-M DIR'
      Specify location of additional macro files ('m4' by default).
-
-   Additionally, the following options are recognized and passed to
-'automake':
-
-'--cygnus'
-     Assume program is part of Cygnus-style tree.
-
-'--foreign'
-     Set strictness to foreign.
-
-'--gnits'
-     Set strictness to gnits.
-
-'--gnu'
-     Set strictness to gnu.
-
-'--include-deps'
-     Include generated dependencies in 'Makefile.in'.
 
 
 File: autoconf.info,  Node: Setup,  Next: Existing Tests,  Prev: Making configure Scripts,  Up: Top
@@ -1344,7 +1318,7 @@ Using them is optional.
      than VERSION, print an error message to the standard error output
      and do not create 'configure'.  For example:
 
-          AC_PREREQ(2.52.20230114)
+          AC_PREREQ(2.52.20230903)
 
      This macro is the only macro that may be used before 'AC_INIT', but
      for consistency, you are invited not to do so.
@@ -1367,7 +1341,7 @@ Using them is optional.
 
      For example, this line in 'configure.ac':
 
-          AC_REVISION($Revision: 1.67 $)
+          AC_REVISION($Revision: 1.73 $)
 
      produces this in 'configure':
 
@@ -5538,7 +5512,7 @@ Here are some instructions and guidelines for writing Autoconf macros.
 * Reporting Messages::          Notifying 'autoconf' users
 * Dependencies Between Macros::  What to do when macros depend on other macros
 * Obsoleting Macros::           Warning about old ways of doing things
-* Coding Style::                Writing Autoconf macros a` la Autoconf
+* Coding Style::                Writing Autoconf macros à la Autoconf
 
 
 File: autoconf.info,  Node: Macro Definitions,  Next: Macro Names,  Prev: Writing Autoconf Macros,  Up: Writing Autoconf Macros
@@ -9676,7 +9650,7 @@ shortened it to Autoconf.
 after the Holy Grail of portability (er, that is, alpha testers) to give
 me feedback as I encapsulated pieces of my handwritten scripts in M4
 macros and continued to add features and improve the techniques used in
-the checks.  Prominent among the testers were Franc,ois Pinard, who came
+the checks.  Prominent among the testers were François Pinard, who came
 up with the idea of making an 'autoconf' shell script to run 'm4' and
 check for unresolved macro calls; Richard Pixley, who suggested running
 the compiler instead of searching the file system to find include files
@@ -9713,7 +9687,7 @@ provide everything we need.
 
    More development occurred as people put Autoconf under more stresses
 (and to uses I hadn't anticipated).  Karl Berry added checks for X11.
-david zuhn contributed C++ support.  Franc,ois Pinard made it diagnose
+david zuhn contributed C++ support.  François Pinard made it diagnose
 invalid arguments.  Jim Blandy bravely coerced it into configuring GNU
 Emacs, laying the groundwork for several later improvements.  Roland
 McGrath got it to configure the GNU C Library, wrote the 'autoheader'
@@ -9760,16 +9734,15 @@ quality of the program.  I made the messages showing results of the
 checks less ambiguous, always printing a result.  I regularized the
 names of the macros and cleaned up coding style inconsistencies.  I
 added some auxiliary utilities that I had developed to help convert
-source code packages to use Autoconf.  With the help of Franc,ois
-Pinard, I made the macros not interrupt each others' messages.  (That
-feature revealed some performance bottlenecks in GNU 'm4', which he
-hastily corrected!)  I reorganized the documentation around problems
-people want to solve.  And I began a test suite, because experience had
-shown that Autoconf has a pronounced tendency to regress when we change
-it.
+source code packages to use Autoconf.  With the help of François Pinard,
+I made the macros not interrupt each others' messages.  (That feature
+revealed some performance bottlenecks in GNU 'm4', which he hastily
+corrected!)  I reorganized the documentation around problems people want
+to solve.  And I began a test suite, because experience had shown that
+Autoconf has a pronounced tendency to regress when we change it.
 
    Again, several alpha testers gave invaluable feedback, especially
-Franc,ois Pinard, Jim Meyering, Karl Berry, Rob Savoye, Ken Raeburn, and
+François Pinard, Jim Meyering, Karl Berry, Rob Savoye, Ken Raeburn, and
 Mark Eichin.
 
    Finally, version 2.0 was ready.  And there was much rejoicing.  (And
@@ -10693,183 +10666,187 @@ Node: The GNU build system19457
 Node: Automake20376
 Node: Libtool22802
 Node: Pointers24228
-Ref: Pointers-Footnote-125540
-Ref: Pointers-Footnote-225599
-Ref: Pointers-Footnote-325658
-Ref: Pointers-Footnote-425715
-Ref: Pointers-Footnote-525857
-Ref: Pointers-Footnote-625931
-Ref: Pointers-Footnote-726003
-Node: Making configure Scripts26078
-Node: Writing configure.ac29112
-Node: Shell Script Compiler30578
-Node: Autoconf Language32879
-Node: configure.ac Layout37511
-Node: autoscan Invocation38915
-Node: ifnames Invocation41668
-Node: autoconf Invocation42868
-Node: autoreconf Invocation50039
-Node: Setup53718
-Node: Notices54923
-Node: Input56559
-Node: Output58607
-Node: Configuration Actions60589
-Node: Configuration Files63494
-Node: Makefile Substitutions64960
-Node: Preset Output Variables66643
-Node: Installation Directory Variables71214
-Node: Build Directories75566
-Node: Automatic Remaking77219
-Node: Configuration Headers79374
-Node: Header Templates82077
-Node: autoheader Invocation83355
-Node: Autoheader Macros86823
-Node: Configuration Commands89026
-Node: Configuration Links90712
-Node: Subdirectories92084
-Node: Default Prefix94239
-Node: Existing Tests95636
-Node: Common Behavior97354
-Node: Standard Symbols98016
-Node: Default Includes98617
-Node: Alternative Programs100549
-Node: Particular Programs101235
-Node: Generic Programs106696
-Node: Files110605
-Node: Libraries111500
-Node: Library Functions114365
-Node: Function Portability114988
-Node: Particular Functions115993
-Node: Generic Functions126585
-Node: Header Files130830
-Node: Particular Headers131393
-Node: Generic Headers138362
-Node: Declarations140434
-Node: Particular Declarations141023
-Node: Generic Declarations141446
-Node: Structures143819
-Node: Particular Structures144426
-Node: Generic Structures146148
-Node: Types147392
-Node: Particular Types147912
-Node: Generic Types149082
-Node: Compilers and Preprocessors150454
-Node: Generic Compiler Characteristics151465
-Node: C Compiler152328
-Node: C++ Compiler159669
-Node: Fortran 77 Compiler161912
-Node: System Services170409
-Ref: System Services-Footnote-1173525
-Node: UNIX Variants173616
-Node: Writing Tests174798
-Node: Examining Declarations176730
-Node: Examining Syntax179230
-Node: Examining Libraries180678
-Node: Run Time183690
-Node: Test Programs184671
-Node: Guidelines186938
-Node: Test Functions188137
-Node: Systemology189693
-Ref: Systemology-Footnote-1190321
-Ref: Systemology-Footnote-2190359
-Node: Multiple Cases190427
-Node: Language Choice191684
-Node: Results193719
-Node: Defining Symbols194469
-Node: Setting Output Variables197725
-Node: Caching Results201916
-Node: Cache Variable Names205599
-Node: Cache Files207188
-Node: Cache Checkpointing209218
-Node: Printing Messages210549
-Node: Programming in M4213734
-Node: M4 Quotation214407
-Node: Active Characters215217
-Ref: Active Characters-Footnote-1216595
-Node: One Macro Call216617
-Node: Quotation and Nested Macros218179
-Node: Quadrigraphs221145
-Node: Quotation Rule Of Thumb222070
-Node: Programming in M4sugar224713
-Node: Redefined M4 Macros225221
-Node: Forbidden Patterns226191
-Node: Writing Autoconf Macros227556
-Node: Macro Definitions228357
-Node: Macro Names230165
-Node: Reporting Messages232766
-Node: Dependencies Between Macros234112
-Node: Prerequisite Macros234736
-Node: Suggested Ordering237517
-Node: Obsoleting Macros239036
-Node: Coding Style240159
-Node: Portable Shell247165
-Node: Shellology249251
-Node: Here-Documents252230
-Node: File Descriptors254192
-Node: File System Conventions256200
-Ref: File System Conventions-Footnote-1260320
-Node: Shell Substitutions260394
-Node: Assignments265303
-Node: Special Shell Variables266940
-Node: Limitations of Builtins270986
-Node: Limitations of Usual Tools283314
-Node: Limitations of Make296057
-Node: Manual Configuration297038
-Node: Specifying Names297867
-Ref: Specifying Names-Footnote-1300678
-Node: Canonicalizing301078
-Node: Using System Type303482
-Node: Site Configuration304531
-Node: External Software305363
-Node: Package Options308679
-Node: Pretty Help Strings311547
-Node: Site Details313526
-Node: Transforming Names314761
-Node: Transformation Options315909
-Node: Transformation Examples316413
-Node: Transformation Rules318135
-Node: Site Defaults319971
-Node: Running configure scripts323890
-Node: Basic Installation324907
-Node: Compilers and Options327755
-Node: Multiple Architectures328397
-Node: Installation Names329396
-Node: Optional Features330595
-Node: System Type331379
-Node: Sharing Defaults332905
-Node: Environment Variables333547
-Node: configure Invocation334233
-Node: config.status Invocation335365
-Node: Obsolete Constructs339190
-Node: Obsolete config.status Use340116
-Node: acconfig.h341915
-Node: autoupdate Invocation343931
-Node: Obsolete Macros345893
-Node: Autoconf 1363046
-Node: Changed File Names364112
-Node: Changed Makefiles364887
-Node: Changed Macros365980
-Node: Changed Results367236
-Node: Changed Macro Writing369347
-Node: Autoconf 2.13370622
-Node: Changed Quotation371631
-Node: New Macros373538
-Node: Questions375172
-Node: Distributing375696
-Node: Why GNU m4376767
-Node: Bootstrapping377665
-Node: Why Not Imake378281
-Node: History382986
-Node: Genesis383785
-Node: Exodus384981
-Node: Leviticus388032
-Node: Numbers389566
-Node: Deuteronomy391487
-Node: Environment Variable Index394159
-Node: Output Variable Index398202
-Node: Preprocessor Symbol Index408231
-Node: Autoconf Macro Index419238
-Node: M4 Macro Index442570
-Node: Concept Index443257
+Ref: Pointers-Footnote-125434
+Ref: Pointers-Footnote-225493
+Ref: Pointers-Footnote-325550
+Ref: Pointers-Footnote-425692
+Ref: Pointers-Footnote-525766
+Ref: Pointers-Footnote-625838
+Node: Making configure Scripts25913
+Node: Writing configure.ac28947
+Node: Shell Script Compiler30413
+Node: Autoconf Language32714
+Node: configure.ac Layout37346
+Node: autoscan Invocation38750
+Node: ifnames Invocation41503
+Node: autoconf Invocation42703
+Node: autoreconf Invocation49826
+Node: Setup53168
+Node: Notices54373
+Node: Input56009
+Node: Output58057
+Node: Configuration Actions60039
+Node: Configuration Files62944
+Node: Makefile Substitutions64410
+Node: Preset Output Variables66093
+Node: Installation Directory Variables70664
+Node: Build Directories75016
+Node: Automatic Remaking76669
+Node: Configuration Headers78824
+Node: Header Templates81527
+Node: autoheader Invocation82805
+Node: Autoheader Macros86273
+Node: Configuration Commands88476
+Node: Configuration Links90162
+Node: Subdirectories91534
+Node: Default Prefix93689
+Node: Existing Tests95086
+Node: Common Behavior96804
+Node: Standard Symbols97466
+Node: Default Includes98067
+Node: Alternative Programs99999
+Node: Particular Programs100685
+Node: Generic Programs106146
+Node: Files110055
+Node: Libraries110950
+Node: Library Functions113815
+Node: Function Portability114438
+Node: Particular Functions115443
+Node: Generic Functions126035
+Node: Header Files130280
+Node: Particular Headers130843
+Node: Generic Headers137812
+Node: Declarations139884
+Node: Particular Declarations140473
+Node: Generic Declarations140896
+Node: Structures143269
+Node: Particular Structures143876
+Node: Generic Structures145598
+Node: Types146842
+Node: Particular Types147362
+Node: Generic Types148532
+Node: Compilers and Preprocessors149904
+Node: Generic Compiler Characteristics150915
+Node: C Compiler151778
+Node: C++ Compiler159119
+Node: Fortran 77 Compiler161362
+Node: System Services169859
+Ref: System Services-Footnote-1172975
+Node: UNIX Variants173066
+Node: Writing Tests174248
+Node: Examining Declarations176180
+Node: Examining Syntax178680
+Node: Examining Libraries180128
+Node: Run Time183140
+Node: Test Programs184121
+Node: Guidelines186388
+Node: Test Functions187587
+Node: Systemology189143
+Ref: Systemology-Footnote-1189771
+Ref: Systemology-Footnote-2189809
+Node: Multiple Cases189877
+Node: Language Choice191134
+Node: Results193169
+Node: Defining Symbols193919
+Node: Setting Output Variables197175
+Node: Caching Results201366
+Node: Cache Variable Names205049
+Node: Cache Files206638
+Node: Cache Checkpointing208668
+Node: Printing Messages209999
+Node: Programming in M4213184
+Node: M4 Quotation213857
+Node: Active Characters214667
+Ref: Active Characters-Footnote-1216045
+Node: One Macro Call216067
+Node: Quotation and Nested Macros217629
+Node: Quadrigraphs220595
+Node: Quotation Rule Of Thumb221520
+Node: Programming in M4sugar224163
+Node: Redefined M4 Macros224671
+Node: Forbidden Patterns225641
+Node: Writing Autoconf Macros227006
+Node: Macro Definitions227807
+Node: Macro Names229615
+Node: Reporting Messages232216
+Node: Dependencies Between Macros233562
+Node: Prerequisite Macros234186
+Node: Suggested Ordering236967
+Node: Obsoleting Macros238486
+Node: Coding Style239609
+Node: Portable Shell246615
+Node: Shellology248701
+Node: Here-Documents251680
+Node: File Descriptors253642
+Node: File System Conventions255650
+Ref: File System Conventions-Footnote-1259770
+Node: Shell Substitutions259844
+Node: Assignments264753
+Node: Special Shell Variables266390
+Node: Limitations of Builtins270436
+Node: Limitations of Usual Tools282764
+Node: Limitations of Make295507
+Node: Manual Configuration296488
+Node: Specifying Names297317
+Ref: Specifying Names-Footnote-1300128
+Node: Canonicalizing300528
+Node: Using System Type302932
+Node: Site Configuration303981
+Node: External Software304813
+Node: Package Options308129
+Node: Pretty Help Strings310997
+Node: Site Details312976
+Node: Transforming Names314211
+Node: Transformation Options315359
+Node: Transformation Examples315863
+Node: Transformation Rules317585
+Node: Site Defaults319421
+Node: Running configure scripts323340
+Node: Basic Installation324357
+Node: Compilers and Options327205
+Node: Multiple Architectures327847
+Node: Installation Names328846
+Node: Optional Features330045
+Node: System Type330829
+Node: Sharing Defaults332355
+Node: Environment Variables332997
+Node: configure Invocation333683
+Node: config.status Invocation334815
+Node: Obsolete Constructs338640
+Node: Obsolete config.status Use339566
+Node: acconfig.h341365
+Node: autoupdate Invocation343381
+Node: Obsolete Macros345343
+Node: Autoconf 1362496
+Node: Changed File Names363562
+Node: Changed Makefiles364337
+Node: Changed Macros365430
+Node: Changed Results366686
+Node: Changed Macro Writing368797
+Node: Autoconf 2.13370072
+Node: Changed Quotation371081
+Node: New Macros372988
+Node: Questions374622
+Node: Distributing375146
+Node: Why GNU m4376217
+Node: Bootstrapping377115
+Node: Why Not Imake377731
+Node: History382436
+Node: Genesis383235
+Node: Exodus384431
+Node: Leviticus387482
+Node: Numbers389016
+Node: Deuteronomy390937
+Node: Environment Variable Index393609
+Node: Output Variable Index397652
+Node: Preprocessor Symbol Index407681
+Node: Autoconf Macro Index418688
+Node: M4 Macro Index442020
+Node: Concept Index442707
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
