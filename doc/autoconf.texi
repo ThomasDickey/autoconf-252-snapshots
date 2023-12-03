@@ -349,7 +349,7 @@ Site Configuration
 
 * External Software::           Working with other optional software
 * Package Options::             Selecting optional features
-* Pretty Help Strings::         Formating help string
+* Pretty Help Strings::         Formatting help string
 * Site Details::                Configuring site details
 * Transforming Names::          Changing program names when installing
 * Site Defaults::               Giving @code{configure} local defaults
@@ -7179,7 +7179,7 @@ Russ Allbery:
 @quotation
 The @sc{gnu} assumption that @command{/bin/sh} is the one and only shell
 leads to a permanent deadlock.  Vendors don't want to break user's
-existant shell scripts, and there are some corner cases in the Bourne
+existent shell scripts, and there are some corner cases in the Bourne
 shell that are not completely compatible with a @sc{posix} shell.  Thus,
 vendors who have taken this route will @emph{never} (OK@dots{}``never say
 never'') replace the Bourne shell (as @command{/bin/sh}) with a
@@ -9000,7 +9000,7 @@ options.
 @menu
 * External Software::           Working with other optional software
 * Package Options::             Selecting optional features
-* Pretty Help Strings::         Formating help string
+* Pretty Help Strings::         Formatting help string
 * Site Details::                Configuring site details
 * Transforming Names::          Changing program names when installing
 * Site Defaults::               Giving @code{configure} local defaults

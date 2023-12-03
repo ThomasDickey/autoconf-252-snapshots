@@ -520,7 +520,7 @@ EOF
   #
   #    AT_define([m4sugar.m4], [115], [1], [define], [m4_exit], <m4exit>)
   #
-  # Since `<m4exit>' is not quoted, the outter m4, when processing
+  # Since `<m4exit>' is not quoted, the outer m4, when processing
   # `trace.m4' will exit prematurely.  Hence, move all the builtins to
   # the `at_' name space.
   echo '# Copy the builtins.' >>$tmp/trace.m4

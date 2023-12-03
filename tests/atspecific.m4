@@ -25,7 +25,7 @@ include(atgeneral.m4)					-*- Autoconf -*-
 # AT_CONFIGURE_AC(BODY)
 # ---------------------
 # Create a full configure.ac running BODY, with a config header set up,
-# AC_OUTPUT, and environement checking hooks.
+# AC_OUTPUT, and environment checking hooks.
 m4_define([AT_CONFIGURE_AC],
 [AT_CLEANUP_FILES(env-after state*)dnl
 AT_DATA([configure.ac],
@@ -161,7 +161,7 @@ AT_CLEANUP()dnl
 #
 # Updated configure.ac shall not depend upon obsolete macros, which votes
 # in favor of `-W obsolete', but since many of these macros leave a message
-# to be removed by the user once her code ajusted, let's not check.
+# to be removed by the user once her code is adjusted, let's not check.
 #
 # Remove config.hin to avoid `autoheader: config.hin is unchanged'.
 m4_define([AT_CHECK_AU_MACRO],

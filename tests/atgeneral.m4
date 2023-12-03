@@ -1,6 +1,6 @@
 include(m4sh.m4)					    -*- Autoconf -*-
 # M4 macros used in building test suites.
-# Copyright 2022 Thomas E. Dickey
+# Copyright 2022,2023 Thomas E. Dickey
 # Copyright 2000, 2001 Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
@@ -386,7 +386,7 @@ m4_divert_push([TESTS])dnl
 # So the question is:
 #
 #       Can you write a regexp that matches those four characters,
-#       and respects the M4 quotation contraints?
+#       and respects the M4 quotation constraints?
 #
 # The answer is: (rot13) tvira va gur ertrkc orybj, lbh vqvbg!
 m4_define([AT_CLEANUP_FILE_IFELSE],

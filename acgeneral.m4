@@ -303,7 +303,7 @@ m4_define([AH_OUTPUT], [])
 # If KEY is direct (i.e., no indirection such as in KEY=$my_func which
 # may occur if there is AC_CHECK_FUNCS($my_func)), issue an autoheader
 # TEMPLATE associated to the KEY.  Otherwise, do nothing.  TEMPLATE is
-# output as is, with no formating.
+# output as is, with no formatting.
 m4_define([AH_VERBATIM],
 [AS_LITERAL_IF([$1],
                [AH_OUTPUT([$1], AS_ESCAPE([[$2]]))])
@@ -1596,7 +1596,7 @@ ac_cv_env_$1_value=$$1])dnl
 # content of the cached values, while `ac_env_' represents that of the
 # current values.
 #
-# So we check that `ac_env_' and `ac_cv_env_' are consistant.  If
+# So we check that `ac_env_' and `ac_cv_env_' are consistent.  If
 # they aren't, die.
 m4_define([_AC_ARG_VAR_VALIDATE],
 [# Check that the precious variables saved in the cache have kept the same
@@ -1957,7 +1957,7 @@ m4_define([AC_CACHE_SAVE],
 # config.status only pays attention to the cache file if you give it
 # the --recheck option to rerun configure.
 #
-# `ac_cv_env_foo' variables (set or unset) will be overriden when
+# `ac_cv_env_foo' variables (set or unset) will be overridden when
 # loading this file, other *unset* `ac_cv_foo' will be assigned the
 # following values.
 
@@ -2653,7 +2653,7 @@ AS_IF([test "$ac_cv_search_$1" != no],
 # ac_cv_lib_$lib_fun, which is definitely not what was meant.  Hence
 # the AS_LITERAL_IF indirection.
 #
-# FIXME: This macro is extremely suspicious.  It DEFINEs unconditionnally,
+# FIXME: This macro is extremely suspicious.  It DEFINEs unconditionally,
 # whatever the FUNCTION, in addition to not being a *S macro.  Note
 # that the cache does depend upon the function we are looking for.
 #

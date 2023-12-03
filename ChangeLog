@@ -1,4 +1,21 @@
 -- vile:fk=utf-8
+2023-12-03  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20231203.
+
+	spelling fixes, with codespell
+
+	fix warning about nonzero pointer in AC_FUNC_FSEEKO.
+
+	fix a few unused-variable warnings in AC_C_CONST.
+
+	use void-parameter prototype in AC_C_INLINE.
+
+	use void-parameter prototype in AC_LANG_CALL(C), to reduce strict
+	compiler warnings in existence-checks, noting this will break some
+	checks, e.g., where a built-in prototype is used by a compiler.
+
+	updated config/config.{guess,sub}
+
 2023-09-03  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20230903.
 

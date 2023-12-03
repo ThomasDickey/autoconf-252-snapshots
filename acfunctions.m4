@@ -372,14 +372,19 @@ AC_DEFUN([AC_FUNC_FSEEKO],
 [_AC_SYS_LARGEFILE_MACRO_VALUE(_LARGEFILE_SOURCE, 1,
    [ac_cv_sys_largefile_source],
    [Define to make fseeko visible on some hosts (e.g. glibc 2.2).],
-   [@%:@include <stdio.h>], [return !fseeko;])
+   [@%:@include <stdio.h>
+    @%:@include <sys/types.h>], [
+    int (*my_fseeko)(FILE *, off_t, int) = fseeko;
+    return my_fseeko(stdin, 0, 0);])
 
 # We used to try defining _XOPEN_SOURCE=500 too, to work around a bug
 # in glibc 2.1.3, but that breaks too many other things.
 # If you want fseeko and ftello with glibc, upgrade to a fixed glibc.
 AC_CACHE_CHECK([for fseeko], [ac_cv_func_fseeko],
-               [AC_TRY_LINK([@%:@include <stdio.h>],
-                            [return fseeko && fseeko (stdin, 0, 0);],
+               [AC_TRY_LINK([@%:@include <stdio.h>
+                             @%:@include <sys/types.h>],
+                            [int (*my_fseeko)(FILE *, off_t, int) = fseeko;
+                            return my_fseeko && my_fseeko (stdin, 0, 0);],
                             [ac_cv_func_fseeko=yes],
                             [ac_cv_func_fseeko=no])])
 if test $ac_cv_func_fseeko = yes; then
@@ -677,7 +682,7 @@ fi
 # AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
 # -------------------------------------
 # When crosscompiling, be pessimistic so we will end up using the
-# replacement version of lstat that checkes for trailing slashes and
+# replacement version of lstat that checks for trailing slashes and
 # calls lstat a second time when necessary.
 AC_DEFUN([AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK],
 [AC_CACHE_CHECK(
@@ -978,7 +983,7 @@ AC_CACHE_CHECK(for working mmap, ac_cv_func_mmap_fixed_mapped,
    VM page cache was not coherent with the file system buffer cache
    like early versions of FreeBSD and possibly contemporary NetBSD.)
    For shared mappings, we should conversely verify that changes get
-   propogated back to all the places they're supposed to be.
+   propagated back to all the places they're supposed to be.
 
    Grep wants private fixed already mapped.
    The main things grep needs to know about mmap are:
