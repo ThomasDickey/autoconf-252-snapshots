@@ -3004,7 +3004,7 @@ AC_DEFUN([AC_CHECK_DECL],
 AC_CACHE_CHECK([whether $1 is declared], ac_Symbol,
 [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT([$4])],
 [#ifndef $1
-  char *p = (char *) $1; (void) p;
+  (void) $1;
 #endif
 ])],
                    [AS_VAR_SET(ac_Symbol, yes)],

@@ -1,4 +1,9 @@
 -- vile:fk=utf-8
+2023-12-10  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20231210.
+
+	fix warning about cast in AC_CHECK_DECL.
+
 2023-12-03  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20231203.
 
