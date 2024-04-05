@@ -1,4 +1,12 @@
 -- vile:fk=utf-8
+2024-04-06  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20240406.
+
+	warn about any of the plethora of groff-specific options which are not
+	supported
+
+	initialize the dummy variable in AC_TYPE_SIGNAL (Urs Janßen).
+
 2023-12-10  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20231210.
 

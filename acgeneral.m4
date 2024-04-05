@@ -1,7 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Parameterized macros.
 #------------------------------------------------------------------------------
-# Copyright 2003-2022,2023 Thomas E. Dickey
+# Copyright 2003-2023,2024 Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -1019,6 +1019,10 @@ do
   -x-libraries=* | --x-libraries=* | --x-librarie=* | --x-librari=* \
   | --x-librar=* | --x-libra=* | --x-libr=* | --x-lib=* | --x-li=* | --x-l=*)
     x_libraries=$ac_optarg ;;
+
+  -*dir | -dvi* | -doc* | -html* | -local* | -pdf* | -ps* )
+    AC_MSG_WARN([unsupported option: $ac_option])
+    ;;
 
   -*) AC_MSG_ERROR([unrecognized option: $ac_option
 Try `$[0] --help' for more information.])

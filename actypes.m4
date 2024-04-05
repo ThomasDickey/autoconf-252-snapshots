@@ -1,7 +1,7 @@
 # This file is part of Autoconf.                       -*- Autoconf -*-
 # Type related macros: existence, sizeof, and structure members.
 #------------------------------------------------------------------------------
-# Copyright 2020-2022,2023	Thomas E. Dickey
+# Copyright 2020-2023,2024	Thomas E. Dickey
 # Copyright 2000, 2001
 # Free Software Foundation, Inc.
 #
@@ -324,7 +324,7 @@ AC_DEFUN([AC_TYPE_SIGNAL],
 #endif
 extern void (*signal (int, void (*)(int)))(int);
 ],
-                 [int i; (void) i])],
+                 [int i = 0; (void) i])],
                    [ac_cv_type_signal=void],
                    [ac_cv_type_signal=int])])
 AC_DEFINE_UNQUOTED(RETSIGTYPE, $ac_cv_type_signal,
