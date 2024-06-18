@@ -2080,7 +2080,7 @@ m4_define([_AC_SUBST_SED_PROGRAM])
 # AC_SUBST(VARIABLE, [VALUE])
 # ---------------------------
 # Create an output variable from a shell VARIABLE.  If VALUE is given
-# assign it to VARIABLE.  Use `""' is you want to set VARIABLE to an
+# assign it to VARIABLE.  Use `""' if you want to set VARIABLE to an
 # empty value, not an empty second argument.
 #
 # Beware that if you change this macro, you also have to change the
@@ -4002,14 +4002,14 @@ dnl Here, there are 2 cmd per line, and two cmd are added later.
       # is no need to browse any of the substitutions).
       # These are the two extra sed commands mentioned above.
       (echo [':t
-  /@[a-zA-Z_][a-zA-Z_0-9]*@/!b'] && cat "$tmp"/subs.frag) >"$tmp"/subs-$ac_sed_frag.sed
+  /@[a-zA-Z_][a-zA-Z_0-9]*@/!b'] && sed -e 's/[\\][\\]*$//g' -e 's/$/\\/' -e 's/;t t\\/;t t/' -e 't' -e '3,'$ac_max_sed_lines's/$/\\/' "$tmp"/subs.frag) >"$tmp"/subs-$ac_sed_frag.sed
       # It is possible to make a multiline substitution using escaped newlines.
       # Ensure that we do not split the substitution between script fragments.
       ac_BEG=$ac_end
       ac_END=`expr "$ac_end" + "$ac_max_sed_lines"`
       sed "1,${ac_BEG}d; ${ac_END}p; q" "$tmp"/subs.sed >"$tmp"/subs.next
       if test -s "$tmp"/subs.next; then
-        grep '^s,@[[^@,]][[^@,]]*@,.*\\$' "$tmp"/subs.next >"$tmp"/subs.edit
+        grep '^s,@[[^@,]][[^@,]]*@,.*$' "$tmp"/subs.next | grep -v '^s,@.*;t t$' >"$tmp"/subs.edit
         if test ! -s "$tmp"/subs.edit; then
           grep "^s,@[[^@,]][[^@,]]*@,.*,;t t$" "$tmp"/subs.next >"$tmp"/subs.edit
           if test ! -s "$tmp"/subs.edit; then

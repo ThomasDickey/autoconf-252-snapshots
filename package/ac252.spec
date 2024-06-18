@@ -1,9 +1,9 @@
 Summary: autoconf-252 - Generate configuration scripts
 %define AppProgram autoconf
 %define AppVersion 2.52
-%define AppRelease 20240406
+%define AppRelease 20240618
 %define AppSuffix  -252
-# $Id: ac252.spec,v 1.49 2024/04/05 08:00:27 tom Exp $
+# $Id: ac252.spec,v 1.51 2024/06/17 23:31:10 tom Exp $
 Name: ac252
 Version: %{AppVersion}
 Release: %{AppRelease}

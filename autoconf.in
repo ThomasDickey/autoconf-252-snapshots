@@ -3,7 +3,7 @@
 # vile:shmode:
 # autoconf -- create `configure' using m4 macros
 #------------------------------------------------------------------------------
-# Copyright 2003-2022,2023	Thomas E. Dickey
+# Copyright 2003-2023,2024	Thomas E. Dickey
 # Copyright 1992, 1993, 1994, 1996, 1999, 2000, 2001
 # Free Software Foundation, Inc.
 
@@ -41,7 +41,7 @@ Operation modes:
   -W, --warnings=CATEGORY  report the warnings falling in CATEGORY [syntax]
 
 Options:
-  -opt-functions           use shell-functions to reduce repetition
+  --opt-functions          use shell-functions to reduce repetition
 
 Warning categories include:
   \`cross'         cross compilation issues

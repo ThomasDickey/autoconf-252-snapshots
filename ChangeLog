@@ -1,4 +1,10 @@
 -- vile:fk=utf-8
+2024-06-18  Thomas E. Dickey <dickey@invisible-island.net>
+	Version 2.52.20240618.
+
+	modify line-continuation handling in AC_SUBST to accept input which
+	has no trailing backslashes.
+
 2024-04-06  Thomas E. Dickey <dickey@invisible-island.net>
 	Version 2.52.20240406.
 
